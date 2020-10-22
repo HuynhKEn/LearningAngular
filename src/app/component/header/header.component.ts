@@ -1,16 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input('header_website') header: string;
-  color = "red"
-  constructor() { }
+  colorTicTac = true;
+  changeColor = setInterval( ()=> this.colorTicTac = !this.colorTicTac, 5000);
 
-  ngOnInit(): void {
+  @Output() public sidenavToggle = new EventEmitter();
+
+  constructor() { }
+  ngOnInit() {
   }
+
+
+  public onToggleSidenav = () => {
+    this.sidenavToggle.emit();
+  }
+
+
+
+
+
+
+
 
 }
