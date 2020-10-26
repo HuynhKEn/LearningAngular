@@ -1,0 +1,108 @@
+<div fxFLex="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+  <div fxFlex="0 1 calc(50%-10px)" fxFlex-lt-sm="100%">
+    <mat-card class="card-topic">
+      <mat-card-content>
+        <form [formGroup]="formTopicGroup"
+          gdAreas="selectGrid buttonGrid buttonGrid buttonGrid  |nameGrid contentGrid seeMoreGrid quoteGrid| buttonAccept buttonAccept buttonAccept buttonAccept" gdGap="10px"
+          gdRows="auto auto auto" (ngSubmit)="onSubmit()">
+
+          <mat-form-field gdArea="selectGrid">
+            <mat-label>Topic</mat-label>
+            <mat-select formControlName="selectedValue" name="selectTopic"  [compareWith]="compareFn">
+              <mat-option *ngFor="let topic of topics" [value]="topic">
+                {{topic.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <div gdArea="buttonGrid">
+            <a mat-raised-button (click)="addTopic()">
+              <mat-icon>add</mat-icon>
+            </a>
+            <a mat-raised-button (click)="editTopic()">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <a mat-raised-button (click)="deleteTopic()">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </div>
+
+          <!-- Thêm -->
+          <div *ngIf="addTopicStatus">
+            <mat-form-field gdArea="nameGrid">
+              <input matInput type="text" placeholder="Tên chủ đề" formControlName="nameTopic" class="form-control" />
+            </mat-form-field>
+
+            <mat-form-field gdArea="contentGrid">
+              <input matInput placeholder="Nội dung chủ đề" formControlName="contentTopic" class="form-control" />
+            </mat-form-field>
+
+            <mat-form-field gdArea="seeMoreGrid">
+              <input matInput placeholder="Link tham khảo" formControlName="seeLink" class="form-control" />
+            </mat-form-field>
+
+            <mat-form-field gdArea="quoteGrid">
+              <input matInput placeholder="Trích dẫn" formControlName="quoteLink" class="form-control" />
+            </mat-form-field>
+
+            <mat-form-field gdArea="buttonAccept">
+              <input matInput placeholder="Tiêu đề tham khảo" formControlName="seeContent" class="form-control" />
+
+            </mat-form-field>
+
+            <mat-form-field gdArea="buttonAccept">
+              <input matInput placeholder="Tiêu đề trích dẫn" formControlName="quoteContent" class="form-control" />
+            </mat-form-field>
+
+            <div gdArea="buttonAccept">
+              <button mat-raised-button type="submit">
+                Thêm
+              </button>
+            </div>
+          </div>
+
+          <!-- Sửa -->
+          <div *ngIf="editTopicStatus">
+            <mat-form-field gdArea="contentGrid">
+              <input matInput placeholder="Nội dung chủ đề" formControlName="contentTopic" class="form-control" [value]="getContentTopic()" />
+            </mat-form-field>
+
+
+            <mat-form-field gdArea="seeMoreGrid">
+              <input matInput placeholder="Link tham khảo" formControlName="seeLink" class="form-control" [value]="getSeeLinkTopic()" />
+            </mat-form-field>
+
+
+            <mat-form-field gdArea="quoteGrid">
+              <input matInput placeholder="Link trích dẫn" formControlName="quoteLink" class="form-control" [value]="getQuoteLinkTopic()" />
+            </mat-form-field>
+
+            <mat-form-field gdArea="buttonAccept">
+              <input matInput placeholder="Tiêu đề tham khảo" formControlName="seeContent" class="form-control" [value]="getSeeContentTopic()" />
+            </mat-form-field>
+
+            <mat-form-field gdArea="buttonAccept">
+              <input matInput placeholder="Tiêu đề trích dẫn" formControlName="quoteContent" class="form-control" [value]="getQuoteContentTopic()" />
+            </mat-form-field>
+
+            <div gdArea="buttonAccept">
+              <button mat-raised-button type="submit">
+                Sửa
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxFlex="0 1 calc(50%-10px)" fxFlex-lt-sm="100%">
+    <mat-card class="card-topic">
+      <mat-card-content>
+        Hello
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

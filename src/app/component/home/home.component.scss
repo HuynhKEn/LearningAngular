@@ -1,0 +1,55 @@
+ngb-carousel .wrapper {
+  position: relative;
+  height: 0;
+  padding-top: 30%; /* Keep ratio for 900x500 images */
+  width: 100%;
+
+
+}
+
+ngb-carousel .wrapper>img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+
+}
+.carousel-caption{
+  color: red;
+}
+.home .col-md-6, .col-sm-12{
+  padding-left: 0;
+  padding-right: 0;
+
+
+}
+.content-introduce{
+  top:10px;
+  max-width: 100%;
+}
+
+.tic-tac-background-first{
+  background-image: linear-gradient(90deg,#020024 19%, #090c79 47%,#00ccff 97%)!important;
+}
+.tic-tac-background-second{
+  background-image: linear-gradient(90deg, rgba(0,36,1,1) 19%, rgba(22,121,9,0.9850315126050421) 76%, rgba(123,255,0,0.9037990196078431) 95%)!important;
+}
+
+
+.content-example-card{
+  margin-left: 10px;
+}
+mat-card-header{
+  margin-left: 0px;
+  padding: 0px;
+  border: 0px;
+}
+.example-header-image {
+
+}
+.content-post{
+  height: 100vh;
+}

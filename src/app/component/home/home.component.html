@@ -1,0 +1,126 @@
+<div fxFlex="row wrap" fxLayout.lt-sm="column" fxLayout.gt-md="row wrap" fxLayoutGap="20px grid"
+  fxFlexAlign="flex-start">
+  <ng-container>
+    <div fxFlex="0 1 calc(40%-10px)" fxFlex.gt-md="0 1 calc(50%-10px)" fxFlex.lt-md="0 1 calc(45%-10px)"
+      fxFlex.lt-sm="0 1 calc(100%)">
+      <div gdAreas="images1 | images2 | videos" gdGap="10px" gdRows="auto auto">
+        <div gdArea="images1">
+          <mat-card class="example-card">
+            <mat-card-header>
+            </mat-card-header>
+            <mat-card-content>
+              <ngb-carousel *ngIf="images">
+                <ng-template ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="images[0]" alt="Random first slide">
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="images[1]" alt="Random second slide">
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="images[2]" alt="Random third slide">
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div gdArea="images2">
+          <mat-card>
+            <mat-card-header>
+            </mat-card-header>
+            <mat-card-content>
+              <ngb-carousel *ngIf="images">
+                <ng-template ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="images_famework[0]" alt="Random first slide">
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="images_famework[1]" alt="Random second slide">
+                  </div>
+
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="wrapper">
+                    <img [src]="images_famework[2]" alt="Random third slide">
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div gdArea="videos">
+          <mat-card class="example-card">
+            <mat-card-header>
+            </mat-card-header>
+            <mat-card-content>
+              <marquee #marquee>
+                <!-- *ngFor="let video of videos_tranforms" -->
+                <p>Demo</p>
+                <video controls (playing)="marquee.stop()" (pause)="marquee.start()"  width="300px" allowfullscreen="allowfullscreen">
+                  <source src="../../../assets/videos/demo.mp4" style="margin-left:10px">
+                </video>
+              </marquee>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+    </div>
+    <div fxFlex="0 1 calc(60%-10px)" fxFlex.gt-md="0 1 calc(50%-10px)" fxFlex.lt-md="0 1 calc(55%-10px)"
+      fxFlex.lt-sm="0 1 calc(100%)">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <mat-card class="content-post">
+            <mat-card-header>
+            </mat-card-header>
+            <mat-card-content>
+              <ngb-accordion [closeOthers]="true" activeIds="1">
+                <ngb-panel id="{{element.id}}" title="{{element.title}}" *ngFor="let element of  topics">
+                  <ng-template ngbPanelContent>
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-6" style="max-height: 400px ; overflow-y:auto;">
+                        <mat-card class="content-example-card">
+                          <mat-card-title>{{element.title}}</mat-card-title>
+                          <mat-card-content>
+                            <article style="text-align: justify">
+                              {{element.content}}
+                            </article>
+                            <br><br>
+                            <a href="{{element.see_more.link}}">{{element.see_more.content}}</a>
+                            <br><br>
+                            <a href="{{element.quote.link}}"> {{element.quote.content}}</a>
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6" style="max-height: 400px ; overflow-y:auto;">
+                        <div *ngFor="let post of posts">
+                          <a routerLink="" (click)="redirect(post)" *ngIf="post.id_parent == element.id">
+                            <mat-card class="content-example-card">
+                              <mat-card-title>{{post.title}}</mat-card-title>
+                              <mat-card-content>
+                                <article style="text-align: justify">
+                                  {{post.content}}
+                                </article>
+                              </mat-card-content>
+                            </mat-card>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

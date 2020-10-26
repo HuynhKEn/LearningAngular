@@ -1,0 +1,35 @@
+<div fxFlex="row wrap" fxFlexAlign="flex-start" fxLayoutGap="10px">
+  <mat-card class="left-layout" fxFlex="15%" fxFlex.lt-sm="30%" fxFlex.gt-md="15%">
+    <mat-card-content gdAreas="logo|content" gdColumn="auto auto">
+      <div gdArea="logo">
+        <img src="../../../assets/images/icon.png" class="image-responsive">
+      </div>
+      <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
+
+        <mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-icon>topic</mat-icon> &nbsp; <a routerLink="topic">Chủ đề</a>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-icon>note</mat-icon> &nbsp; <a href="#">Bài viết</a>
+        </mat-list-item>
+
+
+        <mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-icon>video_library</mat-icon> &nbsp; <a href="#">Video</a>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <div fxFlex="85%" fxFlex.lt-sm="70%" fxFlex.gt-md="85%">
+    <mat-card class="right-layout">
+      <mat-card-content>
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

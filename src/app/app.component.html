@@ -1,4 +1,4 @@
-<app-layout>
+<app-layout *ngIf="loginStatus">
   <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation">
       <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
@@ -6,8 +6,9 @@
     <mat-sidenav-content>
       <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
       <main>
-        <router-outlet></router-outlet>
+        <router-outlet ></router-outlet>
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </app-layout>
+<router-outlet *ngIf="!loginStatus"></router-outlet>
