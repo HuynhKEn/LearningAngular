@@ -26,6 +26,12 @@ mat-toolbar{
   padding:0;
   border:0;
 }
+.toolbar-header{
+  background-color: #FFFFFF;
+  border: 1px solid gainsboro;
+  border-radius: 2px;
+  padding: 10px;
+}
 
 @media(max-width: 959px){
   mat-toolbar{

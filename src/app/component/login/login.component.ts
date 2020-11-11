@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   formLoginGroup : FormGroup;
   success = ""
   constructor(private formBuilder:FormBuilder,private router:Router,private adminService:AdminService) {
-    this.adminService.changeStatusToLogin(false)
+    this.adminService.changeStatusToLogin(true)
     this.adminService.adminStatus$.subscribe(res => this.adminStatus = res)
     this.formLoginGroup = this.formBuilder.group({
         username : ['',Validators.required]

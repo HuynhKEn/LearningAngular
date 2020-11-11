@@ -1,0 +1,8 @@
+.my-drop-zone { border: dotted 3px lightgray;padding:10px; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green;  }
+button[type=button]
+{
+  width:100%;
+  text-align: center;
+}

@@ -1,0 +1,124 @@
+<mat-toolbar>
+  <h4>Media File </h4>
+</mat-toolbar>
+
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start" >
+  <div fxFlex="calc(30%-10px)" fxFlex.lt-sm="calc(100%-10px)">
+    <h3>Select files</h3>
+    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+      [uploader]="uploader" (onFileDrop)="onFileSelected($event)" class="my-drop-zone">
+      Base drop zone
+    </div>
+    <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+      (fileOver)="fileOverAnother($event)" [uploader]="uploader" (onFileDrop)="onFileSelected($event)" class="my-drop-zone">
+      Another drop zone
+    </div>
+    <div gdAreas="single-choose|multiple-choose" gdGap="2px">
+      <div gdArea="single-choose">
+        <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" style="width: 15px;" />
+      </div>
+      <div gdArea="multiple-choose">
+        <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" multiple />
+      </div>
+    </div>
+  </div>
+  <div fxFlex="calc(70%-10px)" fxFlex.lt-sm="calc(100%-10px)">
+    <div gdAreas="table-media|event-button">
+      <div gdArea="table-media" class="table-responsive">
+        <h3>Upload queue</h3>
+        <p>Queue length: {{ uploader?.queue?.length }}</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="50%" scope="col">Name</th>
+              <th scope="col">Size</th>
+              <th scope="col">Progress</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of uploader.queue">
+              <td><strong>{{ item?.file?.name }}</strong></td>
+              <td *ngIf="uploader.options.isHTML5">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+              <td *ngIf="uploader.options.isHTML5">
+                <div class="progress" style="margin-bottom: 0;">
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                </div>
+              </td>
+              <td class="text-center">
+                <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success btn-xs" (click)="item.upload()"
+                  [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                  <span class="glyphicon glyphicon-upload"></span> Upload
+                </button>
+                <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()"
+                  [disabled]="!item.isUploading">
+                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                </button>
+                <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                  <span class="glyphicon glyphicon-trash"></span> Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div gdArea="event-button">
+        <div gdAreas.lt-sm="gdProgress|gdUpload-all|gdCacel-all|gdRemove-all" gdAreas="gdProgress gdProgress gdProgress |gdUpload-all gdCacel-all gdRemove-all">
+          <div gdArea="gdProgress" style="margin-bottom: 10px;">
+            Queue progress:
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+          </div>
+
+          <div gdArea="gdUpload-all">
+            <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+              [disabled]="!uploader.getNotUploadedItems().length">
+              <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+          </div>
+          <div gdArea="gdCacel-all">
+            <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
+              [disabled]="!uploader.isUploading">
+              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            </button>
+          </div>
+          <div gdArea="gdRemove-all">
+            <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()"
+              [disabled]="!uploader.queue.length">
+              <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Response</div>
+      <div class="panel-body">
+        {{ response }}
+      </div>
+    </div>
+  </div>
+</div>
+<div fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="flex-start">
+  <div *ngFor="let video of videos_tranforms" fxFlex="0 1 calc(25%-15px)" fxFlex.lt-sm="0 1 calc(50%-15px)" >
+    <mat-card style="margin-bottom: 10px;">
+      <mat-card-content>
+        <iframe  [src]="video.link" fxFlexFill></iframe>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

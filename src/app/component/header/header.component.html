@@ -1,39 +1,35 @@
-<mat-card class="example-card" [ngClass]="{'tic-tac-color-blue':colorTicTac,'tic-tac-color-green':!colorTicTac}">
-  <mat-card-header >
-  </mat-card-header>
-  <mat-card-content>
-    <mat-toolbar color="primary" [ngClass]="{'tic-tac-color-blue':colorTicTac,'tic-tac-color-green':!colorTicTac}">
-      <div fxHide.gt-xs>
-        <button mat-icon-button (click)="onToggleSidenav()">
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-      <div>
-        <a routerLink="/home">HTV</a>
-      </div>
+<div class="toolbar-header" [ngClass]="{'tic-tac-color-blue':colorTicTac,'tic-tac-color-green':!colorTicTac}">
+  <mat-toolbar color="primary" [ngClass]="{'tic-tac-color-blue':colorTicTac,'tic-tac-color-green':!colorTicTac}">
+    <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div>
+      <a routerLink="/home">HTV</a>
+    </div>
 
-      <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let name of menuList" >{{name}}</button>
-          </mat-menu>
-          <li>
-            <mat-icon class="icon-list" [matMenuTriggerFor]="menu" >menu</mat-icon>
-          </li>
-          <li>
-            <a [matMenuTriggerFor]="menu">
-              Danh mục
-            </a>
-          </li>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let name of menuList">{{name}}</button>
+        </mat-menu>
+        <li>
+          <mat-icon class="icon-list" [matMenuTriggerFor]="menu">menu</mat-icon>
+        </li>
+        <li>
+          <a [matMenuTriggerFor]="menu">
+            Danh mục
+          </a>
+        </li>
 
-          <li>
-            <a routerLink="/posts">Bài viết</a>
-          </li>
-          <li>
-            <a routerLink="/contact">Liên hệ</a>
-          </li>
-        </ul>
-      </div>
-    </mat-toolbar>
-  </mat-card-content>
-</mat-card>
+        <li>
+          <a routerLink="/posts">Bài viết</a>
+        </li>
+        <li>
+          <a routerLink="/contact">Liên hệ</a>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar>
+</div>

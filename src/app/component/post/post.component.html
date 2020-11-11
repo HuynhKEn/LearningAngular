@@ -1,6 +1,6 @@
-<div fxFlex="row wrap" fxLayout.lt-sm="column" fxLayout.gt-md="row wrap" fxLayoutGap="20px grid" fxFlexAlign="flex-start">
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="flex-start">
   <ng-container>
-    <div fxFlex="0 1 calc(45%-20px)" fxFlex.gt-md="0 1 calc(40%-20px)" fxFlex.lt-md="0 1 calc(50%-20px)" fxFlex.lt-sm="100%">
+    <div fxFlex="calc(45%-20px)" fxFlex.lt-md="calc(50%-20px)" fxFlex.lt-sm="100%">
       <mat-card class="example-card">
         <mat-card-title>{{post}}</mat-card-title>
         <mat-card-content>
@@ -10,9 +10,20 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div fxFlex="0 1 calc(55%-20px)" fxFlex.gt-md="0 1 calc(60%-20px)" fxFlex.lt-md="0 1 calc(50%-20px)" fxFlex.lt-sm="100%" class="content-compilier">
+    <div fxFlex="calc(55%-20px)"  fxFlex.lt-md="calc(50%-20px)" fxFlex.lt-sm="100%" class="content-compilier">
       <div class="sec-widget widget-compiler" data-widget="4f90006538dd5ad9451ccd05999f590f" >
       </div>
     </div>
   </ng-container>
+</div>
+
+<div>
+  <youtube-player [videoId]="idVideo"
+      (ready)="savePlayer($event)"
+      (change)="onStateChange($event,'video')">
+  </youtube-player>
+  <br>
+  <button mat-raised-button [disabled]="hiddenTag">
+       Hidden
+  </button>
 </div>

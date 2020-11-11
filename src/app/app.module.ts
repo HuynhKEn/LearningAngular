@@ -13,7 +13,9 @@ import { PostComponent } from './component/post/post.component';
 import { LoginComponent } from './component/login/login.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { TopicComponent } from './component/topic/topic.component';
-
+import {PostAdminComponent} from './component/post-admin/post-admin.component';
+import { MediaComponent } from './component/media/media.component'
+import { IfPipe } from './pipe/if.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { TopicComponent } from './component/topic/topic.component';
     LoginComponent,
     AdminComponent,
     TopicComponent,
+    PostAdminComponent,
+    MediaComponent,
+    IfPipe,
 
   ],
   imports: [

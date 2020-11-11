@@ -1,8 +1,8 @@
-<mat-card class="form-login" *ngIf="adminStatus">
+<div class="form-login" *ngIf="!adminStatus">
   <div class="title-login">
     <img  src="../../../assets/images//icon.png">
   </div>
-  <mat-card-content>
+  <div>
     <h4>Login</h4>
     <form [formGroup]="formLoginGroup" (ngSubmit)="onSubmit()"
       gdAreas="user user |pass pass |remember forget|submitButton submitButton" gdGap="10px"
@@ -37,7 +37,7 @@
         </button>
       </div>
     </form>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
 <router-outlet></router-outlet>
 

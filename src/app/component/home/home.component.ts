@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
 import {Router} from '@angular/router'
-
+import {IfPipe} from '../../pipe/if.pipe'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +12,13 @@ export class HomeComponent implements OnInit {
 
   images = ["machine.png", "python.png", "deeplearning.jfif"].map((n) => `../../../assets/images/${n}`);
   images_famework = ["caffe-deep-learning.jpg", "pytorch.jpg", "Tensorflow-.webp"].map((n) => `../../../assets/images/${n}`);
-  videos = ["http://www.youtube.com/embed/W7qWa52k-nE","http://www.youtube.com/embed/W7qWa52k-nE","http://www.youtube.com/embed/W7qWa52k-nE"]
+  videos = [
+            {id:1,link:"../../../assets/videos/demo.mp4",title:""},
+            {id:2,link:"../../../assets/videos/demo.mp4",title:""},
+            {id:3,link:"../../../assets/videos/demo.mp4",title:""},
+            {id:4,link:"../../../assets/videos/demo.mp4",title:""},
+            {id:5,link:"../../../assets/videos/demo.mp4",title:""},
+          ]
   videos_tranforms = []
   colorTicTac = true;
   changeColor = setInterval( ()=> this.colorTicTac = !this.colorTicTac, 5000);
@@ -54,7 +60,7 @@ export class HomeComponent implements OnInit {
     config.pauseOnHover = true;
   }
   ngOnInit(): void {
-    this.videos_tranforms = this.videos.map(x => this.sanitizer.bypassSecurityTrustResourceUrl(x))
+    // this.videos.forEach(x => this.videos_tranforms.push({id:x.id,link:this.sanitizer.bypassSecurityTrustResourceUrl(x.link)}))
   }
   redirect(post){
     this.router.navigate(['post'], {

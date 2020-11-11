@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ChangeDetectorRef, Component, DoCheck, OnInit, Pipe, PipeTransform } from '@angular/core';
+import {FormGroup,FormBuilder,Validators} from '@angular/forms'
+
+
+
 @Component({
-  selector: 'app-topic',
-  templateUrl: './topic.component.html',
-  styleUrls: ['./topic.component.scss'],
+  selector: 'app-post-admin',
+  templateUrl: './post-admin.component.html',
+  styleUrls: ['./post-admin.component.scss']
 })
-export class TopicComponent implements OnInit {
-  formTopicGroup: FormGroup;
+
+export class PostAdminComponent implements OnInit,DoCheck {
+  formPostGroup : FormGroup;
   topics = [
     {
       id: 2,
@@ -42,103 +46,90 @@ export class TopicComponent implements OnInit {
       },
     },
   ];
-  addTopicStatus = false;
-  editTopicStatus = false;
-  contentTopicValue: string;
-  titleTopicValue: string;
-  addOrEdit: boolean;
-  idTopic:number;
-  seeMoreValue = {};
-  quoteValue = {};
-  constructor(private formBuilder: FormBuilder) {
-    this.formTopicGroup = this.formBuilder.group({
+  postsOfTopics : any[] = [{
+    title:"Numpy",
+    content:"Numpy là một thư viện lõi phục vụ cho khoa học máy tính của Python, hỗ trợ cho việc tính toán các mảng nhiều chiều, có kích thước lớn, hỗ trợ các hàm đã được tối ưu áp dụng lên các mảng nhiều chiều. Numpy đặc biệt hữu ích khi thực hiện các hàm liên quan tới Đại Số Tuyến Tính. Để cài đặt numpy nếu bạn có Anaconda chỉ cần gõ",
+    id_parent:1
+  }
+  ,
+  {
+    title:"Pandas",
+    content:"Pandas",
+    id_parent:1
+  }
+  ,
+    {title:"Opencv",
+    content:"Opencv",
+    id_parent:3
+  }]
+  copyPostsOfTopics = [];
+  editPostStatus:boolean
+  addPostStatus:boolean
+  deletePostStatus:number
+  addOrEditDelete:number
+  oldSubSelectValue:string
+  contentValue:string
+  constructor(private fromBuilder:FormBuilder,private cdr: ChangeDetectorRef) {
+    this.formPostGroup = this.fromBuilder.group({
+      titleAdd:['', Validators.required],
+      content:['', Validators.required],
       selectedValue: [this.topics[0]],
-      titleTopic: ['', Validators.required],
-      contentTopic: ['', Validators.required],
-      seeLink:[''],
-      quoteLink:[''],
-      seeContent:[''],
-      quoteContent:['']
-    });
+      subSelectValue: [''],
+    })
+   }
+
+  ngOnInit(): void {
+    this.oldSubSelectValue = this.formPostGroup.controls.subSelectValue.value
+  }
+  ngDoCheck(){
+    if (!!this.formPostGroup.controls.subSelectValue.value && this.oldSubSelectValue !==  this.formPostGroup.controls.subSelectValue.value){
+      this.formPostGroup.controls.content.setValue(this.formPostGroup.controls.subSelectValue.value.content)
+      this.oldSubSelectValue  = this.formPostGroup.controls.subSelectValue.value
+    }
   }
 
-  ngOnInit(): void {}
-
-
-
-  get topicData() {
-    return this.formTopicGroup.controls;
+  addPost() {
+    this.editPostStatus = false;
+    this.deletePostStatus = 0
+    this.addPostStatus = true;
+    this.addOrEditDelete = 0;
   }
-
-  addTopic() {
-    this.editTopicStatus = false;
-    this.addTopicStatus = true;
-    this.addOrEdit = true;
-  }
-  editTopic() {
-    this.addTopicStatus = false;
-    this.editTopicStatus = true;
-    this.addOrEdit = false;
-  }
-  deleteTopic() {
-    this.idTopic = this.topicData.selectedValue.value.id;
-  }
-
-
-  updateTopicElements(){
-    this.topicData.titleTopic.setValue(
-      this.topicData.selectedValue.value.title
-    );
-
-    this.topicData.contentTopic.setValue(
-      this.topicData.selectedValue.value.content
-    );
-
-
-    this.topicData.seeLink.setValue(
-      this.topicData.selectedValue.value.see_more.link
-    );
-
-    this.topicData.quoteLink.setValue(
-      this.topicData.selectedValue.value.quote.link
-    );
-
-    this.topicData.seeContent.setValue(
-      this.topicData.selectedValue.value.see_more.content
-    );
-
-    this.topicData.quoteContent.setValue(
-      this.topicData.selectedValue.value.quote.content
-    );
+  editPost() {
+    this.addPostStatus = false;
+    this.deletePostStatus = 0
+    this.editPostStatus = true;
+    this.addOrEditDelete = 1;
 
   }
-
-
-
+  deletePost() {
+    this.editPostStatus = false;
+    this.addPostStatus = false;
+    this.deletePostStatus = 1
+    this.addOrEditDelete = 2;
+  }
+  updatePostElements(){
+    this.copyPostsOfTopics = this.postsOfTopics.filter(param => param.id_parent === this.formPostGroup.controls.selectedValue.value.id)
+    this.formPostGroup.controls['subSelectValue'].patchValue(this.copyPostsOfTopics[0]);
+  }
 
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
-  onSubmit() {
-    // this.addOrEdit = True is add , False is edit
-    if (this.addOrEdit) {
-      let json_data = {
-        id: 4,
-        title: this.topicData.titleTopic.value,
-        content: this.topicData.contentTopic.value,
-        see_more: {link:this.topicData.seeLink.value,content:this.topicData.seeContent.value},
-        quote: {link:this.topicData.quoteLink.value,content:this.topicData.quoteContent.value},
-      };
 
-      this.topics.push(json_data);
-      this.formTopicGroup.controls['selectedValue'].patchValue(json_data);
-    } else {
-      // this.topicData.selectedValue.value is json with format  {id,title,value}
-      this.idTopic = this.topicData.selectedValue.value.id;
-      this.titleTopicValue = this.topicData.selectedValue.value.title;
-      this.contentTopicValue = this.topicData.contentTopic.value;
-      this.seeMoreValue = {link:this.topicData.seeLink.value,content:this.topicData.seeContent.value}
-      this.quoteValue = {link: this.topicData.quoteLink.value,content:this.topicData.quoteContent.value}
+  onSubmit(){
+    //Add
+    if(this.addOrEditDelete===0){
+      console.log(this.formPostGroup.controls.titleAdd.value,this.formPostGroup.controls.content.value,this.formPostGroup.controls.selectedValue.value.id)
+    }
+    //Edit
+    if(this.addOrEditDelete===1){
+      console.log(this.formPostGroup.controls.subSelectValue.value,this.formPostGroup.controls.content.value,this.formPostGroup.controls.selectedValue.value.id)
+    }
+    //Delete
+    if(this.addOrEditDelete===2){
+      console.log(this.formPostGroup.controls.subSelectValue.value,this.formPostGroup.controls.selectedValue.value.id)
+
     }
   }
+
 }

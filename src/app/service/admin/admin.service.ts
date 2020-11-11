@@ -6,10 +6,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AdminService {
 
-  private loginStatus  = new BehaviorSubject(true);
+  private loginStatus  = new BehaviorSubject(false);
   loginStatus$ = this.loginStatus.asObservable();
 
-  private adminStatus = new BehaviorSubject(true);
+  private adminStatus = new BehaviorSubject(false);
   adminStatus$ = this.adminStatus.asObservable();
 
 

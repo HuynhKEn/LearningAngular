@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {NgbAlertModule,NgbCarouselModule, NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadModule } from 'ng2-file-upload';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,6 +18,8 @@ import {MatCardModule} from '@angular/material/card'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [],
@@ -30,6 +33,7 @@ import {MatSelectModule} from '@angular/material/select';
     NgbCarouselModule,
     NgbAccordionModule,
     FlexLayoutModule,
+    FileUploadModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -41,12 +45,14 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatCheckboxModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    NgxYoutubePlayerModule.forRoot()
   ]
   ,
-  exports: [CommonModule,FormsModule,ReactiveFormsModule,NgbAlertModule,NgbCarouselModule,NgbAccordionModule,FlexLayoutModule,
+  exports: [CommonModule,FormsModule,ReactiveFormsModule,NgbAlertModule,NgbCarouselModule,NgbAccordionModule,FlexLayoutModule,FileUploadModule,NgxYoutubePlayerModule,
     MatSidenavModule,MatToolbarModule,MatIconModule,MatCardModule,
     MatButtonModule,MatListModule,MatMenuModule,MatFormFieldModule,MatInputModule,
-    MatCheckboxModule,MatDividerModule,MatSelectModule]
+    MatCheckboxModule,MatDividerModule,MatSelectModule,MatTableModule]
 })
 export class ShareModule { }
