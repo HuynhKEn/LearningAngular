@@ -25,13 +25,20 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": ["src/assets/js/compiler.js"]
+            "scripts": [
+              "src/assets/js/compiler.js",
+              "./node_modules/jquery/dist/jquery.js"]
           },
           "configurations": {
             "production": {

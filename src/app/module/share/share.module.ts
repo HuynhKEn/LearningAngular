@@ -19,8 +19,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator'
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
-
+import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
+import {MatTooltipModule} from '@angular/material/tooltip'
+import { HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [],
   imports: [
@@ -34,6 +37,8 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     NgbAccordionModule,
     FlexLayoutModule,
     FileUploadModule,
+    NgxExtendedPdfViewerModule,
+    HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -47,11 +52,14 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     MatDividerModule,
     MatSelectModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatTooltipModule,
     NgxYoutubePlayerModule.forRoot()
   ]
   ,
-  exports: [CommonModule,FormsModule,ReactiveFormsModule,NgbAlertModule,NgbCarouselModule,NgbAccordionModule,FlexLayoutModule,FileUploadModule,NgxYoutubePlayerModule,
-    MatSidenavModule,MatToolbarModule,MatIconModule,MatCardModule,
+  exports: [CommonModule,FormsModule,ReactiveFormsModule,NgbAlertModule,NgbCarouselModule,NgbAccordionModule,
+    FlexLayoutModule,FileUploadModule,NgxYoutubePlayerModule,NgxExtendedPdfViewerModule,HttpClientModule,
+    MatSidenavModule,MatToolbarModule,MatIconModule,MatCardModule,MatPaginatorModule,MatTooltipModule,
     MatButtonModule,MatListModule,MatMenuModule,MatFormFieldModule,MatInputModule,
     MatCheckboxModule,MatDividerModule,MatSelectModule,MatTableModule]
 })

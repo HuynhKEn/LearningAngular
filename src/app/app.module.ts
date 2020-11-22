@@ -16,6 +16,9 @@ import { TopicComponent } from './component/topic/topic.component';
 import {PostAdminComponent} from './component/post-admin/post-admin.component';
 import { MediaComponent } from './component/media/media.component'
 import { IfPipe } from './pipe/if.pipe';
+import {ChangeColumnTable} from './pipe/change-column-table.pipe';
+import { TableCustomComponent } from './component/customer/table-custom/table-custom.component';
+import { PdfViewerCustomerComponent } from './component/customer/pdf-viewer-customer/pdf-viewer-customer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,11 @@ import { IfPipe } from './pipe/if.pipe';
     TopicComponent,
     PostAdminComponent,
     MediaComponent,
+    ChangeColumnTable,
+    TableCustomComponent,
     IfPipe,
+    PdfViewerCustomerComponent,
+
 
   ],
   imports: [

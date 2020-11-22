@@ -1,0 +1,59 @@
+<table mat-table [dataSource]="dataSource" style="width: 100%;" multiTemplateDataRows>
+
+  <ng-container matColumnDef="{{column}}"
+    *ngFor="let column  of displayedColumns | if:filterAction | if:filterFileType">
+    <th rowspan="2" mat-header-cell *matHeaderCellDef style="padding-left: 8px;"> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column |changeColumnTable]}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="FILE_TYPE">
+    <th rowspan="2" mat-header-cell *matHeaderCellDef style="padding-left: 8px;"> FILE_TYPE </th>
+    <td mat-cell *matCellDef="let element">
+      <small *ngIf="element['FILE_TYPE'|changeColumnTable]==='video'">
+        <button mat-icon-button style="width: auto" (click)="playOn(element.link)">
+          <mat-icon class="video_icon">video_library</mat-icon>
+        </button>
+      </small>
+      <small *ngIf="element['FILE_TYPE'|changeColumnTable]==='pdf'">
+        <button mat-icon-button style="width: auto;" (click)="playOn(element.link)">
+          <mat-icon class="pdf_icon">picture_as_pdf</mat-icon>
+        </button>
+      </small>
+      <small *ngIf="element['FILE_TYPE'|changeColumnTable]==='image'">
+        <button mat-icon-button style="width: auto" (click)="playOn(element.link)">
+          <mat-icon>image</mat-icon>
+        </button>
+      </small>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ACTION" *ngIf="configure.action">
+    <th colspan="3" mat-header-cell *matHeaderCellDef style="padding-left: 8px;">ACTION</th>
+    <ng-container matColumnDef="{{action}}" *ngFor="let action of actionEvent">
+      <th mat-header-cell *matHeaderCellDef style="padding-left: 8px;" class="mat-header-cell-action">{{action}}</th>
+      <td mat-cell *matCellDef="let element">
+        <small *ngIf="action==='EDIT'">
+          <button mat-icon-button style="width: auto">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </small>
+        <small *ngIf="action==='ADD'">
+          <button mat-icon-button style="width: auto">
+            <mat-icon>add_box</mat-icon>
+          </button>
+        </small>
+        <small *ngIf="action==='REMOVE'">
+          <button mat-icon-button style="width: auto">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </small>
+      </td>
+    </ng-container>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-header-row *matHeaderRowDef="actionEvent"></tr>
+  <tr mat-row *matRowDef="let row; columns:displayedColumns.concat(actionEvent) | if: filterAction"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+

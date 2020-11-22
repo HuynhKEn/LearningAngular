@@ -17,13 +17,3 @@
   </ng-container>
 </div>
 
-<div>
-  <youtube-player [videoId]="idVideo"
-      (ready)="savePlayer($event)"
-      (change)="onStateChange($event,'video')">
-  </youtube-player>
-  <br>
-  <button mat-raised-button [disabled]="hiddenTag">
-       Hidden
-  </button>
-</div>

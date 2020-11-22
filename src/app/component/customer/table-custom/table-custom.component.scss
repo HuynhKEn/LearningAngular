@@ -1,0 +1,67 @@
+.mat-header-cell{
+  color:black;
+  width: auto;
+}
+.cdk-column-REMOVE{
+  width: 7%;
+}
+
+.mat-header-cell-action{
+  color:black;
+  width: auto;
+}
+.mat-cell{
+  padding-left: 8px!important;
+}
+
+
+.mat-header-cell:nth-child(n+1){
+  background-color:#F8F8FF;
+}
+
+.mat-column-NO{
+  background-color:#F8F8FF;
+}
+
+.mat-cell:nth-child(1){
+  color:black
+}
+.mat-cell:nth-child(4){
+  color:black
+}
+
+.mat-row:nth-child(2n+1){
+  background: rgb(13,2,51);
+background: linear-gradient(0deg, rgba(13,2,51,1) 0%, rgba(204,147,37,0.9766281512605042) 0%, rgba(253,45,212,1) 0%, rgba(255,255,207,0.9766281512605042) 0%, rgba(255,244,212,1) 100%);
+}
+.mat-table{
+  background-color: #FFFFFF;
+  border: 2px solid gainsboro;
+  border-radius: 2px;
+  box-shadow: -2px -2px 10px gainsboro ;
+  width:100%;
+  height: auto;
+}
+.mat-column-FILE_TYPE{
+  .video_icon{
+    color:orangered;
+  }
+
+  .pdf_icon{
+    color:#aa281f;
+
+  }
+}
+.mat-column-ADD mat-icon{
+  color:#aa281f;
+}
+@media only screen and (max-width: 600px) {
+  .mat-header-cell-action{
+    font-size: 9px;
+  }
+  .mat-header-cell-action{
+    font-size: auto;
+    color:lightcoral;
+  }
+
+}

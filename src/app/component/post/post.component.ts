@@ -8,7 +8,7 @@ declare const compilers : any
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit,DoCheck {
+export class PostComponent implements OnInit {
   post :string;
   content:string;
   idVideo = 'qDuKsiwS5xw';
@@ -16,10 +16,6 @@ export class PostComponent implements OnInit,DoCheck {
     cc_lang_pref: 'en'
   };
   version = '...';
-  private player;
-  statusPlaying = new BehaviorSubject(true);
-  statusPlaying$ = this.statusPlaying.asObservable()
-  hiddenTag: boolean = true
 
   constructor() {
    }
@@ -51,33 +47,5 @@ export class PostComponent implements OnInit,DoCheck {
 
 
 
-  onStateChange(event,typeMedia) {
-    if(typeMedia === "video"){
-      const timeWatched = (this.player.getCurrentTime()/this.player.getDuration())*100
-      if(timeWatched >= 80) {
-        this.changeStatusMedia(true);
-      }
-      else{
-        this.changeStatusMedia(false);
-      }
-    }
-
-  }
-  changeStatusMedia(statusPlaying:boolean){
-    this.statusPlaying.next(statusPlaying)
-  }
-  savePlayer(player) {
-    this.player = player;
-  }
-  ngDoCheck(){
-    this.statusPlaying$.subscribe(res => {
-      if(res) {
-        this.hiddenTag = false
-      }
-      else{
-        this.hiddenTag = true
-      }
-    })
-  }
 
 }

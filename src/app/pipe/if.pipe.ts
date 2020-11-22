@@ -4,11 +4,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'if'
 })
 export class IfPipe implements PipeTransform {
-    transform(values: any[], exponent: boolean): any[] {
-      if (!exponent) {
-        return[];
-      }
-      return values;
+    transform(items : any[], callback:(item: any) => boolean ): any[] {
+      if (!items  || !callback) {
+        return items ;
+    }
+    return items.filter(item => callback(item));
+
     }
 
 }
