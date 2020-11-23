@@ -29,11 +29,14 @@
 
 <ng-template #navigation>
   <div class="event-bottom-right">
-
-    <mat-icon  [matTooltip]="toolTip?'Can not zoom in beacause minimun limit': null" (click)="onZoomOut()" aria-hidden="false"  title="Zoom Out">remove_circle_outline
-    </mat-icon>
-    <mat-icon [matTooltip]="toolTip?'Can not zoom in beacause maximum limit': null" (click)="onZoomIn()" aria-hidden="false"  title="Zoom In"> add_circle_outline
-    </mat-icon>
+    <button mat-icon-button>
+      <mat-icon  [matTooltip]="toolTip?'Can not zoom in beacause minimun limit': null" (click)="onZoomOut()" aria-hidden="false"  title="Zoom Out">remove_circle_outline
+      </mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon [matTooltip]="toolTip?'Can not zoom in beacause maximum limit': null" (click)="onZoomIn()" aria-hidden="false"  title="Zoom In"> add_circle_outline
+      </mat-icon>
+    </button>
 
     <mat-icon *ngIf="eventFullScreen" aria-hidden="false"  (click)="fullScreen()" title="Full Screen">zoom_out_map</mat-icon>
     <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="closeFullscreen()" title="Exit Full screen">fullscreen_exit</mat-icon>

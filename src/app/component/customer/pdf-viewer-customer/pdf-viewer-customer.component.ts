@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Platform } from '@angular/cdk/platform';
 import { style } from '@angular/animations';
-
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
@@ -55,7 +56,17 @@ export class PdfViewerCustomerComponent implements OnInit {
   showToolbar:boolean = true;
   sidebarToggle:string ="none"
   hozFullScreen:boolean = false;
-  constructor(private http: HttpClient,private platform: Platform,private deviceService: DeviceDetectorService) { }
+  constructor(
+    private http: HttpClient,
+    private platform: Platform,
+    private deviceService: DeviceDetectorService,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+    ) {
+        this.iconRegistry.addSvgIcon(
+          'exit-full-screen',
+          this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/exit-full-screen.svg'));
+     }
 
   ngOnInit(): void {
     this.isSafari = this.platform.SAFARI;
@@ -271,6 +282,22 @@ export class PdfViewerCustomerComponent implements OnInit {
       webkitRequestFullscreen(): Promise<void>;
       msRequestFullscreen(): Promise<void>;
     };
+    const buttonElement = document.createElement("mat-icon");
+    buttonElement.style.bottom = "0";
+    buttonElement.style.fontSize = "25px"
+    buttonElement.style.width = "40px"
+    buttonElement.style.height = "40px"
+    buttonElement.style.background = "#999"
+    buttonElement.style.borderRadius = "50%";
+    buttonElement.style.cursor = "pointer";
+    buttonElement.innerHTML = "fullscreen"
+    buttonElement.innerText = "fullscreen"
+    buttonElement.style.color = "#fff";
+    elem.appendChild(buttonElement);
+
+
+
+
     // const outlet = document.getElementById("outerContainer")
     // outlet.parentElement.parentElement.parentElement.style.height = "100vh";
     this.sizePlatForm = '100vh';
