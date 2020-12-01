@@ -1,6 +1,8 @@
 <div>
   <ngx-extended-pdf-viewer [base64Src]="src" useBrowserLocale="true" [height]="sizePlatForm" id="pdfElement"
+  class="pdf-viewer-customer"
   [(page)]="pdfPage"
+  pageViewMode="single"
   [customFreeFloatingBar]="navigation"
   (pagesLoaded)="pagesLoaded($event)"
   (pageChange)="onPageChange($event)"
@@ -19,40 +21,43 @@
   [showSidebarButton]="settingPDF().showSidebarButton"
   [(sidebarVisible)]="settingPDF().sidebarVisible"
   [showSpreadButton]="settingPDF().showSpreadButton"
+  [showOpenFileButton]="settingPDF().showOpenFileButton"
   [showToolbar]="showToolbar"
   [zoomLevels]="zoomLevels"
-  [(zoom)]="zoomSetting"
-  (zoomChange)="currentZoomFactor($event)"
+  zoom="page-fit"
   (pdfLoadingFailed)="onPdfLoadingFailed($event)"
+  (pdfLoaded)="onPdfLoad($event)"
   >
 </ngx-extended-pdf-viewer>
 
 <ng-template #navigation>
   <div class="event-bottom-right">
-    <button mat-icon-button>
-      <mat-icon  [matTooltip]="toolTip?'Can not zoom in beacause minimun limit': null" (click)="onZoomOut()" aria-hidden="false"  title="Zoom Out">remove_circle_outline
-      </mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon [matTooltip]="toolTip?'Can not zoom in beacause maximum limit': null" (click)="onZoomIn()" aria-hidden="false"  title="Zoom In"> add_circle_outline
-      </mat-icon>
-    </button>
+  <mat-icon *ngIf="eventFullScreen" aria-hidden="false"  (click)="fullScreen()" title="Full Screen">zoom_out_map</mat-icon>
+  <!-- <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="onHorfullScreen()" title="Hor Full Screen">view_stream</mat-icon> -->
 
-    <mat-icon *ngIf="eventFullScreen" aria-hidden="false"  (click)="fullScreen()" title="Full Screen">zoom_out_map</mat-icon>
-    <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="closeFullscreen()" title="Exit Full screen">fullscreen_exit</mat-icon>
-    <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="onHorfullScreen()" title="Hor Full Screen">view_stream</mat-icon>
-
-    <mat-icon (click)="onShowToggleBar()" aria-hidden="false"  title="Toolbar">tab_unselected</mat-icon>
+  <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="closeFullscreen()" title="Exit Full screen">fullscreen_exit</mat-icon>
+  <mat-icon [matTooltip]="toolTip?'Can not zoom in because of limit': null" (click)="onZoomIn()" aria-hidden="false"  title="Zoom In"> add_circle_outline</mat-icon>
+  <mat-icon  [matTooltip]="toolTip?'Can not zoom in because of limit': null" (click)="onZoomOut()" aria-hidden="false"  title="Zoom Out">remove_circle_outline</mat-icon>
+  <div *ngIf="!isMobile">
+    <mat-icon (click)="printPDF()" aria-hidden="false"  title="Print PDF">print</mat-icon>
+  </div>
+  <!-- <div *ngIf="isMobile">
+    <mat-icon (click)="downloadPDF()" aria-hidden="false" title="Download PDF">download</mat-icon>
+  </div> -->
+    <!-- <mat-icon (click)="onShowToggleBar()" aria-hidden="false"  title="Hidden toolbar">tab_unselected</mat-icon> -->
   </div>
   <div class="navigation-left" *ngIf="pdfPage > 1" (click)="changeIndexPage(-1)">
-    <mat-icon  aria-hidden="false"  matTooltip="前ページを表示"
+    <mat-icon  class="arrow-next" aria-hidden="false"  matTooltip="前ページを表示"
       matTooltipClass="course-desc-tooltip">keyboard_arrow_left
     </mat-icon>
   </div>
   <div class="navigation-right" *ngIf="pdf  &&  pdfPage < howMuchPage" (click)="changeIndexPage(1)">
-    <mat-icon  aria-hidden="false" matTooltip="次ページを表示"
+    <mat-icon  class="arrow-next" aria-hidden="false" matTooltip="次ページを表示"
       matTooltipClass="course-desc-tooltip">keyboard_arrow_right
     </mat-icon>
   </div>
 </ng-template>
 </div>
+<!-- <div class="loading-indicator" [hidden]="isHiddenSpinner">
+  <mat-spinner mode="indeterminate"></mat-spinner>
+</div>   -->
