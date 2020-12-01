@@ -2,7 +2,7 @@
   <h4>Media File </h4>
 </mat-toolbar>
 
-<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start" >
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
   <div fxFlex="calc(30%-10px)" fxFlex.lt-sm="calc(100%-10px)">
     <h3>Select files</h3>
     <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
@@ -10,12 +10,14 @@
       Base drop zone
     </div>
     <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
-      (fileOver)="fileOverAnother($event)" [uploader]="uploader" (onFileDrop)="onFileSelected($event)" class="my-drop-zone">
+      (fileOver)="fileOverAnother($event)" [uploader]="uploader" (onFileDrop)="onFileSelected($event)"
+      class="my-drop-zone">
       Another drop zone
     </div>
     <div gdAreas="single-choose|multiple-choose" gdGap="2px">
       <div gdArea="single-choose">
-        <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" style="width: 15px;" />
+        <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)"
+          style="width: 15px;" />
       </div>
       <div gdArea="multiple-choose">
         <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" multiple />
@@ -69,7 +71,8 @@
         </table>
       </div>
       <div gdArea="event-button">
-        <div gdAreas.lt-sm="gdProgress|gdUpload-all|gdCacel-all|gdRemove-all" gdAreas="gdProgress gdProgress gdProgress |gdUpload-all gdCacel-all gdRemove-all">
+        <div gdAreas.lt-sm="gdProgress|gdUpload-all|gdCacel-all|gdRemove-all"
+          gdAreas="gdProgress gdProgress gdProgress |gdUpload-all gdCacel-all gdRemove-all">
           <div gdArea="gdProgress" style="margin-bottom: 10px;">
             Queue progress:
             <div class="progress">
@@ -115,14 +118,12 @@
 </div>
 <div fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="flex-start">
   <div fxFlex="0 1 calc(100%-15px)">
-    <app-table-custom [configure]="settingTable()" ></app-table-custom>
+    <app-table-custom [configure]="settingTable()"></app-table-custom>
   </div>
   <div fxFlex="0 1 calc(100%-15px)">
-    <app-pdf-viewer-customer
-      [sourcePdf]="sourceOfPDF"
-      (onReadComplete)=whenReadComple($event)
+    <app-pdf-viewer-customer [sourcePdf]="sourceOfPDF" (onReadComplete)=whenReadComple($event)
       (onLoadPdfError)="whenLoadError($event)">
-  </app-pdf-viewer-customer>
+    </app-pdf-viewer-customer>
   </div>
   <!-- <div *ngFor="let video of videos_tranforms" fxFlex="0 1 calc(25%-15px)" fxFlex.lt-sm="0 1 calc(50%-15px)" >
     <mat-card style="margin-bottom: 10px;">
