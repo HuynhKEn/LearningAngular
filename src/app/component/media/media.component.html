@@ -56,14 +56,14 @@
               <td>
                 <button type="button" class="btn btn-success btn-xs" (click)="item.upload()"
                   [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                  <span class="glyphicon glyphicon-upload"></span> Upload
+                  <span class="glyphicon glyphicon-upload"></span> UPLOAD
                 </button>
                 <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()"
                   [disabled]="!item.isUploading">
-                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                  <span class="glyphicon glyphicon-ban-circle"></span> CANCEL
                 </button>
                 <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
-                  <span class="glyphicon glyphicon-trash"></span> Remove
+                  <span class="glyphicon glyphicon-trash"></span> REMOVE
                 </button>
               </td>
             </tr>
@@ -83,19 +83,19 @@
           <div gdArea="gdUpload-all">
             <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
               [disabled]="!uploader.getNotUploadedItems().length">
-              <span class="glyphicon glyphicon-upload"></span> Upload all
+              <span class="glyphicon glyphicon-upload"></span> UPLOAD ALL
             </button>
           </div>
           <div gdArea="gdCacel-all">
             <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
               [disabled]="!uploader.isUploading">
-              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+              <span class="glyphicon glyphicon-ban-circle"></span> CANCEL ALL
             </button>
           </div>
           <div gdArea="gdRemove-all">
             <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()"
               [disabled]="!uploader.queue.length">
-              <span class="glyphicon glyphicon-trash"></span> Remove all
+              <span class="glyphicon glyphicon-trash"></span> REMOVE ALL
             </button>
           </div>
         </div>
