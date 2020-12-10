@@ -1,0 +1,20 @@
+<div fxLayout="row wrap" fxLayout.lt-md="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+  <div fxFlex="calc(18%-10px)" fxFlex.lt-md="calc(20%-10px)" fxHide.lt-sm class="left-layout">
+    <div gdAreas="logo logo|content content" gdRow="auto auto">
+      <div gdArea="logo">
+        <img [src]="logoIcon" class="image-responsive">
+      </div>
+      <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
+        <app-list-item *ngFor="let item of menuElement" [item]="item"></app-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div fxFlex="calc(82%-10px)" fxFlex.lt-md="calc(20%-10px)" fxFlex.lt-sm="100%" class="right-layout">
+    <router-outlet></router-outlet>
+  </div>
+</div>

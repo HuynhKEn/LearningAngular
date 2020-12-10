@@ -1,0 +1,20 @@
+<owl-carousel-o [options]="customOptions" class="owl-carousel-customer">
+  <ng-container *ngFor="let values of sum_images; let i = index">
+      <ng-template carouselSlide>
+        <div class="container">
+          <img [src]="values">
+        </div>
+      </ng-template>
+  </ng-container>
+</owl-carousel-o>
+<div class="list-lesson-top" >
+  <div class="carousel-mobile">
+      <owl-carousel-o [options]="customOptions" class="owl-carousel-customer">
+          <ng-container *ngFor="let values of sum_images; let i = index">
+              <ng-template carouselSlide>
+                  <img class="top-frame-container" [src]="values" />
+              </ng-template>
+          </ng-container>
+      </owl-carousel-o>
+  </div>
+</div>

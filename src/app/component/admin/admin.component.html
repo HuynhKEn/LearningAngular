@@ -1,98 +1,10 @@
-<!-- <div fxLayout="row wrap" fxLayout.lt-md="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
-  <div fxFlex="calc(15%-10px)"  fxFlex.lt-md="calc(20%-10px)" fxFlex.lt-sm="100%">
-    <mat-card style="height: 100%; width: auto;">
-      <mat-card-content gdAreas="logo logo|content content" gdRow="auto auto">
-        <div gdArea="logo">
-          <img src="../../../assets/images/icon.png" class="image-responsive">
-        </div>
-        <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
-
-          <mat-list-item>
-            <mat-icon>topic</mat-icon> &nbsp; <a routerLink="topic-admin">Chủ đề</a>
-          </mat-list-item>
-
-          <mat-list-item>
-            <mat-icon>note</mat-icon> &nbsp; <a routerLink="post-admin">Bài viết</a>
-          </mat-list-item>
-
-
-          <mat-list-item>
-            <mat-icon>video_library</mat-icon> &nbsp; <a routerLink="media-admin">Media</a>
-          </mat-list-item>
-
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div  fxFlex="calc(85%-10px)"  fxFlex.lt-md="calc(80%-10px)" fxFlex.lt-sm="80%">
-    <mat-card style="width: auto;">
-      <mat-card-content>
-        <router-outlet></router-outlet>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div> -->
 <mat-sidenav-container class="layout-admin">
   <mat-sidenav #sidenav role="navigation" mode="push">
     <mat-nav-list>
-      <div gdAreas="logo logo|content content" gdRow="auto auto">
-        <div gdArea="logo">
-          <img [src]="logoIcon" class="image-responsive">
-        </div>
-        <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
-
-          <mat-list-item>
-            <mat-icon>topic</mat-icon> &nbsp; <a routerLink="topic-admin" (click)="closeToggleSidenav()">Chủ đề</a>
-          </mat-list-item>
-
-          <mat-list-item>
-            <mat-icon>note</mat-icon> &nbsp; <a routerLink="post-admin" (click)="closeToggleSidenav()">Bài viết</a>
-          </mat-list-item>
-
-
-          <mat-list-item>
-            <mat-icon>video_library</mat-icon> &nbsp; <a routerLink="media-admin"
-              (click)="closeToggleSidenav()">Media</a>
-          </mat-list-item>
-
-        </mat-list>
-      </div>
+      <app-menu-list-item-mobile></app-menu-list-item-mobile>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div fxLayout="row wrap" fxLayout.lt-md="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
-      <div fxFlex="calc(15%-10px)" fxFlex.lt-md="calc(20%-10px)" fxHide.lt-sm class="left-layout">
-        <div gdAreas="logo logo|content content" gdRow="auto auto">
-          <div gdArea="logo">
-            <img [src]="logoIcon" class="image-responsive">
-          </div>
-          <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
-
-            <mat-list-item>
-              <mat-icon>topic</mat-icon> &nbsp; <a routerLink="topic-admin">Chủ đề</a>
-            </mat-list-item>
-
-            <mat-list-item>
-              <mat-icon>note</mat-icon> &nbsp; <a routerLink="post-admin">Bài viết</a>
-            </mat-list-item>
-
-
-            <mat-list-item>
-              <mat-icon>video_library</mat-icon> &nbsp; <a routerLink="media-admin">Media</a>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </div>
-      <div fxHide.gt-xs>
-        <button mat-icon-button (click)="onToggleSidenav()">
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-
-      <div fxFlex="calc(85%-10px)" fxFlex.lt-md="calc(80%-10px)" fxFlex.lt-sm="100%" class="right-layout">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+      <app-menu-list-item (toggleSidenav)="onToggleSidenav($event)"></app-menu-list-item>
   </mat-sidenav-content>
 </mat-sidenav-container>

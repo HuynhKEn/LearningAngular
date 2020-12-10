@@ -1,0 +1,37 @@
+
+<div *ngIf="videos_tranforms.length !== 0">
+  <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="15px">
+    <div *ngFor="let element of videos_tranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
+      fxFlex="0 1 calc(33.33333333333333333333333333333333333%-15px)">
+      <mat-card style="margin-bottom: 10px;">
+        <mat-card-header>
+          <div mat-card-avatar
+            [ngStyle]="{
+              'background-image':
+                element.fileType === 'pdf'
+                ? 'url(../../../assets/images/pdf.png)'
+                : 'url(../../../assets/images/video.png)',
+              'background-size': 'cover'}">
+          </div>
+          <mat-card-title>{{element.topic | uppercase}}</mat-card-title>
+          <mat-card-subtitle>{{element.fileType | uppercase }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <span *ngIf="element.fileType === 'video'" style="height: 325px;" [ngStyle]="{'cursor': 'pointer' }"  >
+            <iframe [src]="element.link" fxFlexFill [ngStyle]="{'width': '100%','height':'300px' ,'cursor': 'pointer'}">
+            </iframe>
+          </span>
+          <span *ngIf="element.fileType === 'pdf'" style="height: 325px;"  [ngStyle]="{'cursor': 'pointer'}">
+            <img [src]="element.thumb" (click)="openDialog(element.link)" fxFlexFill
+            [ngStyle]="{'width': '100%','height':'300px' ,'cursor': 'pointer'}" >
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<mat-paginator #paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[6, 10, 25, 100]"
+              (page)="pageEvent = $event">
+</mat-paginator>

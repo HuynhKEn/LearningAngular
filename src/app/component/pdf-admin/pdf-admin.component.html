@@ -1,0 +1,7 @@
+<div fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="flex-start">
+  <div fxFlex="0 1 calc(100%-15px)">
+    <app-pdf-viewer-customer [sourcePdf]="sourceOfPDF" (onReadComplete)=whenReadComple($event)
+      (onLoadPdfError)="whenLoadError($event)">
+    </app-pdf-viewer-customer>
+  </div>
+</div>

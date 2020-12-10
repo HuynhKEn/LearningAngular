@@ -1,7 +1,6 @@
 <mat-toolbar>
   <h4>Media File </h4>
 </mat-toolbar>
-
 <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
   <div fxFlex="calc(30%-10px)" fxFlex.lt-sm="calc(100%-10px)">
     <h3>Select files</h3>
@@ -114,20 +113,4 @@
     </div>
   </div>
 </div>
-<div fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="flex-start">
-  <div fxFlex="0 1 calc(100%-15px)">
-    <app-table-custom [configure]="settingTable()"></app-table-custom>
-  </div>
-  <div fxFlex="0 1 calc(100%-15px)">
-    <app-pdf-viewer-customer [sourcePdf]="sourceOfPDF" (onReadComplete)=whenReadComple($event)
-      (onLoadPdfError)="whenLoadError($event)">
-    </app-pdf-viewer-customer>
-  </div>
-  <!-- <div *ngFor="let video of videos_tranforms" fxFlex="0 1 calc(25%-15px)" fxFlex.lt-sm="0 1 calc(50%-15px)" >
-    <mat-card style="margin-bottom: 10px;">
-      <mat-card-content>
-        <iframe  [src]="video.link" fxFlexFill></iframe>
-      </mat-card-content>
-    </mat-card>
-  </div> -->
-</div>
+

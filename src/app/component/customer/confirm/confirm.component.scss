@@ -1,0 +1,80 @@
+::ng-deep .mat-dialog-container {
+  padding: 0px;
+  overflow: unset;
+}
+button{
+  cursor: pointer
+}
+
+.confirm-dialog {
+  max-width: 700px !important;
+  min-width: 100px !important;
+  .header-confirm{
+    padding: 0.8em;
+    font-weight: 700;
+    border: 1px solid #007ad9;
+    background-color: #007ad9;
+    color: #eeeeee;
+    display: flex;
+    border-bottom: 0 none;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    h3 {
+      margin: 0;
+    }
+    .close-button-dialog{
+      font-size: 2em;
+      padding: 0px;
+      margin: 0px;
+      outline: none;
+      color: white;
+    }
+    .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
+      line-height: 0px;
+      min-width: 0px;
+    }
+  }
+
+  .mat-dialog-custom .mat-dialog-content {
+    background-color: #ffffff;
+    color: #333333;
+    margin: auto;
+    overflow: unset;
+    padding: 0;
+  }
+
+  .mat-dialog-custom {
+    .mat-dialog-content{
+      .body-dialog-custom{
+        .row{
+          padding: 1em 1em 1em 2em;
+        }
+        border-bottom: 1px solid #333333;
+      }
+    }
+  }
+
+  .mat-dialog-custom {
+    .mat-dialog-content{
+      .mat-dialog-actions{
+        padding-right: 1em;
+        padding-bottom: 0.5em;
+        .btn-save-actions{
+          background-color: #007ad9;
+          color:white
+        }
+        .btn-save-actions:hover{
+          background-color: #319def;
+        }
+        .btn-cancel-actions{
+          background-color:#e4e4e4;
+        }
+        .btn-cancel-actions:hover{
+          background-color:white;
+        }
+      }
+    }
+  }
+}
+

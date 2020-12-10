@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder, Validators} from '@angular/forms'
+import { FormGroup,FormBuilder, Validators} from '@angular/forms'
 import { AdminService } from 'src/app/service/admin/admin.service';
-
-import {Router} from "@angular/router"
+import { ROUTE_PATH } from '../../config/route-path.config'
+import { Router } from "@angular/router"
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     if (this.formLoginGroup.invalid){
       return
     }
-    this.router.navigate(["login/admin"])
+    this.router.navigate([`${ROUTE_PATH.LOGIN}` + "/" + `${ROUTE_PATH.ADMIN}`])
 
   }
   get dataControl(){

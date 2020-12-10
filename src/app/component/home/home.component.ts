@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
 import {Router} from '@angular/router'
+import {ROUTE_PATH} from '../../config/route-path.config';
 import {IfPipe} from '../../pipe/if.pipe'
 @Component({
   selector: 'app-home',
@@ -13,11 +14,11 @@ export class HomeComponent implements OnInit {
   images = ["machine.png", "python.png", "deeplearning.jfif"].map((n) => `../../../assets/images/${n}`);
   images_famework = ["caffe-deep-learning.jpg", "pytorch.jpg", "Tensorflow-.webp"].map((n) => `../../../assets/images/${n}`);
   videos = [
-            {id:1,link:"../../../assets/videos/demo.mp4",title:""},
-            {id:2,link:"../../../assets/videos/demo.mp4",title:""},
-            {id:3,link:"../../../assets/videos/demo.mp4",title:""},
-            {id:4,link:"../../../assets/videos/demo.mp4",title:""},
-            {id:5,link:"../../../assets/videos/demo.mp4",title:""},
+            {id:1,link:"../../../assets/videos/demo.mp4",title:"",thumb: "" },
+            {id:2,link:"../../../assets/videos/demo.mp4",title:"",thumb: ""},
+            {id:3,link:"../../../assets/videos/demo.mp4",title:"",thumb: ""},
+            {id:4,link:"../../../assets/videos/demo.mp4",title:"",thumb: ""},
+            {id:5,link:"../../../assets/videos/demo.mp4",title:"",thumb: ""},
           ]
   videos_tranforms = []
   colorTicTac = true;
@@ -63,7 +64,7 @@ export class HomeComponent implements OnInit {
     // this.videos.forEach(x => this.videos_tranforms.push({id:x.id,link:this.sanitizer.bypassSecurityTrustResourceUrl(x.link)}))
   }
   redirect(post){
-    this.router.navigate(['post'], {
+    this.router.navigate([`${ROUTE_PATH.POST}`], {
       state:{res:post}
     });
   }
