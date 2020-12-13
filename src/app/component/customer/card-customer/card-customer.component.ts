@@ -128,14 +128,15 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
   onClickCalled(target) {
     if (target.id == "inputSearch") {
        setTimeout( ()=>{
-        this.inputEl.nativeElement.focus({preventScroll:true});
+        this.inputEl.nativeElement.focus();
+        const $body = document.getElementById('cardView');
+        $(document).on('focus','input',()=>{
+          $body.classList.add('fix');
+        }).on('blur', 'input', function() {
+            $body.classList.remove('fix');
+        });
        },0)
-      const $body = document.querySelector('body');
-      $(document).on('focus','input',()=>{
-        $body.classList.add('fix')
-      }).on('blur', 'input', function() {
-          $body.classList.remove('fix');
-      });
+
     }
   }
   ngAfterViewInit() {
