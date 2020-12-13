@@ -30,6 +30,8 @@ import { DialogPdfShowComponent } from './component/customer/card-customer/dialo
 import { CardShowItemComponent } from './component/card-show-item/card-show-item.component';
 import {CarouselCustomerComponent} from './component/customer/carousel-customer/carousel-customer.component';
 import { ConfirmComponent } from './component/customer/confirm/confirm.component';
+import { CarouselCustomerVerticalComponent } from './component/customer/carousel-customer-vertical/carousel-customer-vertical.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,7 @@ import { ConfirmComponent } from './component/customer/confirm/confirm.component
     CardShowItemComponent,
     DialogPdfShowComponent,
     CarouselCustomerComponent,
+    CarouselCustomerVerticalComponent,
     ConfirmComponent,
     IfPipe,
   ],

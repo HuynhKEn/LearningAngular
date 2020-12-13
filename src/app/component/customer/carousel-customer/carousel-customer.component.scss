@@ -1,0 +1,44 @@
+::ng-deep .top-carousel{
+  img{
+    height: 200px
+  }
+  .owl-carousel {
+    margin: 0;
+
+  }
+  .owl-carousel .item {
+
+  }
+
+  .owl-carousel {
+    .owl-nav {
+      overflow: hidden;
+    }
+  }
+
+   .owl-carousel  {
+      .nav-btn-back{
+        height: 100px;
+        width: 100%;
+        cursor: pointer;
+      }
+      .nav-btn-next{
+        height: 100px;
+        width: 100px;
+        cursor: pointer;
+      }
+  }
+}
+
+
+/* SMARTPHONES PORTRAIT */
+// @media only screen and (min-width: 320px) and (max-width: 479px){ ... }
+
+/* SMARTPHONES LANDSCAPE */
+// @media only screen and (min-width: 480px) and (max-width: 767px){ ... }
+
+/* TABLETS PORTRAIT */
+// @media only screen and (min-width: 768px) and (max-width: 991px){ ... }
+
+/* TABLET LANDSCAPE / DESKTOP */
+// @media only screen and (min-width: 992px){ ... }

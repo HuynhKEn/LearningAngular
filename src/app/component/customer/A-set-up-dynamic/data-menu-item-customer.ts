@@ -14,25 +14,25 @@ export class MenuSettings {
       displayName: 'TOPIC',
       iconName: 'topic',
       route: `${ROUTE_PATH.TOPIC_ADMIN}`,
-      color: 'orangered'
+      color: 'darkgrey;'
     },
     {
       displayName: 'POST',
       iconName: 'note',
       route: `${ROUTE_PATH.POST_ADMIN}`,
-      color: 'orangered'
+      color: 'darkgrey;'
     },
     {
       displayName: 'MN_MEDIA',
       iconName: 'visibility',
       route: `${ROUTE_PATH.MANAGER_ADMIN_MEDIA}`,
-      color: 'orangered'
+      color: 'darkgrey;'
     },
     {
       displayName: 'MEDIA',
       iconName: 'video_library',
       route: `${ROUTE_PATH.MEDIA_ADMIN}`,
-      color: 'orangered',
+      color: 'darkgrey;',
       children: [
         {
           displayName: 'UPLOAD',
@@ -53,6 +53,11 @@ export class MenuSettings {
           displayName: 'CAROUSEL_ITEM',
           iconName: 'nav',
           route: `${ROUTE_PATH.MEDIA_ADMIN}` + '/' + `${ROUTE_PATH.CAROUSEL_ITEM}`,
+        },
+        {
+          displayName: 'CAROUSEL_ITEM_V',
+          iconName: 'nav',
+          route: `${ROUTE_PATH.MEDIA_ADMIN}` + '/' + `${ROUTE_PATH.CAROUSEL_ITEM_V}`,
         }
       ]
     },

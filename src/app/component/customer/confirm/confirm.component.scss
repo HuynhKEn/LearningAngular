@@ -10,8 +10,8 @@ button{
   max-width: 700px !important;
   min-width: 100px !important;
   .header-confirm{
-    padding: 0.8em;
-    font-weight: 700;
+    padding: 0.5em;
+    font-weight: 500;
     border: 1px solid #007ad9;
     background-color: #007ad9;
     color: #eeeeee;
@@ -20,15 +20,19 @@ button{
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    h3 {
+    .mat-dialog-title {
       margin: 0;
+      color: #eeeeee;
+      font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif
     }
+
     .close-button-dialog{
-      font-size: 2em;
       padding: 0px;
       margin: 0px;
       outline: none;
       color: white;
+      border: 0;
+      background-color: #007ad9;
     }
     .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
       line-height: 0px;
@@ -62,13 +66,28 @@ button{
         padding-bottom: 0.5em;
         .btn-save-actions{
           background-color: #007ad9;
-          color:white
+          color:white;
+          border: 0.5px solid #007ad9;
+          border-radius: 2px;
+          nb-icon{
+              font-size: 1rem
+          }
+          padding: 4px;
+          width: 70px;
         }
         .btn-save-actions:hover{
           background-color: #319def;
         }
         .btn-cancel-actions{
-          background-color:#e4e4e4;
+          background-color:#f5f4f4;
+          margin-right: 5px;
+          border: 0.5px solid #f5f4f4;
+          border-radius: 2px;
+          nb-icon{
+              font-size: 1rem
+          }
+          padding: 4px;
+          width: 120px;
         }
         .btn-cancel-actions:hover{
           background-color:white;
@@ -77,4 +96,3 @@ button{
     }
   }
 }
-

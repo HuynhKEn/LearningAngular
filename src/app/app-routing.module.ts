@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
 import { CardShowItemComponent } from './component/card-show-item/card-show-item.component';
+import { CarouselCustomerVerticalComponent } from './component/customer/carousel-customer-vertical/carousel-customer-vertical.component';
 import { CarouselCustomerComponent } from './component/customer/carousel-customer/carousel-customer.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
@@ -56,6 +57,10 @@ const routes: Routes = [
               {
                 path: `${ROUTE_PATH.CAROUSEL_ITEM}`,
                 component: CarouselCustomerComponent,
+              },
+              {
+                path: `${ROUTE_PATH.CAROUSEL_ITEM_V}`,
+                component: CarouselCustomerVerticalComponent
               },
             ],
           },

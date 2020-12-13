@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgZone, Directive, AfterViewInit, Renderer2, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import {
   MatDialog,
@@ -10,6 +10,8 @@ import { ConfirmComponent} from '../confirm/confirm.component';
 import * as pdfjsLib from 'pdfjs-dist/build/pdf';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
+import $ from "jquery";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 export interface MediaItem {
@@ -19,6 +21,7 @@ export interface MediaItem {
   video?: number;
   fileType?: string;
   thumb?: string;
+  title?: string;
 }
 function isMediaItem(object: any): object is MediaItem[] {
   return true;
@@ -45,8 +48,10 @@ function makeThumb(page) {
   templateUrl: './card-customer.component.html',
   styleUrls: ['./card-customer.component.scss'],
 })
-export class CardCustomerComponent implements OnInit, AfterViewInit {
+export class CardCustomerComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('inputSearch', {static: false}) inputEl:ElementRef;
+  @ViewChild('bodyEl', {static: false}) bodyEl:ElementRef;
   @Input() header: boolean;
   @Input() imageContent: boolean;
   @Input() data: any;
@@ -54,7 +59,14 @@ export class CardCustomerComponent implements OnInit, AfterViewInit {
   length = 20;
   pageSize = 6;
   pageEvent: PageEvent;
-  constructor(private sanitizer: DomSanitizer, private dialog: MatDialog) {}
+  public isInPutSearchOpen: boolean = false;
+  constructor(
+    private sanitizer: DomSanitizer,
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef,
+    private bodyScrollLock: NgBodyScrollLockService,
+    private zone: NgZone,
+    private renderer: Renderer2) {}
   ngOnInit(): void {
     if (isMediaItem(this.data)) {
       this.data.forEach((x) => {
@@ -62,7 +74,7 @@ export class CardCustomerComponent implements OnInit, AfterViewInit {
           pdfjsLib
           .getDocument(
               {
-                url: 'https://cors-anywhere.herokuapp.com/http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Java%20Programming%20Language%20Handbook.pdf',
+                url: 'https://demo-bucket-learn.s3-ap-northeast-1.amazonaws.com/1605064635000.pdf',
                 cMapUrl: "pdfjs/cmaps/",
                 cMapPacked: true
               }
@@ -82,6 +94,7 @@ export class CardCustomerComponent implements OnInit, AfterViewInit {
                       ),
                       topic: x.topic,
                       fileType: x.fileType,
+                      title: x.title,
                       thumb: this.sanitizer.bypassSecurityTrustResourceUrl(canvas
                         .toDataURL('image/png')),
                     });
@@ -101,6 +114,7 @@ export class CardCustomerComponent implements OnInit, AfterViewInit {
             ),
             topic: x.topic,
             fileType: x.fileType,
+            title: x.title,
             thumb: x.thumb,
           });
 
@@ -110,8 +124,21 @@ export class CardCustomerComponent implements OnInit, AfterViewInit {
     }
   }
 
+  @HostListener('document:click', ['$event.target'])
+  onClickCalled(target) {
+    if (target.id == "inputSearch") {
+       setTimeout( ()=>{
+        this.inputEl.nativeElement.focus({preventScroll:true});
+       },0)
+      const $body = document.querySelector('body');
+      $(document).on('focus','input',()=>{
+        $body.classList.add('fix')
+      }).on('blur', 'input', function() {
+          $body.classList.remove('fix');
+      });
+    }
+  }
   ngAfterViewInit() {
-    //
   }
 
   openDialog(src) {

@@ -1,9 +1,14 @@
 
-<div *ngIf="videos_tranforms.length !== 0">
-  <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="15px">
+<div *ngIf="videos_tranforms.length !== 0" #bodyEl>
+  <div fxLayout="row wrap">
+    <div fxFlex="1 1 100%" class="container-search">
+      <input type="search" #inputSearch  id="inputSearch" focusDirective/>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayout.lt-sm ="column">
     <div *ngFor="let element of videos_tranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
-      fxFlex="0 1 calc(33.33333333333333333333333333333333333%-15px)">
-      <mat-card style="margin-bottom: 10px;">
+      fxFlex="1 1 calc(33%)" fxFlexAlign = "center" fxFlex.lt-sm="1 1 calc(100%)">
+      <mat-card>
         <mat-card-header>
           <div mat-card-avatar
             [ngStyle]="{
@@ -15,13 +20,22 @@
           </div>
           <mat-card-title>{{element.topic | uppercase}}</mat-card-title>
           <mat-card-subtitle>{{element.fileType | uppercase }}</mat-card-subtitle>
+          <div class="lesson-name">
+            <span>
+              {{element.title | uppercase }}
+            </span>
+          </div>
         </mat-card-header>
         <mat-card-content>
           <span *ngIf="element.fileType === 'video'" style="height: 325px;" [ngStyle]="{'cursor': 'pointer' }"  >
-            <iframe [src]="element.link" fxFlexFill [ngStyle]="{'width': '100%','height':'300px' ,'cursor': 'pointer'}">
+            <iframe [src]="element.link" fxFlexFill
+              [ngStyle.lt-sm]="{'width': '100%','height':'150px'}"
+              [ngStyle]="{'width': '100%','height':'300px' ,'cursor': 'pointer'}">
             </iframe>
           </span>
-          <span *ngIf="element.fileType === 'pdf'" style="height: 325px;"  [ngStyle]="{'cursor': 'pointer'}">
+          <span *ngIf="element.fileType === 'pdf'" style="height: 325px;"
+              [ngStyle.lt-sm]="{'width': '100%','height':'150px'}"
+              [ngStyle]="{'cursor': 'pointer'}">
             <img [src]="element.thumb" (click)="openDialog(element.link)" fxFlexFill
             [ngStyle]="{'width': '100%','height':'300px' ,'cursor': 'pointer'}" >
           </span>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonDataService } from 'src/app/service/common-data.service';
 
 @Component({
   selector: 'app-pdf-admin',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pdf-admin.component.scss']
 })
 export class PdfAdminComponent implements OnInit {
-  sourceOfPDF = 'https://cors-anywhere.herokuapp.com/http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Java%20Programming%20Language%20Handbook.pdf'
+  sourceOfPDF: string;
   flagHiddenQuestion: boolean = true;
   isHiddenSpinner:boolean = false;
-  constructor() { }
+  constructor(private commonDataService: CommonDataService) {
+      this.sourceOfPDF = this.commonDataService.sourcesDefaultPDF();
+  }
 
   ngOnInit(): void {
   }

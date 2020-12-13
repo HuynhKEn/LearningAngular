@@ -1,25 +1,24 @@
 <div class="confirm-dialog">
-  <div class="header-confirm">
-    <h3 mat-dialog-title> {{title}}</h3>
-    <button class="close-button-dialog" mat-button mat-dialog-close>&times;</button>
-  </div>
-  <div class="mat-dialog-custom">
-    <div mat-dialog-content>
-      <div class="body-dialog-custom">
-        <div class="row">
-          <mat-icon>report_problem</mat-icon>
-          <p style="padding: 2px 0px 0px 5px">{{message}}</p>
+    <div class="header-confirm">
+      <h4 mat-dialog-title> {{title}}</h4>
+      <button class="close-button-dialog" mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+    </div>
+    <div class="mat-dialog-custom">
+      <div mat-dialog-content>
+        <div class="body-dialog-custom">
+          <div class="row">
+            <mat-icon icon="report_problem"></mat-icon>
+            <p style="padding: 2px 0px 0px 5px">{{message}}</p>
+          </div>
         </div>
-      </div>
-      <div mat-dialog-actions class="d-block text-right">
-          <button mat-raised-button class="btn-cancel-actions" (click)="onDismiss()">
-            <mat-icon>close</mat-icon> 'キャンセル'
-          </button>
-          <!-- cdkFocusInitial -->
-          <button *ngIf="!warning" mat-raised-button class="btn-save-actions" (click)="onConfirm()" >
-            <mat-icon>check</mat-icon> 'OK'
-          </button>
+        <div mat-dialog-actions class="d-block text-right">
+            <button mat-raised-button class="btn-cancel-actions" (click)="onDismiss()">
+                <mat-icon>close</mat-icon><span style="font-weight: 500">キャンセル</span>
+            </button>
+            <button *ngIf="!warning" mat-raised-button class="btn-save-actions" (click)="onConfirm()">
+                <mat-icon>check</mat-icon> <span style="font-weight: 500">OK</span>
+            </button>
+        </div>
       </div>
     </div>
   </div>
-</div>

@@ -13,5 +13,6 @@ export const ROUTE_PATH= {
   VIDEO_ADMIN: "video-admin",
   MANAGER_ADMIN_MEDIA: 'manger-admin-media',
   CARD_SHOW_ITEM: "card-show-item",
-  CAROUSEL_ITEM: "carousel-item"
+  CAROUSEL_ITEM: "carousel-item",
+  CAROUSEL_ITEM_V: "carousel-item_v"
 }

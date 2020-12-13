@@ -1,0 +1,25 @@
+<div class="container-ng-carousel">
+  <ngu-carousel #myCarousel [inputs]="carouselConfig" (onMove)="onmoveFn($event)" [dataSource]="carouselItems" (carouselLoad)="carouselTileLoad($event)">
+    <div class="rightRs" NguCarouselNext >
+      <button  mat-icon-button>
+        <img src="../../../../assets/images/back-page.png">
+      </button>
+    </div>
+    <ng-container class="item-container" >
+      <ngu-item *nguCarouselDef="let item;" class="item row">
+          <div class="col-8">
+            <img [src]="item">
+          </div>
+          <div class="col-4">
+              <span class="number-lesson">1</span>
+              <span class="name-lesson">MACHINE LEARNING</span>
+          </div>
+      </ngu-item>
+    </ng-container>
+    <div class="leftRs" NguCarouselPrev>
+      <button  mat-icon-button>
+        <img src="../../../../assets/images/next-page.png">
+      </button>
+    </div>
+  </ngu-carousel>
+</div>

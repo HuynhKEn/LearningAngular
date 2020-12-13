@@ -8,6 +8,13 @@ import {
   NgbCarouselModule,
   NgbAccordionModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { OwlModule } from 'ngx-owl-carousel';
+import { NguCarouselModule } from '@ngu/carousel';
+
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -25,11 +32,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { HttpClientModule } from '@angular/common/http';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgBodyScrollLockModule } from 'ng-body-scroll-lock';
+import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
 
 @NgModule({
   declarations: [],
@@ -39,13 +44,21 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgxExtendedPdfViewerModule,
     NgbAlertModule,
     NgbCarouselModule,
     NgbAccordionModule,
+    Ng2ImgMaxModule,
     FlexLayoutModule,
     FileUploadModule,
-    NgxExtendedPdfViewerModule,
     HttpClientModule,
+    OwlModule,
+    NguCarouselModule,
+    NgBodyScrollLockModule,
+    NgxYoutubePlayerModule.forRoot(),
+
+
+
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -62,8 +75,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatPaginatorModule,
     MatTooltipModule,
     MatDialogModule,
-    NgxYoutubePlayerModule.forRoot(),
-    CarouselModule,
+
 
   ],
   exports: [
@@ -73,11 +85,17 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgbAlertModule,
     NgbCarouselModule,
     NgbAccordionModule,
-    FlexLayoutModule,
-    FileUploadModule,
     NgxYoutubePlayerModule,
     NgxExtendedPdfViewerModule,
+    Ng2ImgMaxModule,
+    FlexLayoutModule,
+    FileUploadModule,
     HttpClientModule,
+    NgBodyScrollLockModule,
+
+
+
+
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -94,8 +112,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatSelectModule,
     MatTableModule,
     MatDialogModule,
-    CarouselModule
+    OwlModule,
+    NguCarouselModule,
+
   ],
+  providers:[NgBodyScrollLockService]
 
 })
 export class ShareModule {}
