@@ -1,7 +1,14 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { CommonDataService } from 'src/app/service/common-data.service';
+import { ConfirmComponent } from '../confirm/confirm.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs/Rx';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from "../../../config/route-path.config"
+import { GLOBAL_CONSTANT } from "../../../constant/global-constant"
 @Component({
   selector: 'app-carousel-customer',
   templateUrl: './carousel-customer.component.html',
@@ -11,16 +18,19 @@ export class CarouselCustomerComponent implements OnInit {
   @ViewChild('owlElement') owlElement: any;
   uploadedImage: File;
   imagePreview: string;
-  images = ["machine.png", "python.png"].map((n) => `../../../assets/images/${n}`);
-  images_famework = ["machine.png", "python.png"].map((n) => `../../../assets/images/${n}`);
-  sum_images: any[] =  ['../../../../assets/images/back-page.png']
+  // dataShow = ["machine.png", "python.png"].map((n) => `../../../assets/images/${n}`);
+  dataShow = [];
+  isDestroy : boolean = false;
+  isNavigation: boolean = false;
+  dialogAny: any;
+  promise: any;
   customOptionsLeft = {
     margin: 15,
     merge:true,
     navigation: true,
     navText: [
-            "<img src='../../../../assets/images/back-page.png' class='nav-btn-back prev-slide'>",
-            "<img src='../../../../assets/images/next-page.png' class='nav-btn-next next-slide'></div>"],
+            "<img src='../../../../assets/images/next.png' class='nav-btn-back prev-slide'>",
+            "<img src='../../../../assets/images/next.png' class='nav-btn-next next-slide'>"],
     responsiveClass: true,
     dot: false,
     animateOut: 'slideOutUp',
@@ -51,9 +61,12 @@ export class CarouselCustomerComponent implements OnInit {
   constructor(
     private ng2ImgMax: Ng2ImgMaxService,
     private sanitizer: DomSanitizer,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private commonDataService : CommonDataService,
+    private dialog: MatDialog,
+    private router: Router,
   ) {
-
+      this.dataShow = this.commonDataService.iuDefaultData();
     }
 
   ngOnInit() {
@@ -84,12 +97,21 @@ export class CarouselCustomerComponent implements OnInit {
   }
 
   ImagePreview() {
-    const imagesShow = this.images.concat(this.images_famework)
+    const imagesShow = this.dataShow
     let fileNameExt = ""
+    let title = ""
+    let i = 1;
+    const headers  = new Headers({
+      'Access-Control-Allow-Origin' : '*',
+      'Content-Type':'image/*',
+    });
     imagesShow.map( res =>{
-      fileNameExt = res.split('.').pop();
-      fileNameExt =  fileNameExt === "jpg" ? "jpeg" : "png"
-      fetch(res)
+      fileNameExt = res.imgPath.split('.').pop();
+      title = res.title;
+      fetch(res.imgPath, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        headers: headers
+      })
         .then(response => {
           return response.blob();
         })
@@ -105,18 +127,68 @@ export class CarouselCustomerComponent implements OnInit {
                 console.log('😢 Oh no!', error);
             })
           })
-          promise.then( res => {
-            const html = "<div class='item'><img class='slide-image' src="+ `${URL.createObjectURL(res)}` +"></div>";
+          promise.then( resPromise => {
+            const html = "<div class='item'><img class='slide-image' src=" + `${URL.createObjectURL(resPromise)}` + ">" +
+                "<span class='number-lesson'>" + `${i}` + "</span>" +
+                "<span class='name-lesson'>" + `${title}` + "</span>"
+              "</div>";
             this.owlElement.trigger('add.owl.carousel', [html]);
             this.owlElement.trigger('refresh.owl.carousel');
+            i = i + 1;
           })
           // this.owlElement.trigger('destroy.owl.carousel');
 
 
         }).catch(error => console.error(error))
       })
+  }
+  getInnerHTMLValue(value){
+    return this.sanitizer.bypassSecurityTrustUrl(value);
+  }
+  canDeactivate() : Observable<boolean> | boolean  {
+    if (!this.isDestroy ){
+      this.openDialog(true);
+      return  this.dialogAny.afterClosed().pipe(
+        map( result =>{
+            if (result === true){
+                this.isNavigation = true;
+                this.isDestroy = true;
+                return this.router.navigate([ROUTE_PATH.HOME]);
+            }
+            if (result === GLOBAL_CONSTANT.BACKUP){
+                return true;
+            }  else {
+                return false
+            }
+        })
+      )
     }
-    getInnerHTMLValue(value){
-      return this.sanitizer.bypassSecurityTrustUrl(value);
+    if (this.isNavigation){
+      return true;
     }
+
+  }
+
+  openDialog(backup: boolean = false) {
+    this.dialogAny = this.dialog.open(ConfirmComponent, {
+      width: '500px',
+      data: {
+        title:"確認",
+        message:'',
+        backup
+      },
+    });
+    if (!backup) {
+      this.dialogAny.afterClosed().subscribe(
+        (data) =>{
+          if (data && data !==  GLOBAL_CONSTANT.BACKUP){
+            this.isNavigation = true;
+            this.isDestroy = true;
+            return this.router.navigate([ROUTE_PATH.HOME]);
+          }
+        }
+      )
+    }
+  }
 }
+

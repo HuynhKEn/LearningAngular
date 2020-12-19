@@ -1,7 +1,9 @@
-<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
-  <div fxFlex="calc(75%-10px)" fxFlex-lt-sm="100%">
-    <form [formGroup]="formPostGroup" gdAreas="topic topic | title title | content  content| submitButton isSpace"
-      gdRow="auto auto auto auto " (ngSubmit)="onSubmit()">
+<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+  <div fxFlex="1 1 100%">
+    <form [formGroup]="formPostGroup" gdAreas="topic topic
+      |title title|
+      content  content|
+      submitButton isSpace"  (ngSubmit)="onSubmit()" class="form-topic">
       <div gdArea="topic">
         <div>
           <mat-label>Topic</mat-label>
@@ -12,8 +14,6 @@
           </mat-select>
         </div>
       </div>
-
-
       <!-- Add -->
       <div gdArea="title" *ngIf="addPostStatus">
         <mat-label>
@@ -27,9 +27,7 @@
         </mat-label>
         <textarea  formControlName="content" class="form-control" placeholder="Content"></textarea>
       </div>
-
       <!-- Edit or Delete-->
-
       <div gdArea="title" *ngIf="editPostStatus || deletePostStatus===1">
         <mat-label>
           Title Edit
@@ -40,28 +38,30 @@
           </mat-option>
         </mat-select>
       </div>
-
-
-
-      <button mat-raised-button type="submit" gdArea="submitButton">
-        Hoàn Thành
+      <button class="btn btn-primary" type="submit">
+        Xác nhận
       </button>
     </form>
   </div>
 
 
-  <div fxFlex="calc(25%-10px)" fxFlex-lt-sm="100%">
-    <div gdAreas="event" gdRows="auto">
-      <mat-label>Event</mat-label>
-      <a mat-raised-button (click)="addPost()">
-        <mat-icon>add</mat-icon>
-      </a>
-      <a mat-raised-button (click)="editPost()">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <a mat-raised-button (click)="deletePost()">
-        <mat-icon>delete</mat-icon>
-      </a>
+  <div fxFlex="1 1 100%" fxFlex-lt-sm="100%">
+    <div gdAreas="add edit delete" class="container-action">
+      <div gdArea="add" class="action-wrap">
+        <a mat-raised-button (click)="addPost()">
+          <mat-icon>add</mat-icon>
+        </a>
+      </div>
+      <div gdArea="edit" class="action-wrap">
+        <a mat-raised-button (click)="editPost()">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </div>
+      <div gdArea="delete" class="action-wrap">
+        <a mat-raised-button (click)="deletePost()">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </div>
     </div>
   </div>
 </div>

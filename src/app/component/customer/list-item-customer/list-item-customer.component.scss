@@ -25,3 +25,12 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
   }
   cursor: pointer;
 }
+.mat-list-item:hover{
+  color:rgba(0, 72, 255, 0.859)
+}
+hr{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

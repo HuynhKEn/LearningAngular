@@ -23,8 +23,20 @@ export interface MediaItem {
   thumb?: string;
   title?: string;
 }
-function isMediaItem(object: any): object is MediaItem[] {
-  return true;
+export interface CardItem{
+  id:number;
+  imgPath : string;
+  content: string;
+  subImgPath: string;
+  subTitle: string;
+  title?: string;
+}
+function isMediaItem(object: any){
+  if (object[0].hasOwnProperty('fileType')){
+    return true;
+  } else{
+    return false;
+  }
 }
 function makeThumb(page) {
   // draw page to fit into 96x96 canvas
@@ -55,10 +67,11 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
   @Input() header: boolean;
   @Input() imageContent: boolean;
   @Input() data: any;
-  videos_tranforms = [];
+  dataTranforms = [];
   length = 20;
   pageSize = 6;
   pageEvent: PageEvent;
+  isMedia: boolean = false;
   public isInPutSearchOpen: boolean = false;
   constructor(
     private sanitizer: DomSanitizer,
@@ -69,6 +82,7 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
     private renderer: Renderer2) {}
   ngOnInit(): void {
     if (isMediaItem(this.data)) {
+      this.isMedia = true;
       this.data.forEach((x) => {
         if (x.fileType !== "video"){
           pdfjsLib
@@ -87,7 +101,7 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
                   .getPage(num)
                   .then(makeThumb)
                   .then((canvas) => {
-                    this.videos_tranforms.push({
+                    this.dataTranforms.push({
                       id: x.id,
                       link: this.sanitizer.bypassSecurityTrustResourceUrl(
                         x.link
@@ -107,7 +121,7 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
           })
           .catch(console.error);
         } else{
-          this.videos_tranforms.push({
+          this.dataTranforms.push({
             id: x.id,
             link: this.sanitizer.bypassSecurityTrustResourceUrl(
               x.link
@@ -121,24 +135,21 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
         }
       });
 
+    } else{
+      this.data.forEach(element => {
+        this .dataTranforms.push({
+          id: element.id,
+          imgPath : element.imgPath,
+          content: element.content,
+          title: element.title,
+          subImgPath:element.subImgPath,
+          subTitle: element.subTitle,
+        })
+      });
     }
   }
 
-  @HostListener('document:click', ['$event.target'])
-  onClickCalled(target) {
-    if (target.id == "inputSearch") {
-       setTimeout( ()=>{
-        this.inputEl.nativeElement.focus();
-        const $body = document.getElementById('cardView');
-        $(document).on('focus','input',()=>{
-          $body.classList.add('fix');
-        }).on('blur', 'input', function() {
-            $body.classList.remove('fix');
-        });
-       },0)
 
-    }
-  }
   ngAfterViewInit() {
   }
 

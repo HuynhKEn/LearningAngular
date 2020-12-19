@@ -115,4 +115,40 @@ export class CommonDataService {
   sourcesDefaultPDF(){
     return 'https://cors-anywhere.herokuapp.com/http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Java%20Programming%20Language%20Handbook.pdf'
   }
+
+  iuDefaultData(){
+    return [{
+        id: 1,
+        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
+        content: "I LOVE IU",
+        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
+        subTitle: "IU",
+        title: "Lovely" ,
+      },
+      {
+        id: 2,
+        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
+        content: "I LOVE IU",
+        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
+        subTitle: "IU",
+        title: "Lovely" ,
+      }
+      ,
+      {
+        id: 3,
+        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
+        content: "I LOVE IU",
+        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
+        subTitle: "IU",
+        title: "Lovely" ,
+      },
+      {
+        id: 4,
+        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
+        content: "I LOVE IU",
+        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
+        subTitle: "IU",
+        title: "Lovely" ,
+      }]
+  }
 }

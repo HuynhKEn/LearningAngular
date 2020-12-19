@@ -1,8 +1,12 @@
-<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
-  <div fxFlex="calc(75%-10px)" fxFlex-lt-sm="100%">
+<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="15px">
+  <div fxFlex="1 1 100%">
     <form [formGroup]="formTopicGroup" (ngSubmit)="onSubmit()" class="form-topic"
-      gdAreas="selectGrid selectGrid selectGrid selectGrid|titleGrid titleGrid contentGrid contentGrid|seeMoreGrid seeMoreGrid quoteGrid quoteGrid| contentSee contentSee contentQuote contentQuote|buttonAccept buttonAccept buttonAccept buttonAccept"
-      gdGap="10px" gdRows="auto auto auto auto auto ">
+      gdAreas="selectGrid selectGrid selectGrid selectGrid|
+      titleGrid titleGrid contentGrid contentGrid|
+      seeMoreGrid seeMoreGrid quoteGrid quoteGrid|
+      contentSee contentSee contentQuote contentQuote|
+      buttonAccept buttonAccept buttonAccept buttonAccept"
+      gdGap="10px">
       <div gdArea="selectGrid">
         <mat-label><small>Topic</small></mat-label>
         <mat-select formControlName="selectedValue" [compareWith]="compareFn" class="select-global"
@@ -38,27 +42,29 @@
       </div>
 
       <div gdArea="buttonAccept" *ngIf="addTopicStatus|| editTopicStatus">
-        <button mat-raised-button type="submit">
-          Hoàn thành
+        <button class="btn btn-primary" type="submit">
+          Xác nhận
         </button>
       </div>
-
-
-
     </form>
   </div>
-  <div fxFlex="calc(25%-10px)" fxFlex-lt-sm="100%">
-    <div gdAreas="event" gdRows="auto">
-      <mat-label><small>Event</small></mat-label>
-      <a mat-raised-button (click)="addTopic()">
-        <mat-icon>add</mat-icon>
-      </a>
-      <a mat-raised-button (click)="editTopic()">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <a mat-raised-button (click)="deleteTopic()">
-        <mat-icon>delete</mat-icon>
-      </a>
+  <div fxFlex="1 1 100%" class="action-container">
+    <div gdAreas="add edit delete">
+      <div gdArea="add" class="action-wrap">
+        <a mat-flat-button (click)="addTopic()">
+          <mat-icon>add</mat-icon>
+        </a>
+      </div>
+      <div gdArea="edit" class="action-wrap">
+        <a mat-flat-button  (click)="editTopic()">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </div>
+      <div gdArea="delete" class="action-wrap">
+        <a mat-flat-button  (click)="deleteTopic()">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </div>
     </div>
   </div>
 

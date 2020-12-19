@@ -14,6 +14,7 @@ export class ConfirmComponent {
   title: string;
   message: string;
   warning: boolean = false;
+  backup: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmComponent>,
@@ -23,6 +24,7 @@ export class ConfirmComponent {
     this.title = data.title;
     this.message = 'W を削除します。よろしいですか？' + data.message;
     this.warning = data.warning;
+    this.backup = data.backup;
   }
 
   onConfirm(): void {
@@ -33,5 +35,8 @@ export class ConfirmComponent {
   onDismiss(): void {
     // Close the dialog, return false
     this.dialogRef.close(false);
+  }
+  onBackup() {
+    this.dialogRef.close("backup")
   }
 }

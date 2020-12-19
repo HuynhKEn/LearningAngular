@@ -1,12 +1,8 @@
 
-<div *ngIf="videos_tranforms.length !== 0" #bodyEl  id="cardView">
-  <div fxLayout="row wrap">
-    <div fxFlex="1 1 100%" class="container-search">
-      <input type="search" #inputSearch  id="inputSearch" focusDirective/>
-    </div>
-  </div>
+<app-find-component [color]="'white'"></app-find-component>
+<div *ngIf="dataTranforms.length !== 0 && isMedia" #bodyEl  id="cardView">
   <div fxLayout="row wrap" fxLayout.lt-sm ="column">
-    <div *ngFor="let element of videos_tranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
+    <div *ngFor="let element of dataTranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
       fxFlex="1 1 calc(33%)" fxFlexAlign = "center" fxFlex.lt-sm="1 1 calc(100%)">
       <mat-card>
         <mat-card-header>
@@ -44,8 +40,46 @@
     </div>
   </div>
 </div>
+<div *ngIf="dataTranforms.length !== 0 && !isMedia"  id="cardView">
+  <div fxLayout="row wrap">
+    <div fxFlex="1 1 100%" class="container-search">
+      <input type="search" #inputSearch  id="inputSearch" focusDirective/>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayout.lt-sm ="column">
+    <div *ngFor="let element of dataTranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
+      fxFlex="1 1 calc(33%)" fxFlexAlign = "center" fxFlex.lt-sm="1 1 calc(100%)">
+      <mat-card class="card-not-media">
+        <mat-card-header>
+          <div mat-card-avatar
+            [ngStyle]="{
+              'background-image': 'url(' +element.subImgPath+')',
+              'background-size': 'cover'}">
+          </div>
+          <mat-card-title>{{element.title | uppercase}}</mat-card-title>
+          <mat-card-subtitle>{{element.subTitle | uppercase }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="element.imgPath">
+        <mat-card-content>
+          <p>
+            {{element.content}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
 <mat-paginator #paginator [length]="length"
               [pageSize]="pageSize"
               [pageSizeOptions]="[6, 10, 25, 100]"
               (page)="pageEvent = $event">
 </mat-paginator>
+
+
+
+
+

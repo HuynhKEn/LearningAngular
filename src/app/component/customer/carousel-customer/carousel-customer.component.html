@@ -2,11 +2,9 @@
   <div class="owl-carousel-vertical">
     <owl-carousel [options]="customOptionsLeft" [carouselClasses]="['owl-theme', 'row', 'sliding']" #owlElement
       id="owl-demo">
-      <!-- <div class="item" *ngFor="let values of sum_images; let i = index">
-        <div>
-          <img class="slide-image" [src]="values">
-        </div>
-      </div> -->
     </owl-carousel>
   </div>
+  <button (click)="openDialog()">
+      OPEN DIALOG
+  </button>
 </div>

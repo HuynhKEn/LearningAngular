@@ -48,15 +48,8 @@
   position: absolute;
   top: 0px;
   z-index: 500;
-  background-color:black;
-  img{
-    position: relative;
-    transform: rotate(90deg);
-    width: 100%;
-    height: auto;
-  }
-
-
+  background-color: #000000ed;
+  cursor: pointer;
 }
 .rightRs {
   width: 100%;
@@ -66,19 +59,14 @@
   position: absolute;
   bottom: 0px;
   z-index: 500;
-  background-color:black;
-  img{
-    position: relative;
-    width: 100%;
-    height: auto;
-    transform: rotate(90deg);
-  }
+  background-color: #000000ed;
+  cursor: pointer;
 }
 .container-ng-carousel{
   width: 500px;
-  border:1px solid black;
+  border:1px solid #000000ed;
   padding: 0px;
 }
 .container-ng-carousel .row:nth-child(1){
-  padding-top: 40px;
+  padding-top: 25px;
 }

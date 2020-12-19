@@ -1,9 +1,9 @@
 <div class="container-ng-carousel">
   <ngu-carousel #myCarousel [inputs]="carouselConfig" (onMove)="onmoveFn($event)" [dataSource]="carouselItems" (carouselLoad)="carouselTileLoad($event)">
     <div class="rightRs" NguCarouselNext >
-      <button  mat-icon-button>
-        <img src="../../../../assets/images/back-page.png">
-      </button>
+      <span style="color:#eeeeee; transform: rotate(270deg);">
+        <mat-icon>navigate_before</mat-icon>
+      </span>
     </div>
     <ng-container class="item-container" >
       <ngu-item *nguCarouselDef="let item;" class="item row">
@@ -17,9 +17,9 @@
       </ngu-item>
     </ng-container>
     <div class="leftRs" NguCarouselPrev>
-      <button  mat-icon-button>
-        <img src="../../../../assets/images/next-page.png">
-      </button>
+      <span style="color:#eeeeee; transform: rotate(90deg);">
+        <mat-icon>navigate_before</mat-icon>
+      </span>
     </div>
   </ngu-carousel>
 </div>

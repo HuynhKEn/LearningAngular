@@ -58,7 +58,6 @@ import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
     NgxYoutubePlayerModule.forRoot(),
 
 
-
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,

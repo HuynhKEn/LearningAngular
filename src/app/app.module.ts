@@ -31,7 +31,8 @@ import { CardShowItemComponent } from './component/card-show-item/card-show-item
 import {CarouselCustomerComponent} from './component/customer/carousel-customer/carousel-customer.component';
 import { ConfirmComponent } from './component/customer/confirm/confirm.component';
 import { CarouselCustomerVerticalComponent } from './component/customer/carousel-customer-vertical/carousel-customer-vertical.component';
-
+import { FindComponentComponent } from './component/customer/find-component/find-component.component';
+import { GuardDeactivate } from "./component/customer/B-set-up-service/guard-deactivate.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,10 +62,11 @@ import { CarouselCustomerVerticalComponent } from './component/customer/carousel
     CarouselCustomerVerticalComponent,
     ConfirmComponent,
     IfPipe,
+    FindComponentComponent,
   ],
   imports: [AppRoutingModule, FlexLayoutModule, ShareModule, NgbModule],
   exports: [ShareModule],
-  providers: [NavService],
+  providers: [NavService, GuardDeactivate],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

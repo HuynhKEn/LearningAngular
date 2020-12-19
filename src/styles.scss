@@ -9,4 +9,10 @@ html, body {
   padding:10px
 
 }
+input.mat-input-element {
+  border-radius: 0px;
+}
+textarea.form-control{
+  border-radius: 0px;
+}
 @import '~bootstrap/scss/bootstrap';

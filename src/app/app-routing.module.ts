@@ -14,6 +14,7 @@ import { PostComponent } from './component/post/post.component';
 import { RegisterComponent } from './component/register/register.component';
 import { TopicComponent } from './component/topic-admin/topic.component';
 import { ROUTE_PATH } from './config/route-path.config';
+import { GuardDeactivate } from './component/customer/B-set-up-service/guard-deactivate.service';
 const routes: Routes = [
   { path: '', redirectTo: `${ROUTE_PATH.HOME}`, pathMatch: 'full' },
   { path: `${ROUTE_PATH.HOME}`, component: HomeComponent },
@@ -57,6 +58,7 @@ const routes: Routes = [
               {
                 path: `${ROUTE_PATH.CAROUSEL_ITEM}`,
                 component: CarouselCustomerComponent,
+                canDeactivate: [GuardDeactivate]
               },
               {
                 path: `${ROUTE_PATH.CAROUSEL_ITEM_V}`,
