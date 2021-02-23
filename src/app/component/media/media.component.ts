@@ -1,14 +1,12 @@
-import { HttpHeaders } from '@angular/common/http';
-import { Component, EventEmitter, OnInit,  } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { FileUploader } from 'ng2-file-upload';
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import {FileUploader} from 'ng2-file-upload';
 
 const URL = 'http://localhost:3000/upload';
 
 function readBase64(file): Promise<any> {
   const reader  = new FileReader();
-  const future = new Promise((resolve, reject) => {
-    reader.addEventListener('load',  () => {
+  return new Promise((resolve, reject) => {
+    reader.addEventListener('load', () => {
       resolve(reader.result);
     }, false);
     reader.addEventListener('error', (event) => {
@@ -16,16 +14,13 @@ function readBase64(file): Promise<any> {
     }, false);
     reader.readAsDataURL(file);
   });
-  return future;
 }
-
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss'],
 })
-
 export class MediaComponent implements OnInit {
   response: string;
   uploader: FileUploader;
@@ -37,7 +32,7 @@ export class MediaComponent implements OnInit {
   **/
   countWriteLog = { number: 0, lessonId: null, fileTypeCurrent: ''};
 
-  constructor(private sanitizer: DomSanitizer){
+  constructor(){
     this.uploader = new FileUploader({
       url: URL,
       disableMultipart: false,
@@ -50,7 +45,7 @@ export class MediaComponent implements OnInit {
   }
   ngOnInit(): void{
     this.uploader.onWhenAddingFileFailed = (item, filter) => {
-      let message = '';
+      let message: string;
       switch (filter.name) {
         case 'fileSize':
           message = 'Warning ! \nThe uploaded file \"' + item.name + '\" is ' + this.formatBytes(item.size) + ', this exceeds the maximum allowed size of ' + this.formatBytes(this.maxFileSize);
@@ -80,13 +75,12 @@ export class MediaComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
-  public onFileSelected(event: EventEmitter<File[]>): any {
+  public onFileSelected(event): any {
     const file: File = event[0];
     readBase64(file)
       .then( (data) => {
     });
   }
-
 
 
 }

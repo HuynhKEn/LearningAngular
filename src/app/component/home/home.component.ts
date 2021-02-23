@@ -4,6 +4,39 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../config/route-path.config';
 import { CommonDataService } from 'src/app/service/common-data.service';
+
+export class SeeMoreDto {
+  link: string;
+  content: string;
+}
+
+export class QuoteDto {
+  link: string;
+  content: string;
+}
+
+export class PostDTO {
+  id: number;
+  title: string;
+  content: string;
+  // tslint:disable-next-line:variable-name
+  id_parent: number;
+  // tslint:disable-next-line:variable-name
+  start_date: string;
+  // tslint:disable-next-line:variable-name
+  end_date: string;
+}
+
+export class TopicDTO {
+  id: number;
+  title: string;
+  content: string;
+  // tslint:disable-next-line:variable-name
+  see_more: SeeMoreDto;
+  quote: QuoteDto;
+  language: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,11 +52,11 @@ export class HomeComponent implements OnInit {
     'Tensorflow-.webp',
   ].map((n) => `../../../assets/images/${n}`);
   videos = [];
-  videosTranforms = [];
+  videosTransforms = [];
   colorTicTac = true;
   changeColor = setInterval(() => (this.colorTicTac = !this.colorTicTac), 5000);
-  posts: object = [];
-  topics: object = [];
+  posts: PostDTO[] = [];
+  topics: TopicDTO[] = [];
 
   constructor(
     config: NgbCarouselConfig,
@@ -42,7 +75,7 @@ export class HomeComponent implements OnInit {
     config.pauseOnHover = true;
   }
   ngOnInit(): void {
-    // this.videos.forEach(x => this.videosTranforms.push({id:x.id,link:this.sanitizer.bypassSecurityTrustResourceUrl(x.link)}))
+    // this.videos.forEach(x => this.videosTransforms.push({id:x.id,link:this.sanitizer.bypassSecurityTrustResourceUrl(x.link)}))
   }
   redirect(post): void {
     this.router.navigate([`${ROUTE_PATH.POST}`], {

@@ -1,10 +1,8 @@
 import {
   Component,
-  EventEmitter,
   HostBinding,
   Input,
   OnInit,
-  Output,
 } from '@angular/core';
 import { NavItem } from '../A-set-up-dynamic/data-menu-item-customer';
 import { Router } from '@angular/router';

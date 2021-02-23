@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonDataService } from '../../../app/service/common-data.service';
+import { CommonDataService } from '../../service/common-data.service';
 import { GLOBAL_CONSTANT } from '../../constant/global-constant';
 @Component({
   selector: 'app-manager-admin-media',
@@ -16,10 +16,11 @@ export class ManagerAdminMediaComponent implements OnInit {
   ngOnInit(): void {
     this.GLOBAL = GLOBAL_CONSTANT;
   }
+
   settingTable(): any{
     const columnsDisplay = ['NO', 'TITLE', 'TOPIC', 'DURATION', 'FILE_TYPE', 'START_DATE', 'END_DATE'];
     const disableSearch = {NO: false, TOPIC: false, DURATION: false, FILE_TYPE: false, START_DATE: true, END_DATE: true};
-    const tunrOnActionEvent = true;
+    const turnOnActionEvent = true;
     const dataSrc = this.videos;
     const typeElement = {
       id: ['input', {required: ''}],
@@ -35,6 +36,6 @@ export class ManagerAdminMediaComponent implements OnInit {
     };
     const heightDialog = 600;
     const widthDialog = 900;
-    return {columns: columnsDisplay, action: tunrOnActionEvent, data: dataSrc, disableSearch, typeElement, heightDialog, widthDialog};
+    return {columns: columnsDisplay, action: turnOnActionEvent, data: dataSrc, disableSearch, typeElement, heightDialog, widthDialog};
   }
 }

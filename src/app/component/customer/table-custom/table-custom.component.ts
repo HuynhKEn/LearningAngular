@@ -1,14 +1,13 @@
 import { AfterViewInit, ChangeDetectorRef, Component,
-   EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+   EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort, MatSortable } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Sort, SortDirection } from '@angular/material/sort';
+import { SortDirection } from '@angular/material/sort';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { cloneDeep } from 'lodash';
 import { MatDialog } from '@angular/material/dialog';
-import { map } from 'rxjs/operators';
 import { MediaShowDialogCustomerComponent } from '../media-show-dialog-customer/media-show-dialog-customer.component';
 import { ControlModifyDialogComponent } from '../control-modify-dialog/control-modify-dialog.component';
 import { GLOBAL_CONSTANT } from '../../../constant/global-constant';
@@ -39,7 +38,6 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
   numberRow: number;
   selection = new SelectionModel<{}>();
   allowMultiSelect = true;
-  sortSortDirection: SortDirection  =  'asc';
   addAction = false;
   GLOBAL: any;
   constructor(
@@ -143,7 +141,7 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
     this.pageSizeIndex = e.pageIndex;
     this.pageSize = e.pageSize;
   }
-  playOn(src: string, fileType: string, title = ""): void {
+  playOn(src: string, fileType: string, title = ''): void {
     const dialogMedia = this.dialog.open(MediaShowDialogCustomerComponent, {
       width: fileType !== 'code' ? '50vw' : '70vw',
       height: fileType === 'pdf' ? '85vh' : '',

@@ -32,9 +32,9 @@ export class CarouselCustomerComponent implements OnInit {
     navigation: true,
     navText: [
             // tslint:disable-next-line:quotemark
-            "<img src='../../../../assets/images/next.png' class='nav-btn-back prev-slide'>",
+            "<img src='../../../../assets/images/next.png' class='nav-btn-back prev-slide' alt='' >",
             // tslint:disable-next-line:quotemark
-            "<img src='../../../../assets/images/next.png' class='nav-btn-next next-slide'>"],
+            "<img src='../../../../assets/images/next.png' class='nav-btn-next next-slide' alt='' >"],
     responsiveClass: true,
     dot: false,
     animateOut: 'slideOutUp',
@@ -132,7 +132,7 @@ export class CarouselCustomerComponent implements OnInit {
             });
           });
           promise.then( resPromise => {
-            const html = '<div class="item"><img class="slide-image" src=' + `${URL.createObjectURL(resPromise)}` + '>' +
+            const html = '<div class="item"><img alt="" class="slide-image" src=' + `${URL.createObjectURL(resPromise)}` + '>' +
                 '<span class="number-lesson">' + `${i}` + '</span>' +
                 '<span class="name-lesson">' + `${title}` + '</span>' + '</div>';
             this.owlElement.trigger('add.owl.carousel', [html]);
@@ -158,11 +158,7 @@ export class CarouselCustomerComponent implements OnInit {
                 this.isDestroy = true;
                 return this.router.navigate([ROUTE_PATH.HOME]);
             }
-            if (result === GLOBAL_CONSTANT.BACKUP){
-                return true;
-            }  else {
-                return false;
-            }
+            return result === GLOBAL_CONSTANT.BACKUP;
         })
       );
     }

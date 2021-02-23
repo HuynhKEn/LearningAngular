@@ -1,15 +1,12 @@
-import { NgZone, Directive, AfterViewInit, Renderer2, ChangeDetectorRef,
-   Component, ElementRef, Input, OnInit, ViewChild, HostListener } from '@angular/core';
+import { NgZone, Renderer2, ChangeDetectorRef,
+   Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import {
   MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { DialogPdfShowComponent } from './dialog-pdf-show/dialog-pdf-show.component';
 import { ConfirmComponent} from '../confirm/confirm.component';
 import * as pdfjsLib from 'pdfjs-dist/build/pdf';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
 import $ from 'jquery';
@@ -35,11 +32,7 @@ export interface CardItem{
   title?: string;
 }
 function isMediaItem(object: any): boolean{
-  if (object[0].hasOwnProperty('fileType')){
-    return true;
-  } else{
-    return false;
-  }
+  return object[0].hasOwnProperty('fileType');
 }
 // tslint:disable-next-line:typedef
 function makeThumb(page) {
@@ -76,14 +69,10 @@ export class CardCustomerComponent implements OnInit {
   pageSize = 6;
   pageEvent: PageEvent;
   isMedia = false;
-  public isInPutSearchOpen = false;
   constructor(
     private sanitizer: DomSanitizer,
-    private dialog: MatDialog,
-    private cdr: ChangeDetectorRef,
-    private bodyScrollLock: NgBodyScrollLockService,
-    private zone: NgZone,
-    private renderer: Renderer2) {}
+    private dialog: MatDialog
+    ) {}
   ngOnInit(): void {
     if (isMediaItem(this.data)) {
       this.isMedia = true;

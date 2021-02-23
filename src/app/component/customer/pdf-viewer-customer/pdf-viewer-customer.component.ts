@@ -10,7 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { defaultBase64 } from '../default';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Platform } from '@angular/cdk/platform';
 import { MatIconRegistry } from '@angular/material/icon';

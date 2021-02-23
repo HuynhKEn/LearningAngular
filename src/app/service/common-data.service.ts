@@ -1,5 +1,29 @@
 import { Injectable } from '@angular/core';
 import { LanguageDTO } from '../model/dto/language.dto';
+import {QuoteDto, SeeMoreDto} from '../component/home/home.component';
+
+export class TopicDTO {
+  id: number;
+  title: string;
+  content: string;
+  // tslint:disable-next-line:variable-name
+  see_more: SeeMoreDto;
+  quote: QuoteDto;
+  language: string;
+}
+
+export class PostDTO {
+  id: number;
+  title: string;
+  content: string;
+  // tslint:disable-next-line:variable-name
+  id_parent: number;
+  // tslint:disable-next-line:variable-name
+  start_date: string;
+  // tslint:disable-next-line:variable-name
+  end_date: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -74,7 +98,7 @@ export class CommonDataService {
     ];
     return data;
   }
-  topicsData(): object[] {
+  topicsData(): TopicDTO[] {
     const topics = [
       {
         id: 2,
@@ -115,7 +139,7 @@ export class CommonDataService {
     ];
     return topics;
   }
-  postOfTopicsData(): object[]{
+  postOfTopicsData(): PostDTO[]{
     const postsOfTopics  = [{
       id: 1,
       title: 'Numpy',
@@ -144,6 +168,7 @@ export class CommonDataService {
     }];
     return postsOfTopics;
   }
+
   languageSourceData(): LanguageDTO[] {
     const languageData = [
       {

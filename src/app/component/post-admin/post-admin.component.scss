@@ -1,4 +1,4 @@
-.container-action{
+.container-action {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
@@ -6,37 +6,37 @@
     width: 150px;
     margin-right: 15px;
   }
-  a{
+  a {
     width: 100%;
     color: white;
-    border-radius: 0px;
+    border-radius: 0;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
-.form-topic{
-  .btn-primary{
+.form-topic {
+  .btn-primary {
     margin-top:10px;
-    border-radius: 0px;
+    border-radius: 0;
     width: 120px
   }
 }
-.container-post-admin{
-  textarea{
+.container-post-admin {
+  textarea {
     height: 200px;
   }
-  input{
+  input {
     border: 1px #d6d3d3 solid;
   }
 }
-.header-post-admin{
+.header-post-admin {
   border-bottom: 2px solid #eae3ed;
   h1{
     padding: 15px 15px 0 15px;
   }
 }
-.body-post-admin{
+.body-post-admin {
   padding: 15px;
 }

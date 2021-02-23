@@ -53,7 +53,7 @@
           <th mat-header-cell [attr.rowspan]="numberRow" *matHeaderCellDef style="padding-left: 8px;" class="mat-header-cell-action">{{action}}</th>
           <td mat-cell *matCellDef="let element ; let i = renderIndex;">
             <small *ngIf="action==='EDIT'">
-              <button mat-stroked-button style="width: auto" (click)="editConfirm(element,dataSource)">
+              <button mat-stroked-button style="width: auto" (click)="editConfirm(element)">
                 <mat-icon>edit</mat-icon>
               </button>
             </small>

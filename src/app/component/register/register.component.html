@@ -1,6 +1,6 @@
 <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
   <mat-form-field >
-    <input matInput  class="form-control" formControlName="username" class="form-control"  type="text"  placeholder="Username" />
+    <input matInput  class="form-control" formControlName="username"   type="text"  placeholder="Username" />
     <mat-error [ngClass]="{'wapper-h':true}"
           *ngIf="UsernameStatus.errors && (UsernameStatus.touched || UsernameStatus.dirty)">
          <ngb-alert *ngIf="UsernameStatus.errors?.required" type="danger" [ngClass]="{'alert-h':true}" [dismissible]="false">Vui lòng nhập username</ngb-alert>
@@ -9,7 +9,7 @@
   <br>
 
   <mat-form-field >
-    <input matInput  class="form-control" formControlName="password" class="form-control"  type="password"  placeholder="Password" />
+    <input matInput  class="form-control" formControlName="password"  type="password"  placeholder="Password" />
     <mat-error [ngClass]="{'wapper-h':true}"
           *ngIf="passwordStatus.errors && (passwordStatus.touched || passwordStatus.dirty)">
          <ngb-alert *ngIf="passwordStatus.errors?.required" type="danger" [ngClass]="{'alert-h':true}" [dismissible]="false">Vui lòng nhập password</ngb-alert>

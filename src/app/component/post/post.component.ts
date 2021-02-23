@@ -1,5 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 declare const compilers: any;
 
 

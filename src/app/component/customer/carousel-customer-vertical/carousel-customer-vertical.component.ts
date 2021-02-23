@@ -4,15 +4,11 @@ import {
   ChangeDetectorRef,
   ViewChild,
   AfterViewInit,
-  ElementRef,
-  ContentChild,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import {
   NguCarousel,
   NguCarouselConfig,
-  NguCarouselNextDirective,
-  NguCarouselPrevDirective,
   NguCarouselStore,
 } from '@ngu/carousel';
 import { Ng2ImgMaxService } from 'ng2-img-max';
@@ -28,7 +24,6 @@ export class CarouselCustomerVerticalComponent
 
   name = 'Angular';
   slideNo = 1;
-  withAnim = true;
   resetAnim = true;
 
   carouselConfig: NguCarouselConfig = {

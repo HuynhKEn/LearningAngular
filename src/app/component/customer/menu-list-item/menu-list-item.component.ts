@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MenuSettings, NavItem} from '../A-set-up-dynamic/data-menu-item-customer';
 @Component({
   selector: 'app-menu-list-item',
@@ -8,7 +8,6 @@ import { MenuSettings, NavItem} from '../A-set-up-dynamic/data-menu-item-custome
 export class MenuListItemComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<boolean>();
   menuElement: NavItem[];
-  logoIcon = '../../../../assets/images/icon.png';
   constructor() {
   }
 

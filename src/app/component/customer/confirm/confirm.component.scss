@@ -1,5 +1,5 @@
 ::ng-deep .mat-dialog-container {
-  padding: 0px;
+  padding: 0;
   overflow: unset;
 }
 button{
@@ -27,16 +27,16 @@ button{
     }
 
     .close-button-dialog{
-      padding: 0px;
-      margin: 0px;
+      padding: 0;
+      margin: 0;
       outline: none;
       color: white;
       border: 0;
       background-color: #007ad9;
     }
     .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
-      line-height: 0px;
-      min-width: 0px;
+      line-height: 0;
+      min-width: 0;
     }
   }
 
