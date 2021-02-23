@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'LearningAngular';
   loginStatus: boolean;
   constructor(
-    private adminService : AdminService,
+    private adminService: AdminService,
     private primengConfig: PrimeNGConfig
     )
     {
