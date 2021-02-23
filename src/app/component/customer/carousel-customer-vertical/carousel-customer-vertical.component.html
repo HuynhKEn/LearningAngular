@@ -1,4 +1,7 @@
-<div class="container-ng-carousel">
+<div class="header-carousel-admin">
+  <h1>{{GLOBAL.HEADER.CAROUSEL_H}}</h1>
+</div>
+<div class="container-ng-carousel body-carousel-admin">
   <ngu-carousel #myCarousel [inputs]="carouselConfig" (onMove)="onmoveFn($event)" [dataSource]="carouselItems" (carouselLoad)="carouselTileLoad($event)">
     <div class="rightRs" NguCarouselNext >
       <span style="color:#eeeeee; transform: rotate(270deg);">

@@ -21,17 +21,20 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./pdf-viewer-customer.component.scss'],
 })
 export class PdfViewerCustomerComponent implements OnInit, OnChanges {
-  @Output('onLoadComplete') loadComplete = new EventEmitter();
-  @Output('onReadComplete') readComplete = new EventEmitter();
-  @Output('onLoadPdfError') loadPdfError = new EventEmitter();
+  // tslint:disable-next-line:no-output-rename
+  @Output('onLoadComplete') loadComplete ? = new EventEmitter();
+  // tslint:disable-next-line:no-output-rename
+  @Output('onReadComplete') readComplete ? = new EventEmitter();
+  // tslint:disable-next-line:no-output-rename
+  @Output('onLoadPdfError') loadPdfError ? = new EventEmitter();
   @Input() sourcePdf: string;
   @Input() heightPdf?: string;
-  pdfPage: number = 1;
+  pdfPage = 1;
   pdf: any;
   src = defaultBase64[0];
-  howMuchPage: number = 0;
+  howMuchPage = 0;
   toolTip = false;
-  backGroundColorPdf: string = 'white';
+  backGroundColorPdf = 'white';
   isHiddenSpinner: boolean;
   zoomLevels = [
     'auto',
@@ -47,20 +50,20 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     1.75,
     2.0,
   ];
-  _oldZoomSetting: number | string | undefined = 'page-width';
-  eventFullScreen: boolean = true;
-  flagDownloadPdf: boolean = true;
-  //Platform
-  isMobile: boolean = false;
-  isSafari: boolean = false;
-  isAndroid: boolean = false;
-  sizePlatForm: string = '72vh';
-  sizeOldPlatForm: string = '72vh';
+  oldZoomSetting: number | string | undefined = 'page-width';
+  eventFullScreen = true;
+  flagDownloadPdf = true;
+  // Platform
+  isMobile = false;
+  isSafari = false;
+  isAndroid = false;
+  sizePlatForm = '72vh';
+  sizeOldPlatForm = '72vh';
   viewMode: string;
-  showToolbar: boolean = true;
-  sidebarToggle: string = 'none';
-  hozFullScreen: boolean = false;
-  flagFullScreen: boolean = false;
+  showToolbar = true;
+  sidebarToggle = 'none';
+  hozFullScreen = false;
+  flagFullScreen = false;
   constructor(
     private http: HttpClient,
     private platform: Platform,
@@ -88,7 +91,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     } else {
       this.viewMode = 'single';
     }
-    this._oldZoomSetting = 0;
+    this.oldZoomSetting = 0;
     if (this.heightPdf){
       this.sizePlatForm = this.heightPdf;
       this.sizeOldPlatForm = this.sizePlatForm;
@@ -98,7 +101,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.getPdfFormServer();
   }
-  settingPDF() {
+  settingPDF(): any {
     return {
       backGroundColor: this.backGroundColorPdf,
       isPinchOnMobile: true,
@@ -119,10 +122,10 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     };
   }
 
-  onPdfLoad(event) {
-    //doing something
+  onPdfLoad(event): void{
+    // Doing something
   }
-  romanToInt(str1) {
+  romanToInt(str1): number{
     let num = this.charToInt(str1.charAt(0));
     let pre;
     let curr;
@@ -137,7 +140,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     }
     return num;
   }
-  charToInt(c) {
+  charToInt(c): number {
     switch (c) {
       case 'i':
         return 1;
@@ -157,7 +160,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
         return -1;
     }
   }
-  pagesLoaded(event) {
+  pagesLoaded(event): void{
     if (this.isMobile) {
       const h = event.source.viewer.clientHeight;
       this.sizePlatForm = h + 50 + 'px';
@@ -172,14 +175,14 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     this.loadComplete.emit(true);
   }
 
-  onPageChange(event) {
+  onPageChange(event): void {
     this.onReadComplete();
   }
 
-  onPageRendered(event) {
-    //doing something
+  onPageRendered(event): void {
+    // Doing something
   }
-  onPdfLoadingFailed(event) {
+  onPdfLoadingFailed(event): void {
     if (event) {
       this.loadPdfError.emit(true);
       this.src = defaultBase64[1];
@@ -189,7 +192,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   /**
    * Left and Right Navigation
    */
-  changeIndexPage(amount: number) {
+  changeIndexPage(amount: number): void {
     if (amount === 1) {
       const element = document.getElementById('next');
       element.dispatchEvent(new Event('click'));
@@ -205,7 +208,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
    * Download pdf
    */
 
-  getPdfFormServer() {
+  getPdfFormServer(): void {
     this.pdfPage = 1;
     this.isHiddenSpinner = false;
     fetch(this.sourcePdf)
@@ -237,7 +240,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   /*
    * Create file name
    */
-  getRandomStringFileName() {
+  getRandomStringFileName(): string {
     length = Math.floor(Math.random() * 32);
     const randomChars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -253,11 +256,11 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   /**
    * Event show and hiden toggleBar
    */
-  onShowToggleBar() {
+  onShowToggleBar(): void {
     this.showToolbar = !this.showToolbar;
   }
 
-  async printPDF() {
+  async printPDF(): Promise<void>{
     this.isHiddenSpinner = false;
     const iframe = document.createElement('iframe');
     fetch(this.sourcePdf)
@@ -285,7 +288,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
       );
   }
 
-  downloadPDF() {
+  downloadPDF(): void {
     const element = document.getElementById('download');
     element.dispatchEvent(new Event('click'));
   }
@@ -293,12 +296,12 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   /**
    *
    */
-  onZoomIn() {
+  onZoomIn(): void {
     const element = document.getElementById('zoomIn');
     element.dispatchEvent(new Event('click'));
   }
 
-  onZoomOut() {
+  onZoomOut(): void {
     const element = document.getElementById('zoomOut');
     element.dispatchEvent(new Event('click'));
   }
@@ -307,7 +310,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   //   const checkZoom = ['auto', 'page-actual', 'page-fit', 'page-width'];
   //   if (checkZoom.includes(event)){
   //     event = "-1";
-  //   }
+ //   }
   //   this._oldZoomSetting = Number(event);
   // }
 
@@ -315,7 +318,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
   @HostListener('document:webkitfullscreenchange', ['$event'])
   @HostListener('document:mozfullscreenchange', ['$event'])
   @HostListener('document:MSFullscreenChange', ['$event'])
-  fullScreenMode() {
+  fullScreenMode(): void {
     if (document.fullscreenElement) {
       this.sizePlatForm = '100vh';
       this.backGroundColorPdf = 'black';
@@ -334,7 +337,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     }
   }
   @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
+  keyEvent(event: KeyboardEvent): void {
     if (event.key === 'Escape' && this.flagFullScreen) {
       this.sizePlatForm = this.sizeOldPlatForm;
       this.flagFullScreen = false;
@@ -342,7 +345,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     }
   }
 
-  fullScreen() {
+  fullScreen(): void {
     const elem = document.getElementById('pdfElement') as HTMLElement & {
       requestFullscreen(): Promise<void>;
       mozRequestFullScreen(): Promise<void>;
@@ -366,11 +369,11 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     this.cdr.detectChanges();
   }
 
-  onHorfullScreen() {
+  onHorfullScreen(): void {
     const element = document.getElementById('presentationMode');
     element.dispatchEvent(new Event('click'));
   }
-  closeFullscreen() {
+  closeFullscreen(): void {
     const document: any = window.document;
     this.flagFullScreen = false;
     this.sizePlatForm = this.sizeOldPlatForm;
@@ -386,7 +389,7 @@ export class PdfViewerCustomerComponent implements OnInit, OnChanges {
     this.cdr.detectChanges();
   }
 
-  onReadComplete() {
+  onReadComplete(): void {
     if (this.pdfPage === this.howMuchPage) {
       this.readComplete.emit(true);
     } else {

@@ -6,12 +6,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SidenavListComponent implements OnInit {
   menuList = [
-    "Python","Java","C#","Angular","Flask"
-  ]
+    'Python', 'Java', 'C#', 'Angular', 'Flask'
+  ];
   @Output() sidenavClose = new EventEmitter();
   constructor() { }
-  ngOnInit() {
-
+  ngOnInit(): void {
   }
   public onSidenavClose = () => {
     this.sidenavClose.emit();

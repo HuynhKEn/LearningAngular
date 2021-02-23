@@ -2,8 +2,8 @@
   width:100%;
   textarea.form-control {
     max-height: 200px;
-    height: 120px;
-    border: 2px #d6d3d3 solid;
+    height: 85px;
+    border: 1px #d6d3d3 solid;
   }
   .btn-primary{
     border-radius: 0px;
@@ -19,7 +19,7 @@ mat-form-field{
 
 }
 .action-container{
-  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
   .action-wrap{
@@ -30,5 +30,18 @@ mat-form-field{
     width: 100%;
     color: white;
     border-radius: 0px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+}
+.header-topic-admin{
+  border-bottom: 2px solid #eae3ed;
+  h1{
+    padding: 15px 15px 0 15px;
+  }
+}
+.body-topic-admin{
+  padding: 15px;
 }

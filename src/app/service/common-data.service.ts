@@ -1,60 +1,80 @@
 import { Injectable } from '@angular/core';
-
+import { LanguageDTO } from '../model/dto/language.dto';
 @Injectable({
   providedIn: 'root'
 })
 export class CommonDataService {
 
   constructor() { }
-
-  dataMedia(){
+  // {'datePicker':['Begin date']}
+  dataMedia(): object[]{
     const data = [
       {
-        id:1,
-        link:"https://cors-anywhere.herokuapp.com/https://bugs.python.org/file47781/Tutorial_EDIT.pdf",
-        topic:"100",videoTime:100,fileType:"pdf",
-        thumb: "",
-        title: "Tutorial_EDIT",
-      },
-      {
-        id:2,
-        link:"https://cors-anywhere.herokuapp.com/http://anh.cs.luc.edu/python/hands-on/3.1/Hands-onPythonTutorial.pdf",
-        topic:"100",videoTime:100,fileType:"pdf",
-        thumb: "",
-        title: "PythonTutorial",
-      },
-      {id:3,
-        link:"https://cors-anywhere.herokuapp.com/https://alex.smola.org/drafts/thebook.pdf",
-        topic:"100",videoTime:100,fileType:"pdf",
-        thumb: "",
-        title: "Thebook",
+        id: 1,
+        link: 'https://cors-anywhere.herokuapp.com/https://bugs.python.org/file47781/Tutorial_EDIT.pdf',
+        topic: '100',
+        videoTime: 200,
+        fileType: 'pdf',
+        thumb: '',
+        title: 'Tutorial_EDIT',
+        startDate: '2021/01/30',
+        endDate: '2021/12/30',
 
       },
       {
-        id:4,
-        link:"../../../assets/videos/demo.mp4",
-        topic:"100",videoTime:100,fileType:"video",
-        thumb: "",
-        title: "Demo Video",
+        id: 2,
+        link: 'https://cors-anywhere.herokuapp.com/http://anh.cs.luc.edu/python/hands-on/3.1/Hands-onPythonTutorial.pdf',
+        topic: '100', videoTime: 100,
+        fileType: 'pdf',
+        thumb: '',
+        title: 'PythonTutorial',
+        startDate: '2021/01/30',
+        endDate: '2021/12/30',
+      },
+      {id: 3,
+        link: 'https://cors-anywhere.herokuapp.com/https://alex.smola.org/drafts/thebook.pdf',
+        topic: '100', videoTime: 50,
+        fileType: 'pdf',
+        thumb: '',
+        title: 'Thebook',
+        startDate: '2021/01/30',
+        endDate: '2021/12/30',
       },
       {
-        id:5,
-        link:"../../../assets/videos/demo.mp4",
-        topic:"100",videoTime:100,fileType:"video",
-        thumb: "",
-        title: "Demo Video",
+        id: 4,
+        link: '../../../assets/videos/demo.mp4',
+        topic: '100', videoTime: 100,
+        fileType: 'video',
+        thumb: '',
+        title: 'Demo Video',
+        startDate: '2021/01/30',
+        endDate: '2021/12/30',
       },
       {
-        id:6,
-        link:"../../../assets/videos/demo.mp4",
-        topic:"100",videoTime:100,fileType:"video",
-        thumb: "",
-        title: "Demo Video",
+        id: 5,
+        link: '../../../assets/videos/demo.mp4',
+        topic: '200', videoTime: 100,
+        fileType: 'video',
+        thumb: '',
+        title: 'Demo Video',
+        startDate: '2021/01/30',
+        endDate: '2021/12/30',
       },
-    ]
+      {
+        id: 6,
+        link: '../../../assets/videos/demo.mp4',
+        topic: '300',
+        videoTime: 100,
+        fileType: 'video',
+        thumb: '',
+        title: 'Demo Video',
+        startDate: '2021/01/30',
+        endDate: '2021/12/30',
+      },
+    ];
     return data;
   }
-  topicsData(){
+  topicsData(): object[] {
     const topics = [
       {
         id: 2,
@@ -66,13 +86,15 @@ export class CommonDataService {
           link: 'https://d2l.aivivn.com/chapter_preface/index_vn.html',
           content: 'Trích dẫn: Đắm mình trong học sâu',
         },
+        language: 'Python'
       },
       {
         id: 3,
         title: 'Computer Visions',
         content: '',
         see_more: { link: '', content: '' },
-        quote:{ link: '', content: '' }
+        quote: { link: '', content: '' },
+        language: 'Python'
       },
       {
         id: 1,
@@ -88,67 +110,216 @@ export class CommonDataService {
           link: 'https://machinelearningcoban.com/2016/12/26/introduce/',
           content: 'Trích dẫn: Machine Learning cơ bản',
         },
+        language: ''
       },
     ];
     return topics;
   }
-  postOfTopicsData(){
+  postOfTopicsData(): object[]{
     const postsOfTopics  = [{
-      title:"Numpy",
-      content:"Numpy là một thư viện lõi phục vụ cho khoa học máy tính của Python, hỗ trợ cho việc tính toán các mảng nhiều chiều, có kích thước lớn, hỗ trợ các hàm đã được tối ưu áp dụng lên các mảng nhiều chiều. Numpy đặc biệt hữu ích khi thực hiện các hàm liên quan tới Đại Số Tuyến Tính. Để cài đặt numpy nếu bạn có Anaconda chỉ cần gõ",
-      id_parent:1
+      id: 1,
+      title: 'Numpy',
+      content: 'Numpy là một thư viện lõi phục vụ cho khoa học máy tính của Python, hỗ trợ cho việc tính toán các mảng nhiều chiều, có kích thước lớn, hỗ trợ các hàm đã được tối ưu áp dụng lên các mảng nhiều chiều. Numpy đặc biệt hữu ích khi thực hiện các hàm liên quan tới Đại Số Tuyến Tính. Để cài đặt numpy nếu bạn có Anaconda chỉ cần gõ',
+      id_parent: 1,
+      start_date: '2021/01/01',
+      end_date:  '2021/01/31',
     }
     ,
     {
-      title:"Pandas",
-      content:"Pandas",
-      id_parent:1
+      id: 2,
+      title: 'Pandas',
+      content: 'Pandas',
+      id_parent: 1,
+      start_date: '2021/01/01',
+      end_date:  '2021/01/31',
     }
     ,
-      {title:"Opencv",
-      content:"Opencv",
-      id_parent:3
-    }]
+    {
+      id: 3,
+      title: 'Opencv',
+      content: 'Opencv',
+      id_parent: 3,
+      start_date: '2021/01/01',
+      end_date:  '2021/01/31',
+    }];
     return postsOfTopics;
   }
-
-  sourcesDefaultPDF(){
-    return 'https://cors-anywhere.herokuapp.com/http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Java%20Programming%20Language%20Handbook.pdf'
-  }
-
-  iuDefaultData(){
-    return [{
+  languageSourceData(): LanguageDTO[] {
+    const languageData = [
+      {
         id: 1,
-        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
-        content: "I LOVE IU",
-        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
-        subTitle: "IU",
-        title: "Lovely" ,
+        name: 'python',
+        code: 'P001'
       },
       {
         id: 2,
-        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
-        content: "I LOVE IU",
-        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
-        subTitle: "IU",
-        title: "Lovely" ,
+        name: 'java',
+        code: 'J001'
+      },
+      {
+        id: 3,
+        name: 'c#',
+        code: 'C001'
+      }
+    ];
+    return languageData;
+  }
+
+  sourcesDefaultPDF(): string{
+    return 'https://cors-anywhere.herokuapp.com/http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Java%20Programming%20Language%20Handbook.pdf';
+  }
+
+  iuDefaultData(): object[]{
+    return [{
+        id: 1,
+        imgPath : 'https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg',
+        content: 'I LOVE IU',
+        subImgPath: 'https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg',
+        subTitle: 'IU',
+        title: 'Lovely' ,
+      },
+      {
+        id: 2,
+        imgPath : 'https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg',
+        content: 'I LOVE IU',
+        subImgPath: 'https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg',
+        subTitle: 'IU',
+        title: 'Lovely' ,
       }
       ,
       {
         id: 3,
-        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
-        content: "I LOVE IU",
-        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
-        subTitle: "IU",
-        title: "Lovely" ,
+        imgPath : 'https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg',
+        content: 'I LOVE IU',
+        subImgPath: 'https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg',
+        subTitle: 'IU',
+        title: 'Lovely' ,
       },
       {
         id: 4,
-        imgPath : "https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg",
-        content: "I LOVE IU",
-        subImgPath: "https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg",
-        subTitle: "IU",
-        title: "Lovely" ,
-      }]
+        imgPath : 'https://cors-anywhere.herokuapp.com/https://thongtinhanquoc.com/wp-content/uploads/2020/06/image1-15.jpeg',
+        content: 'I LOVE IU',
+        subImgPath: 'https://cors-anywhere.herokuapp.com/https://static.mnewsvn.com/uploads/editors/47/2019/12/25/H88HtGtyLDzM0NMA8nJBQFBgAmA5z7FgXoLxx751.jpeg',
+        subTitle: 'IU',
+        title: 'Lovely' ,
+      }];
+  }
+
+  codeData(): object[]{
+    return [{
+      id: 1,
+      title: 'MACHINE LEARNING',
+      question: 'Cài đặt cuda',
+      content: '',
+      code: '001',
+      level: 'Khó'
+    },
+    {
+      id: 2,
+      title: 'MACHINE LEARNING',
+      question: 'Cài đặt cuda',
+      content: '',
+      code: `
+      from skimage import io
+      import skimage
+      import matplotlib.pyplot as plt
+      import cv2
+      import os
+      import numpy as np
+      def plotnoise(img, mode,output):
+          if mode is not None:
+              gimg = skimage.util.random_noise(img, mode=mode)
+              cv2.imwrite(output, gimg)
+          else:
+              plt.imshow(img)
+
+      def noisy(noise_typ,image):
+          if noise_typ == "gauss":
+            row,col,ch= image.shape
+          ##################
+          #Noisy 2
+            mean = 75
+            var = 1.2
+          ##########################
+          #Noisy 1
+          #   mean = 50
+          #   var = 2
+          ###########################
+            sigma = var**0.5
+            gauss = np.random.normal(mean,sigma,(row,col,ch))
+            gauss = gauss.reshape(row,col,ch)
+            noisy = image + gauss
+            return noisy
+          elif noise_typ == "s&p":
+              row,col,ch = image.shape
+              s_vs_p = 0.5
+              amount = 0.004
+              out = np.copy(image)
+              # Salt mode
+              num_salt = np.ceil(amount * image.size * s_vs_p)
+              coords = [np.random.randint(0, i - 1, int(num_salt))
+                      for i in image.shape]
+              out[coords] = 1
+
+              # Pepper mode
+              num_pepper = np.ceil(amount* image.size * (1. - s_vs_p))
+              coords = [np.random.randint(0, i - 1, int(num_pepper))
+                      for i in image.shape]
+              out[coords] = 0
+              return out
+          elif noise_typ == "poisson":
+              vals = len(np.unique(image))
+              vals = 2 ** np.ceil(np.log2(vals))
+              noisy = np.random.poisson(image * vals) / float(vals)
+              return noisy
+          elif noise_typ =="speckle":
+              row,col,ch = image.shape
+              gauss = np.random.randn(row,col,ch)
+              gauss = gauss.reshape(row,col,ch)
+              noisy = image + image * gauss
+              return noisy
+
+      dir_img = "C:/Users/HP/Desktop/PYTHON_2020/image_output/"
+      dir_img_out = "C:/Users/HP/Desktop/PYTHON_2020/image_output_addnoise2/"
+      for filename in os.listdir(dir_img):
+              image  =  dir_img+filename
+              image_out  = dir_img_out  + filename
+              img = cv2.imread(image)
+              image_noisy = noisy("gauss",img)
+              cv2.imwrite(image_out, image_noisy)
+              # img = io.imread(image)
+              # plotnoise(img, "localvar", r,c,2)
+              # plotnoise(img, "poisson", r,c,3)
+              # plotnoise(img, "salt", r,c,4)
+              # plotnoise(img, "pepper", r,c,5)
+              # plotnoise(img, "s&p", r,c,6)
+              # plotnoise(img, "speckle", r,c,7)
+              # plotnoise(img, None, r,c,8)
+      `,
+      level: 'Khó'
+    },
+    {
+      id: 3,
+      title: 'MACHINE LEARNING',
+      question: 'Cài đặt cuda',
+      content: '',
+      code: `
+      import cv2
+      import os
+      dir_img = "C:/Users/HP/Desktop/datasets/CRAB/train/images/"
+      list1 = []
+      for filename in os.listdir(dir_img):
+          image = cv2.imread(dir_img+filename)
+          height,width,channel = image.shape
+          if  height!= 1536 or width != 1536:
+              list1.append(filename)
+          # new_height,new_width = 1536,1536
+          # image_rs = cv2.resize(src=image,dsize=(new_width,new_height),interpolation=cv2.INTER_CUBIC)
+          # cv2.imwrite(dir_img+filename,image_rs)
+          # print("OKE")
+      print(list1)`,
+      level: 'Khó'
+    }
+  ];
   }
 }

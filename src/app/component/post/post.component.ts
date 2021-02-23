@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-declare const compilers : any
+declare const compilers: any;
 
 
 @Component({
@@ -9,8 +9,8 @@ declare const compilers : any
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  post :string;
-  content:string;
+  post: string;
+  content: string;
   idVideo = 'qDuKsiwS5xw';
   playerVars = {
     cc_lang_pref: 'en'
@@ -21,26 +21,26 @@ export class PostComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    compilers()
-    if ( localStorage.getItem("post") !== null ){
+    compilers();
+    if ( localStorage.getItem('post') !== null ){
       if ( !!window.history.state.res ){
-        this.post = window.history.state.res.title
-        this.content = window.history.state.res.content
-        localStorage.setItem("post",this.post)
-        localStorage.setItem("content",this.content)
+        this.post = window.history.state.res.title;
+        this.content = window.history.state.res.content;
+        localStorage.setItem('post', this.post);
+        localStorage.setItem('content', this.content);
       }
       else{
-        this.post = localStorage.getItem("post")
-        this.content = localStorage.getItem("content")
+        this.post = localStorage.getItem('post');
+        this.content = localStorage.getItem('content');
       }
 
 
     }
     else {
-      this.post = window.history.state.res.title
-      this.content = window.history.state.res.content
-      localStorage.setItem("post",this.post)
-      localStorage.setItem("content",this.content)
+      this.post = window.history.state.res.title;
+      this.content = window.history.state.res.content;
+      localStorage.setItem('post', this.post);
+      localStorage.setItem('content', this.content);
     }
 
   }

@@ -1,12 +1,15 @@
 <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px">
-  <div fxFlex="1 1 100%">
+  <div fxFlex="0 1 calc(100%)" class="header-post-admin">
+    <h1>{{GLOBAL.HEADER.POST_MANAGE}}</h1>
+  </div>
+  <div fxFlex="1 1 100%" class="container-post-admin body-post-admin">
     <form [formGroup]="formPostGroup" gdAreas="topic topic
       |title title|
       content  content|
-      submitButton isSpace"  (ngSubmit)="onSubmit()" class="form-topic">
-      <div gdArea="topic">
+      submitButton isSpace"  (ngSubmit)="onSubmit()" class="form-topic" gdGap="10px">
+      <div gdArea="topic" >
         <div>
-          <mat-label>Topic</mat-label>
+          <mat-label>TOPIC</mat-label>
           <mat-select formControlName="selectedValue" class="select-global" (selectionChange)="updatePostElements()">
             <mat-option *ngFor="let topic of topics" [value]="topic">
               {{topic.title}}
@@ -17,20 +20,20 @@
       <!-- Add -->
       <div gdArea="title" *ngIf="addPostStatus">
         <mat-label>
-          Title Add
+          TITLE ADD
         </mat-label>
         <input matInput type="text" formControlName="titleAdd" class="form-control" placeholder="Title">
       </div>
       <div gdArea="content" *ngIf="addPostStatus || editPostStatus">
         <mat-label>
-          Content
+          CONTENT
         </mat-label>
         <textarea  formControlName="content" class="form-control" placeholder="Content"></textarea>
       </div>
       <!-- Edit or Delete-->
       <div gdArea="title" *ngIf="editPostStatus || deletePostStatus===1">
         <mat-label>
-          Title Edit
+          TITLE EDIT
         </mat-label>
         <mat-select formControlName="subSelectValue" class="form-control">
           <mat-option *ngFor="let postItem of copyPostsOfTopics" [value]="postItem">
@@ -39,7 +42,7 @@
         </mat-select>
       </div>
       <button class="btn btn-primary" type="submit">
-        Xác nhận
+        XÁC NHẬN
       </button>
     </form>
   </div>
@@ -49,17 +52,17 @@
     <div gdAreas="add edit delete" class="container-action">
       <div gdArea="add" class="action-wrap">
         <a mat-raised-button (click)="addPost()">
-          <mat-icon>add</mat-icon>
+          {{GLOBAL.TEXT_ICON_ADD}}<mat-icon>add</mat-icon>
         </a>
       </div>
       <div gdArea="edit" class="action-wrap">
         <a mat-raised-button (click)="editPost()">
-          <mat-icon>edit</mat-icon>
+          {{GLOBAL.TEXT_ICON_EDIT}}<mat-icon>edit</mat-icon>
         </a>
       </div>
       <div gdArea="delete" class="action-wrap">
         <a mat-raised-button (click)="deletePost()">
-          <mat-icon>delete</mat-icon>
+          {{GLOBAL.TEXT_ICON_DELETE}}<mat-icon>delete</mat-icon>
         </a>
       </div>
     </div>

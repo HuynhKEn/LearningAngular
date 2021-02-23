@@ -1,4 +1,5 @@
-import { NgZone, Directive, AfterViewInit, Renderer2, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, HostListener } from '@angular/core';
+import { NgZone, Directive, AfterViewInit, Renderer2, ChangeDetectorRef,
+   Component, ElementRef, Input, OnInit, ViewChild, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import {
   MatDialog,
@@ -11,45 +12,48 @@ import * as pdfjsLib from 'pdfjs-dist/build/pdf';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
-import $ from "jquery";
+import $ from 'jquery';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 export interface MediaItem {
   id: number;
   link: string;
   topic?: string;
-  video?: number;
+  videoTime?: number;
   fileType?: string;
   thumb?: string;
+  startDate?: string;
+  endDate?: string;
   title?: string;
 }
 export interface CardItem{
-  id:number;
-  imgPath : string;
+  id: number;
+  imgPath: string;
   content: string;
   subImgPath: string;
   subTitle: string;
   title?: string;
 }
-function isMediaItem(object: any){
+function isMediaItem(object: any): boolean{
   if (object[0].hasOwnProperty('fileType')){
     return true;
   } else{
     return false;
   }
 }
+// tslint:disable-next-line:typedef
 function makeThumb(page) {
   // draw page to fit into 96x96 canvas
-  let canvas = document.createElement('canvas');
+  const canvas = document.createElement('canvas');
   canvas.width = document.body.clientWidth;
-  let scale = (canvas.width / page.view[2]);
-  let viewport = page.getViewport({scale: scale});
+  const scale = (canvas.width / page.view[2]);
+  const viewport = page.getViewport({scale});
   canvas.height = page.view[3] * scale;
 
   return page
     .render({
       canvasContext: canvas.getContext('2d'),
-      viewport: viewport,
+      viewport,
     })
     .promise.then(() => {
       return canvas;
@@ -60,10 +64,10 @@ function makeThumb(page) {
   templateUrl: './card-customer.component.html',
   styleUrls: ['./card-customer.component.scss'],
 })
-export class CardCustomerComponent implements OnInit, AfterViewInit  {
+export class CardCustomerComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild('inputSearch', {static: false}) inputEl:ElementRef;
-  @ViewChild('bodyEl', {static: false}) bodyEl:ElementRef;
+  @ViewChild('inputSearch', {static: false}) inputEl: ElementRef;
+  @ViewChild('bodyEl', {static: false}) bodyEl: ElementRef;
   @Input() header: boolean;
   @Input() imageContent: boolean;
   @Input() data: any;
@@ -71,8 +75,8 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
   length = 20;
   pageSize = 6;
   pageEvent: PageEvent;
-  isMedia: boolean = false;
-  public isInPutSearchOpen: boolean = false;
+  isMedia = false;
+  public isInPutSearchOpen = false;
   constructor(
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
@@ -84,42 +88,49 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
     if (isMediaItem(this.data)) {
       this.isMedia = true;
       this.data.forEach((x) => {
-        if (x.fileType !== "video"){
-          pdfjsLib
-          .getDocument(
-              {
-                url: 'https://demo-bucket-learn.s3-ap-northeast-1.amazonaws.com/1605064635000.pdf',
-                cMapUrl: "pdfjs/cmaps/",
-                cMapPacked: true
-              }
-          )
-          .promise.then((doc) => {
-            const pages = [1];
-            return Promise.all(
-              pages.map((num) => {
-                return doc
-                  .getPage(num)
-                  .then(makeThumb)
-                  .then((canvas) => {
-                    this.dataTranforms.push({
-                      id: x.id,
-                      link: this.sanitizer.bypassSecurityTrustResourceUrl(
-                        x.link
-                      ),
-                      topic: x.topic,
-                      fileType: x.fileType,
-                      title: x.title,
-                      thumb: this.sanitizer.bypassSecurityTrustResourceUrl(canvas
-                        .toDataURL('image/png')),
+        if (x.fileType !== 'video'){
+          if (x.thumb === '') {
+            pdfjsLib
+            .getDocument(
+                {
+                  url: 'https://demo-bucket-learn.s3-ap-northeast-1.amazonaws.com/1605064635000.pdf',
+                  cMapUrl: 'pdfjs/cmaps/',
+                  cMapPacked: true
+                }
+            )
+            .promise.then((doc) => {
+              const pages = [1];
+              return Promise.all(
+                pages.map((num) => {
+                  return doc
+                    .getPage(num)
+                    .then(makeThumb)
+                    .then((canvas) => {
+                      this.dataTranforms.push({
+                        id: x.id,
+                        link: this.sanitizer.bypassSecurityTrustResourceUrl(
+                          x.link
+                        ),
+                        topic: x.topic,
+                        fileType: x.fileType,
+                        title: x.title,
+                        startDate: x.startDate,
+                        endDate: x.endDate,
+                        thumb: this.sanitizer.bypassSecurityTrustResourceUrl(canvas
+                          .toDataURL('image/png')),
+                      });
                     });
-                  });
 
-              })
-            ).then( () =>{
+                })
+              ).then( () => {
 
-            });
-          })
-          .catch(console.error);
+              });
+            })
+            .catch(console.error);
+          } else {
+            this.dataTranforms.push(x);
+          }
+
         } else{
           this.dataTranforms.push({
             id: x.id,
@@ -129,6 +140,8 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
             topic: x.topic,
             fileType: x.fileType,
             title: x.title,
+            startDate: x.startDate,
+            endDate: x.endDate,
             thumb: x.thumb,
           });
 
@@ -142,21 +155,17 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
           imgPath : element.imgPath,
           content: element.content,
           title: element.title,
-          subImgPath:element.subImgPath,
+          subImgPath: element.subImgPath,
           subTitle: element.subTitle,
-        })
+        });
       });
     }
   }
 
-
-  ngAfterViewInit() {
-  }
-
-  openDialog(src) {
+  openDialog(src): void{
     const dialogRefConfirm = this.dialog.open(ConfirmComponent, {
       width: '500px',
-      data: {title:"確認", message:''},
+      data: {title: '確認', message: ''},
     });
     dialogRefConfirm.afterClosed().subscribe( (result) => {
       if (result) {
@@ -165,12 +174,10 @@ export class CardCustomerComponent implements OnInit, AfterViewInit  {
             data: src,
           });
 
-          dialogRef.afterClosed().subscribe((result) => {
-            //doing somthing;
+          dialogRef.afterClosed().subscribe( (value) => {
+              // Doing something
           });
       }
-    })
-
-
+    });
   }
 }

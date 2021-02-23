@@ -1,24 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonDataService } from '../../../app/service/common-data.service'
+import { CommonDataService } from '../../../app/service/common-data.service';
+import { GLOBAL_CONSTANT } from '../../constant/global-constant';
 @Component({
   selector: 'app-manager-admin-media',
   templateUrl: './manager-admin-media.component.html',
   styleUrls: ['./manager-admin-media.component.scss']
 })
 export class ManagerAdminMediaComponent implements OnInit {
-  videos =  []
-  constructor( private commonDataService : CommonDataService) {
+  videos: any[];
+  GLOBAL: any;
+  constructor( private commonDataService: CommonDataService) {
     this.videos = this.commonDataService.dataMedia();
   }
 
   ngOnInit(): void {
+    this.GLOBAL = GLOBAL_CONSTANT;
   }
-  settingTable(){
-    const columnsDisplay = ["NO","TOPIC","DURATION","FILE_TYPE"];
-    const tunrOnactionEvent = true;
-    const dataSrc = this.videos
-    return {columns:columnsDisplay,action : tunrOnactionEvent,data:dataSrc}
+  settingTable(): any{
+    const columnsDisplay = ['NO', 'TITLE', 'TOPIC', 'DURATION', 'FILE_TYPE', 'START_DATE', 'END_DATE'];
+    const disableSearch = {NO: false, TOPIC: false, DURATION: false, FILE_TYPE: false, START_DATE: true, END_DATE: true};
+    const tunrOnActionEvent = true;
+    const dataSrc = this.videos;
+    const typeElement = {
+      id: ['input', {required: ''}],
+      link: ['input', {required: ''} ],
+      videoTime: ['input'],
+      topic:  ['input'],
+      fileType: [{select: ['pdf', 'video']}, {required: ''}],
+      thumb:  ['input', {pattern: '[a-zA-Z ]*'}],
+      // tslint:disable-next-line:quotemark
+      title:  [{radio: ["Tutorial_EDIT", "PythonTutorial", "Thebook", "Demo Video"]}, {required: ''}],
+      startDate: ['startDate'],
+      endDate: ['endDate'],
+    };
+    const heightDialog = 600;
+    const widthDialog = 900;
+    return {columns: columnsDisplay, action: tunrOnActionEvent, data: dataSrc, disableSearch, typeElement, heightDialog, widthDialog};
   }
-
-
 }

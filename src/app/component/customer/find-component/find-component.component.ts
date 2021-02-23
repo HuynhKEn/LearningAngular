@@ -6,14 +6,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./find-component.component.scss']
 })
 export class FindComponentComponent implements OnInit {
-  search: string = '';
-  @Input() color : string;
+  search = '';
+  @Input() color: string;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSearch() {
+  onSearch(): void{
     if (this.search) {
     }
   }

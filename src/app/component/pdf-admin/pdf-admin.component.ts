@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonDataService } from 'src/app/service/common-data.service';
+import { GLOBAL_CONSTANT } from '../../constant/global-constant';
 
 @Component({
   selector: 'app-pdf-admin',
@@ -8,20 +9,22 @@ import { CommonDataService } from 'src/app/service/common-data.service';
 })
 export class PdfAdminComponent implements OnInit {
   sourceOfPDF: string;
-  flagHiddenQuestion: boolean = true;
-  isHiddenSpinner:boolean = false;
+  flagHiddenQuestion = true;
+  isHiddenSpinner = false;
+  GLOBAL: any;
   constructor(private commonDataService: CommonDataService) {
       this.sourceOfPDF = this.commonDataService.sourcesDefaultPDF();
   }
 
   ngOnInit(): void {
+    this.GLOBAL = GLOBAL_CONSTANT;
   }
 
     /*
     PDF
   **/
 
-  whenReadComple(event){
+  whenReadComple(event): void{
     if (event) {
         this.flagHiddenQuestion = false;
         alert(event);
@@ -30,7 +33,7 @@ export class PdfAdminComponent implements OnInit {
     }
   }
 
-  whenLoadError(event){
+  whenLoadError(event): void{
     if (event){
       this.isHiddenSpinner = true;
     }

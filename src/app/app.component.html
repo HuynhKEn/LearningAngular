@@ -1,16 +1,15 @@
 <app-layout *ngIf="!loginStatus">
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav role="navigation">
-      <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-      <main>
-        <app-find-component></app-find-component>
-        <router-outlet ></router-outlet>
-      </main>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav role="navigation">
+        <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+          <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+          <div style="position: relative; top:80px">
+            <router-outlet ></router-outlet>
+          </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
 </app-layout>
 <router-outlet *ngIf="loginStatus"></router-outlet>
 

@@ -13,7 +13,7 @@ export class NavService {
       }
     });
   }
-  public closeNav() {
+  public closeNav(): void {
     this.appSideNav.close();
   }
 }

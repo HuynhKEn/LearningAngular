@@ -13,7 +13,7 @@ import { ConfirmDialogModel } from './confirm.model';
 export class ConfirmComponent {
   title: string;
   message: string;
-  warning: boolean = false;
+  warning = false;
   backup: boolean;
 
   constructor(
@@ -22,7 +22,7 @@ export class ConfirmComponent {
   ) {
     // Update view with given values
     this.title = data.title;
-    this.message = 'W を削除します。よろしいですか？' + data.message;
+    this.message = data.message;
     this.warning = data.warning;
     this.backup = data.backup;
   }
@@ -36,7 +36,7 @@ export class ConfirmComponent {
     // Close the dialog, return false
     this.dialogRef.close(false);
   }
-  onBackup() {
-    this.dialogRef.close("backup")
+  onBackup(): void {
+    this.dialogRef.close('backup');
   }
 }

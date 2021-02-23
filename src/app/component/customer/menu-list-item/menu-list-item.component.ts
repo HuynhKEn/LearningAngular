@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
-import { MenuSettings, NavItem} from "../A-set-up-dynamic/data-menu-item-customer";
+import { MenuSettings, NavItem} from '../A-set-up-dynamic/data-menu-item-customer';
 @Component({
   selector: 'app-menu-list-item',
   templateUrl: './menu-list-item.component.html',
@@ -8,14 +8,14 @@ import { MenuSettings, NavItem} from "../A-set-up-dynamic/data-menu-item-custome
 export class MenuListItemComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<boolean>();
   menuElement: NavItem[];
-  logoIcon = "../../../../assets/images/icon.png"
+  logoIcon = '../../../../assets/images/icon.png';
   constructor() {
   }
 
   ngOnInit(): void {
     this.menuElement = MenuSettings.navItems;
   }
-  onToggleSidenav(){
+  onToggleSidenav(): void{
     this.toggleSidenav.emit(true);
   }
 }

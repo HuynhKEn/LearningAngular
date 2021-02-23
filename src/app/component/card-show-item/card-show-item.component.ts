@@ -7,19 +7,14 @@ import { CommonDataService } from 'src/app/service/common-data.service';
   styleUrls: ['./card-show-item.component.scss']
 })
 export class CardShowItemComponent implements OnInit {
-  dataForward = []
+  dataForward = [];
   constructor(private commonDataService: CommonDataService) {
-    const randomChoose = this.getRandomInt(2)
-    if (randomChoose === 0){
-      this.dataForward = this.commonDataService.iuDefaultData();
-    } else{
-      this.dataForward = this.commonDataService.dataMedia();
-    }
+     this.dataForward = this.commonDataService.dataMedia();
   }
 
   ngOnInit(): void {
   }
-  getRandomInt(max) {
+  getRandomInt(max): number {
     return Math.floor(Math.random() * Math.floor(max));
   }
 

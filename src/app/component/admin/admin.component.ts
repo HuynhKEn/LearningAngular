@@ -1,4 +1,5 @@
-import { Component, OnInit,AfterViewInit,ChangeDetectionStrategy,ChangeDetectorRef, ViewChild, DoCheck  } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy,
+  ChangeDetectorRef, ViewChild, DoCheck  } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { AdminService } from 'src/app/service/admin/admin.service';
@@ -12,40 +13,39 @@ import { interval } from 'rxjs';
 
 })
 export class AdminComponent implements OnInit, DoCheck, AfterViewInit {
-  @ViewChild(MatSidenav) matSidenav : MatSidenav
-  @ViewChild(MatSidenavContent)  matSidenavContent: MatSidenavContent
+  @ViewChild(MatSidenav) matSidenav: MatSidenav;
+  @ViewChild(MatSidenavContent)  matSidenavContent: MatSidenavContent;
     constructor(
       private adminService: AdminService,
-      private cdRef :ChangeDetectorRef,
+      private cdRef: ChangeDetectorRef,
       private navService: NavService ) {
     this.adminService.changeStatusToAdmin(true);
 
   }
-
+  showNavLabels = true;
   ngOnInit(): void {
   }
 
-  ngDoCheck() {
+  ngDoCheck(): void {
     this.cdRef.detectChanges();
 
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.navService.appSideNav = this.matSidenav;
   }
 
-  showNavLabels: boolean = true;
-  onToggleSidenav(event) {
+  onToggleSidenav(event): void {
     // this.matSidenavContent.elementScrolled().pipe( switchMap( () => interval(1000) ) ).subscribe( (e)=> console.log(e))
     // this.matSidenav.openedStart.pipe(switchMap( () => interval(1000) )).subscribe( (e)=> console.log(e))
     if (event){
-      this.matSidenav.toggle()
+      this.matSidenav.toggle();
     }
   }
 
-  onCloseToggleSidenav(event){
+  onCloseToggleSidenav(event): void{
     if (event){
-      this.matSidenav.close()
+      this.matSidenav.close();
     }
   }
 

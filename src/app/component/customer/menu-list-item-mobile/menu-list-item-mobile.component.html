@@ -3,6 +3,6 @@
     <img [src]="logoIcon" class="image-responsive">
   </div>
   <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
-    <app-list-item *ngFor="let item of menuElement" [item]="item" [mobile]="mobile"></app-list-item>
+    <app-list-item *ngFor="let item of menuElement" [item]="item" [menuElement]="menuElement" [mobile]="mobile"></app-list-item>
   </mat-list>
 </div>

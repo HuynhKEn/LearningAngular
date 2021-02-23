@@ -1,12 +1,12 @@
-<div class="toolbar-header" [ngClass]="{'tic-tac-color-blue':colorTicTac,'tic-tac-color-green':!colorTicTac}">
-  <mat-toolbar color="primary" [ngClass]="{'tic-tac-color-blue':colorTicTac,'tic-tac-color-green':!colorTicTac}">
+<div class="header-wrapper">
+  <mat-toolbar color="primary">
     <div fxHide.gt-xs>
-      <button mat-icon-button (click)="onToggleSidenav()">
+      <button mat-icon-button (click)="onToggleSidenav()" *ngIf="!loginStatus">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-    <div>
-      <a routerLink="/home">HTV</a>
+    <div class="image-logo-header">
+      <a routerLink="/home"><img [src]="logoIcon"></a>
     </div>
 
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
@@ -14,9 +14,6 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item *ngFor="let name of menuList">{{name}}</button>
         </mat-menu>
-        <li>
-          <mat-icon class="icon-list" [matMenuTriggerFor]="menu">menu</mat-icon>
-        </li>
         <li>
           <a [matMenuTriggerFor]="menu">
             Danh mục
@@ -29,7 +26,11 @@
         <li>
           <a routerLink="/contact">Liên hệ</a>
         </li>
+        <li>
+          <app-find-component></app-find-component>
+        </li>
       </ul>
     </div>
   </mat-toolbar>
 </div>
+

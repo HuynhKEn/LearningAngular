@@ -6,9 +6,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerFormGroup : FormGroup;
+  registerFormGroup: FormGroup;
   isSubmitted  = false
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.registerFormGroup = this.formBuilder.group({
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
         [Validators.required, Validators.pattern('^[a-zA-Z0-9]{1,16}$')],
       ],
       password: [
-        '',Validators.required
+        '', Validators.required
       ]
     })
   }
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     this.isSubmitted = true;
-    if(this.registerFormGroup.invalid){
+    if (this.registerFormGroup.invalid){
       return;
     }
   }

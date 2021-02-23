@@ -10,6 +10,10 @@
     width: 100%;
     color: white;
     border-radius: 0px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .form-topic{
@@ -18,4 +22,21 @@
     border-radius: 0px;
     width: 120px
   }
+}
+.container-post-admin{
+  textarea{
+    height: 200px;
+  }
+  input{
+    border: 1px #d6d3d3 solid;
+  }
+}
+.header-post-admin{
+  border-bottom: 2px solid #eae3ed;
+  h1{
+    padding: 15px 15px 0 15px;
+  }
+}
+.body-post-admin{
+  padding: 15px;
 }

@@ -16,7 +16,7 @@ import {
   NguCarouselStore,
 } from '@ngu/carousel';
 import { Ng2ImgMaxService } from 'ng2-img-max';
-
+import { GLOBAL_CONSTANT } from '../../../constant/global-constant';
 @Component({
   selector: 'app-carousel-customer-vertical',
   templateUrl: './carousel-customer-vertical.component.html',
@@ -47,7 +47,7 @@ export class CarouselCustomerVerticalComponent
       enabled: true,
       height: 600,
     },
-    animation: "lazy",
+    animation: 'lazy',
     easing: 'cubic-bezier(0, 0, 0.2, 1)',
   };
   uploadedImage: File;
@@ -55,23 +55,24 @@ export class CarouselCustomerVerticalComponent
   images = ['machine.png', 'python.png'].map(
     (n) => `../../../assets/images/${n}`
   );
-  images_famework = ['machine.png', 'python.png'].map(
+  imageFramework = ['machine.png', 'python.png'].map(
     (n) => `../../../assets/images/${n}`
   );
   carouselItems: any[] = [];
-
+  GLOBAL: any;
   constructor(
     private ng2ImgMax: Ng2ImgMaxService,
     private sanitizer: DomSanitizer,
-    private _cdr: ChangeDetectorRef
+    private cdrf: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    this.GLOBAL = GLOBAL_CONSTANT;
     this.ImagePreview();
   }
 
-  ImagePreview() {
-    const imagesShow = this.images.concat(this.images_famework);
+  ImagePreview(): void {
+    const imagesShow = this.images.concat(this.imageFramework);
     let fileNameExt = '';
     imagesShow.map((res) => {
       fileNameExt = res.split('.').pop();
@@ -95,27 +96,27 @@ export class CarouselCustomerVerticalComponent
               }
             );
           });
-          promise.then((res) => {
-            this.carouselItems.push(this.getInnerHTMLValue(URL.createObjectURL(res)));
+          promise.then( (subRes) => {
+            this.carouselItems.push(this.getInnerHTMLValue(URL.createObjectURL(subRes)));
           });
           // this.owlElement.trigger('destroy.owl.carousel');
         })
         .catch((error) => console.error(error));
     });
   }
-  getInnerHTMLValue(value) {
+  getInnerHTMLValue(value): any {
     return this.sanitizer.bypassSecurityTrustUrl(value);
   }
 
-  ngAfterViewInit() {
-    this._cdr.detectChanges();
+  ngAfterViewInit(): void {
+    this.cdrf.detectChanges();
   }
 
-  carouselTileLoad(data) {
-    let arr = this.carouselItems;
+  carouselTileLoad(data): void {
+    const arr = this.carouselItems;
     this.carouselItems = [...this.carouselItems];
   }
-  onmoveFn(data: NguCarouselStore) {
+  onmoveFn(data: NguCarouselStore): void {
     console.log(data);
   }
 }

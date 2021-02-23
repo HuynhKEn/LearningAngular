@@ -1,23 +1,19 @@
-<div fxLayout="row wrap" fxLayout.lt-md="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="flex-start">
-  <div fxFlex="calc(15%-10px)" fxFlex.lt-md="calc(10%-10px)" fxHide.xs class="left-layout">
-    <div gdAreas="logo logo|content content" gdRow="auto auto">
-      <div gdArea="logo">
-        <img [src]="logoIcon" class="image-responsive">
-      </div>
-      <mat-list gdArea="content" gdAreas="sub_content|sub_icon">
-          <div *ngFor="let item of menuElement">
-            <app-list-item  [item]="item"></app-list-item>
-            <hr>
-          </div>
+<app-header class="toolbar-admin"></app-header>
+<div fxLayout="row"  fxLayoutGap="15px" fxLayoutAlign="flex-start">
+  <div fxFlex="195px" fxHide.lt-md fxHide-md class="left-layout" style="position: relative; top:70px">
+      <mat-list style="position: fixed;width: 175px;">
+        <div *ngFor="let item of menuElement">
+          <app-list-item  [item]="item" [menuElement]="menuElement"></app-list-item>
+          <hr>
+        </div>
       </mat-list>
-    </div>
   </div>
-  <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToggleSidenav()">
+  <div  fxFlex-lt.md ="10%" fxHide.gt-md  fxHide.md class="left-layout">
+    <button mat-icon-button (click)="onToggleSidenav()" style="position: relative; top:70px">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div fxFlex="calc(85%-10px)" fxFlex.lt-md="calc(90%-10px)" fxFlex.xs="100%" class="right-layout">
-    <router-outlet></router-outlet>
+  <div fxFlex="calc(100%-210px)" fxFlex-lt.md ="90%"  class="right-layout" style="position: relative; top:70px">
+      <router-outlet></router-outlet>
   </div>
 </div>

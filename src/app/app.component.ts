@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from './service/admin/admin.service';
-
+import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +9,14 @@ import { AdminService } from './service/admin/admin.service';
 export class AppComponent {
   title = 'LearningAngular';
   loginStatus: boolean;
-  constructor(private adminService : AdminService){
-    this.adminService.loginStatus$.subscribe(res => this.loginStatus = res);
-  }
+  constructor(
+    private adminService : AdminService,
+    private primengConfig: PrimeNGConfig
+    )
+    {
+      this.primengConfig.ripple = true;
+      this.adminService.loginStatus$.subscribe(res => this.loginStatus = res);
+    }
 
 
 }

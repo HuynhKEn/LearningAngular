@@ -1,5 +1,8 @@
 <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="15px">
-  <div fxFlex="1 1 100%">
+  <div fxFlex="0 1 calc(100%)" class="header-topic-admin">
+    <h1>{{GLOBAL.HEADER.TOPIC_MANAGE}}</h1>
+  </div>
+  <div fxFlex="1 1 100%" class="body-topic-admin">
     <form [formGroup]="formTopicGroup" (ngSubmit)="onSubmit()" class="form-topic"
       gdAreas="selectGrid selectGrid selectGrid selectGrid|
       titleGrid titleGrid contentGrid contentGrid|
@@ -8,7 +11,7 @@
       buttonAccept buttonAccept buttonAccept buttonAccept"
       gdGap="10px">
       <div gdArea="selectGrid">
-        <mat-label><small>Topic</small></mat-label>
+        <mat-label><small>TOPIC</small></mat-label>
         <mat-select formControlName="selectedValue" [compareWith]="compareFn" class="select-global"
           (selectionChange)="updateTopicElements()">
           <mat-option *ngFor="let topic of topics" [value]="topic">
@@ -18,32 +21,38 @@
       </div>
 
       <div gdArea="titleGrid" *ngIf="addTopicStatus|| editTopicStatus">
+        <mat-label><small>TOPIC</small></mat-label>
         <textarea matInput [attr.disabled]="editTopicStatus  ===  true ? true : null"  type="text" placeholder="Chủ đề" formControlName="titleTopic" class="form-control" ></textarea>
       </div>
 
       <div gdArea="contentGrid" *ngIf="addTopicStatus|| editTopicStatus" >
+        <mat-label><small>CONTENT TOPIC</small></mat-label>
         <textarea matInput placeholder="Nội dung chủ đề" formControlName="contentTopic" class="form-control" ></textarea>
       </div>
 
       <div gdArea="seeMoreGrid" *ngIf="addTopicStatus|| editTopicStatus">
+        <mat-label><small>LINK</small></mat-label>
         <textarea matInput placeholder="Link tham khảo" formControlName="seeLink" class="form-control" ></textarea>
       </div>
 
       <div gdArea="quoteGrid" *ngIf="addTopicStatus|| editTopicStatus">
+        <mat-label><small>LINK QUOTE</small></mat-label>
         <textarea matInput placeholder="Link trích dẫn" formControlName="quoteLink" class="form-control" ></textarea>
       </div>
 
       <div gdArea="contentSee" *ngIf="addTopicStatus|| editTopicStatus">
+        <mat-label><small>CONTENT REFER</small></mat-label>
         <textarea matInput placeholder="Nội dung tham khảo" formControlName="seeContent" class="form-control" ></textarea>
       </div>
 
       <div gdArea="contentQuote" *ngIf="addTopicStatus|| editTopicStatus">
+        <mat-label><small>CONTENT QUOTE</small></mat-label>
         <textarea matInput placeholder="Nội dung trích dẫn" formControlName="quoteContent" class="form-control" ></textarea>
       </div>
 
       <div gdArea="buttonAccept" *ngIf="addTopicStatus|| editTopicStatus">
         <button class="btn btn-primary" type="submit">
-          Xác nhận
+          XÁC NHẬN
         </button>
       </div>
     </form>
@@ -52,17 +61,17 @@
     <div gdAreas="add edit delete">
       <div gdArea="add" class="action-wrap">
         <a mat-flat-button (click)="addTopic()">
-          <mat-icon>add</mat-icon>
+          {{GLOBAL.TEXT_ICON_ADD}}<mat-icon>add</mat-icon>
         </a>
       </div>
       <div gdArea="edit" class="action-wrap">
         <a mat-flat-button  (click)="editTopic()">
-          <mat-icon>edit</mat-icon>
+          {{GLOBAL.TEXT_ICON_EDIT}}<mat-icon>edit</mat-icon>
         </a>
       </div>
       <div gdArea="delete" class="action-wrap">
         <a mat-flat-button  (click)="deleteTopic()">
-          <mat-icon>delete</mat-icon>
+          {{GLOBAL.TEXT_ICON_DELETE}}<mat-icon>delete</mat-icon>
         </a>
       </div>
     </div>

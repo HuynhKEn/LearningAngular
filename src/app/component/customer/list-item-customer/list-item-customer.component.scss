@@ -19,16 +19,21 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
     }
   }
 }
-.mat-list-item {
-  .routeIcon {
-    margin-right: 15px;
+.container-list-item{
+  .mat-list-item {
+    .routeIcon {
+      margin-right: 15px;
+    }
+    cursor: pointer;
+    border-bottom: 1px solid #eae3ed;
   }
-  cursor: pointer;
 }
-.mat-list-item:hover{
-  color:rgba(0, 72, 255, 0.859)
-}
+
+
+
 hr{
+  padding-left:0px;
+  padding-right: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
   border: 0;

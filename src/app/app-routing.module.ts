@@ -15,6 +15,8 @@ import { RegisterComponent } from './component/register/register.component';
 import { TopicComponent } from './component/topic-admin/topic.component';
 import { ROUTE_PATH } from './config/route-path.config';
 import { GuardDeactivate } from './component/customer/B-set-up-service/guard-deactivate.service';
+import { CodeManageComponent } from './component/code-manage/code-manage.component';
+import { PostAssignmentComponent } from './component/post-assignment/post-assignment.component';
 const routes: Routes = [
   { path: '', redirectTo: `${ROUTE_PATH.HOME}`, pathMatch: 'full' },
   { path: `${ROUTE_PATH.HOME}`, component: HomeComponent },
@@ -37,8 +39,16 @@ const routes: Routes = [
             component: PostAdminComponent,
           },
           {
+            path: `${ROUTE_PATH.POST_ASSIGNMENT}`,
+            component: PostAssignmentComponent,
+          },
+          {
             path: `${ROUTE_PATH.MANAGER_ADMIN_MEDIA}`,
             component: ManagerAdminMediaComponent,
+          },
+          {
+            path: `${ROUTE_PATH.MANAGER_CODE}`,
+            component: CodeManageComponent,
           },
           {
             path: `${ROUTE_PATH.MEDIA_ADMIN}`,
@@ -63,7 +73,7 @@ const routes: Routes = [
               {
                 path: `${ROUTE_PATH.CAROUSEL_ITEM_V}`,
                 component: CarouselCustomerVerticalComponent
-              },
+              }
             ],
           },
         ],

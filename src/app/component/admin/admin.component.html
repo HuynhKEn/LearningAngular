@@ -1,10 +1,13 @@
-<mat-sidenav-container class="layout-admin">
-  <mat-sidenav #sidenav role="navigation" mode="push">
-    <mat-nav-list>
-      <app-menu-list-item-mobile></app-menu-list-item-mobile>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-      <app-menu-list-item (toggleSidenav)="onToggleSidenav($event)"></app-menu-list-item>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="container-admin">
+  <mat-sidenav-container class="layout-admin">
+    <mat-sidenav #sidenav role="navigation" mode="push">
+      <mat-nav-list>
+        <app-menu-list-item-mobile></app-menu-list-item-mobile>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-menu-list-item (toggleSidenav)="onToggleSidenav($event)"></app-menu-list-item>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

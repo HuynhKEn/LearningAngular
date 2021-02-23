@@ -28,11 +28,23 @@ import { ManagerAdminMediaComponent } from './component/manager-admin-media/mana
 import { CardCustomerComponent } from './component/customer/card-customer/card-customer.component';
 import { DialogPdfShowComponent } from './component/customer/card-customer/dialog-pdf-show/dialog-pdf-show.component';
 import { CardShowItemComponent } from './component/card-show-item/card-show-item.component';
-import {CarouselCustomerComponent} from './component/customer/carousel-customer/carousel-customer.component';
+import { CarouselCustomerComponent } from './component/customer/carousel-customer/carousel-customer.component';
 import { ConfirmComponent } from './component/customer/confirm/confirm.component';
 import { CarouselCustomerVerticalComponent } from './component/customer/carousel-customer-vertical/carousel-customer-vertical.component';
 import { FindComponentComponent } from './component/customer/find-component/find-component.component';
-import { GuardDeactivate } from "./component/customer/B-set-up-service/guard-deactivate.service";
+import { GuardDeactivate } from './component/customer/B-set-up-service/guard-deactivate.service';
+import { CodeManageComponent } from './component/code-manage/code-manage.component';
+import { MediaShowDialogCustomerComponent } from './component/customer/media-show-dialog-customer/media-show-dialog-customer.component';
+import { SafePipe } from './pipe/safe.pipe';
+import { CapitalizePipe } from './pipe/capitalize.pipe';
+import { ControlModifyDialogComponent } from './component/customer/control-modify-dialog/control-modify-dialog.component';
+import { CodeViewerComponent } from './component/customer/code-viewer/code-viewer.component';
+import { PostAssignmentComponent } from './component/post-assignment/post-assignment.component';
+import { PaginationCustomerComponent } from './component/customer/pagination-customer/pagination-customer.component';
+import * as ace from 'ace-builds/src-noconflict/ace';
+ace.config.set('basePath', '/assets/ui/');
+ace.config.set('modePath', '');
+ace.config.set('themePath', '');
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +59,6 @@ import { GuardDeactivate } from "./component/customer/B-set-up-service/guard-dea
     TopicComponent,
     PostAdminComponent,
     MediaComponent,
-    ChangeColumnTable,
     TableCustomComponent,
     PdfViewerCustomerComponent,
     MenuListItemComponent,
@@ -61,8 +72,19 @@ import { GuardDeactivate } from "./component/customer/B-set-up-service/guard-dea
     CarouselCustomerComponent,
     CarouselCustomerVerticalComponent,
     ConfirmComponent,
-    IfPipe,
     FindComponentComponent,
+    CodeManageComponent,
+    MediaShowDialogCustomerComponent,
+    ControlModifyDialogComponent,
+    CodeViewerComponent,
+    PostAssignmentComponent,
+    PaginationCustomerComponent,
+
+    ChangeColumnTable,
+    IfPipe,
+    SafePipe,
+    CapitalizePipe,
+
   ],
   imports: [AppRoutingModule, FlexLayoutModule, ShareModule, NgbModule],
   exports: [ShareModule],
@@ -70,3 +92,4 @@ import { GuardDeactivate } from "./component/customer/B-set-up-service/guard-dea
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+

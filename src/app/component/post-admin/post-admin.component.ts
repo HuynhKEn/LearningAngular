@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, DoCheck, OnInit, Pipe, PipeTransform } from '@angular/core';
-import {FormGroup,FormBuilder,Validators} from '@angular/forms'
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CommonDataService } from 'src/app/service/common-data.service';
-
+import { GLOBAL_CONSTANT } from '../../constant/global-constant';
 
 
 @Component({
@@ -10,82 +10,89 @@ import { CommonDataService } from 'src/app/service/common-data.service';
   styleUrls: ['./post-admin.component.scss']
 })
 
-export class PostAdminComponent implements OnInit,DoCheck {
-  formPostGroup : FormGroup;
-  topics = [];
-  postsOfTopics : any[] = []
+export class PostAdminComponent implements OnInit, DoCheck {
+  formPostGroup: FormGroup;
+  topics: any[];
+  postsOfTopics: any[] = [];
   copyPostsOfTopics = [];
-  editPostStatus:boolean
-  addPostStatus:boolean
-  deletePostStatus:number
-  addOrEditDelete:number
-  oldSubSelectValue:string
-  contentValue:string
+  editPostStatus: boolean;
+  addPostStatus = true;
+  deletePostStatus: number;
+  addOrEditDelete: number;
+  oldSubSelectValue: string;
+  contentValue: string;
+  GLOBAL: any;
   constructor(
-    private fromBuilder:FormBuilder,
+    private fromBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private commonDataService: CommonDataService
     ) {
-    this.topics= this.commonDataService.topicsData();
+    this.topics = this.commonDataService.topicsData();
     this.postsOfTopics = this.commonDataService.postOfTopicsData();
     this.formPostGroup = this.fromBuilder.group({
-      titleAdd:['', Validators.required],
-      content:['', Validators.required],
+      titleAdd: ['', Validators.required],
+      content: ['', Validators.required],
       selectedValue: [this.topics[0]],
       subSelectValue: [''],
-    })
+    });
    }
 
   ngOnInit(): void {
-    this.oldSubSelectValue = this.formPostGroup.controls.subSelectValue.value
+    this.GLOBAL = GLOBAL_CONSTANT;
+    this.oldSubSelectValue = this.formPostGroup.controls.subSelectValue.value;
   }
-  ngDoCheck(){
+  ngDoCheck(): void{
     if (!!this.formPostGroup.controls.subSelectValue.value && this.oldSubSelectValue !==  this.formPostGroup.controls.subSelectValue.value){
-      this.formPostGroup.controls.content.setValue(this.formPostGroup.controls.subSelectValue.value.content)
-      this.oldSubSelectValue  = this.formPostGroup.controls.subSelectValue.value
+      this.formPostGroup.controls.content.setValue(this.formPostGroup.controls.subSelectValue.value.content);
+      this.oldSubSelectValue  = this.formPostGroup.controls.subSelectValue.value;
     }
   }
 
-  addPost() {
+  addPost(): void {
     this.editPostStatus = false;
-    this.deletePostStatus = 0
+    this.deletePostStatus = 0;
     this.addPostStatus = true;
     this.addOrEditDelete = 0;
   }
-  editPost() {
+  editPost(): void {
     this.addPostStatus = false;
-    this.deletePostStatus = 0
+    this.deletePostStatus = 0;
     this.editPostStatus = true;
     this.addOrEditDelete = 1;
 
   }
-  deletePost() {
+  deletePost(): void {
     this.editPostStatus = false;
     this.addPostStatus = false;
-    this.deletePostStatus = 1
+    this.deletePostStatus = 1;
     this.addOrEditDelete = 2;
   }
-  updatePostElements(){
-    this.copyPostsOfTopics = this.postsOfTopics.filter(param => param.id_parent === this.formPostGroup.controls.selectedValue.value.id)
-    this.formPostGroup.controls['subSelectValue'].patchValue(this.copyPostsOfTopics[0]);
+  updatePostElements(): void{
+    this.copyPostsOfTopics = this.postsOfTopics.filter(param => param.id_parent === this.formPostGroup.controls.selectedValue.value.id);
+    this.formPostGroup.controls.subSelectValue.patchValue(this.copyPostsOfTopics[0]);
   }
 
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
-  onSubmit(){
-    //Add
-    if(this.addOrEditDelete===0){
-      console.log(this.formPostGroup.controls.titleAdd.value,this.formPostGroup.controls.content.value,this.formPostGroup.controls.selectedValue.value.id)
+  onSubmit(): void{
+    // Add
+    if (this.addOrEditDelete === 0){
+      console.log(this.formPostGroup.controls.titleAdd.value,
+        this.formPostGroup.controls.content.value,
+        this.formPostGroup.controls.selectedValue.value.id);
     }
-    //Edit
-    if(this.addOrEditDelete===1){
-      console.log(this.formPostGroup.controls.subSelectValue.value,this.formPostGroup.controls.content.value,this.formPostGroup.controls.selectedValue.value.id)
+    // Edit
+    if (this.addOrEditDelete === 1){
+      console.log(this.formPostGroup.controls.subSelectValue.value,
+        this.formPostGroup.controls.content.value,
+        this.formPostGroup.controls.selectedValue.value.id);
     }
-    //Delete
-    if(this.addOrEditDelete===2){
-      console.log(this.formPostGroup.controls.subSelectValue.value,this.formPostGroup.controls.selectedValue.value.id)
+    // Delete
+    if (this.addOrEditDelete === 2){
+      console.log(this.formPostGroup.controls.subSelectValue.value,
+        this.formPostGroup.controls.selectedValue.value.id);
 
     }
   }

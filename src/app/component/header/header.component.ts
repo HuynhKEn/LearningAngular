@@ -1,28 +1,30 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AdminService } from 'src/app/service/admin/admin.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  colorTicTac = true;
+  logoIcon = '../../../../assets/images/header-icon.png';
   loginStatus: boolean;
   menuList = [
-    "Python","Java","C#","Angular","Flask"
-  ]
-  changeColor = setInterval( ()=> this.colorTicTac = !this.colorTicTac, 5000);
+    'Python', 'Java', 'C#', 'Angular', 'Flask'
+  ];
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor() { }
+  constructor(private adminService: AdminService){
+    this.adminService.loginStatus$.subscribe(res => this.loginStatus = res);
+  }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
   }
 
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   }
-
-
 
 }

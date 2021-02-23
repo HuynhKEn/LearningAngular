@@ -33,9 +33,34 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSortModule } from '@angular/material/sort';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
+
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+
 import { NgBodyScrollLockModule } from 'ng-body-scroll-lock';
 import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
 
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HighlightJsModule } from 'ngx-highlight-js';
+import { AceEditorModule } from 'ng2-ace-editor';
+
+export const dateFormat = {
+  parse: {
+      dateInput: 'YYYY/MM/DD',
+  },
+  display: {
+      dateInput: 'YYYY/MM/DD',
+      monthYearLabel: 'MMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @NgModule({
   declarations: [],
   imports: [
@@ -74,8 +99,17 @@ import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
     MatPaginatorModule,
     MatTooltipModule,
     MatDialogModule,
+    MatSortModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
+    MultiSelectModule,
+    DropdownModule,
 
+    HighlightModule,
+    HighlightJsModule,
+    AceEditorModule,
   ],
   exports: [
     CommonModule,
@@ -91,8 +125,8 @@ import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
     FileUploadModule,
     HttpClientModule,
     NgBodyScrollLockModule,
-
-
+    OwlModule,
+    NguCarouselModule,
 
 
     MatSidenavModule,
@@ -111,11 +145,35 @@ import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
     MatSelectModule,
     MatTableModule,
     MatDialogModule,
-    OwlModule,
-    NguCarouselModule,
+    MatSortModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
+    MultiSelectModule,
+    DropdownModule,
+
+    HighlightModule,
+    HighlightJsModule,
+    AceEditorModule
+
 
   ],
-  providers:[NgBodyScrollLockService]
-
+  providers: [NgBodyScrollLockService,
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {
+      provide: MAT_DATE_FORMATS, useValue: dateFormat
+    },
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+      }
+    }
+  ]
 })
 export class ShareModule {}

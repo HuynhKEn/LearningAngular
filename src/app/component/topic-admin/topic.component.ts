@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonDataService } from 'src/app/service/common-data.service';
+import { GLOBAL_CONSTANT } from '../../constant/global-constant';
+
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
@@ -9,51 +11,54 @@ import { CommonDataService } from 'src/app/service/common-data.service';
 export class TopicComponent implements OnInit {
   formTopicGroup: FormGroup;
   topics = [];
-  addTopicStatus = false;
+  addTopicStatus = true;
   editTopicStatus = false;
   contentTopicValue: string;
   titleTopicValue: string;
   addOrEdit: boolean;
-  idTopic:number;
+  idTopic: number;
   seeMoreValue = {};
   quoteValue = {};
+  GLOBAL: any;
   constructor(private formBuilder: FormBuilder, private commonDataService: CommonDataService) {
-    this.topics = this.commonDataService.topicsData()
+    this.topics = this.commonDataService.topicsData();
     this.formTopicGroup = this.formBuilder.group({
       selectedValue: [this.topics[0]],
       titleTopic: ['', Validators.required],
       contentTopic: ['', Validators.required],
-      seeLink:[''],
-      quoteLink:[''],
-      seeContent:[''],
-      quoteContent:['']
+      seeLink: [''],
+      quoteLink: [''],
+      seeContent: [''],
+      quoteContent: ['']
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.GLOBAL = GLOBAL_CONSTANT;
+  }
 
 
 
-  get topicData() {
+  get topicData(): any{
     return this.formTopicGroup.controls;
   }
 
-  addTopic() {
+  addTopic(): void {
     this.editTopicStatus = false;
     this.addTopicStatus = true;
     this.addOrEdit = true;
   }
-  editTopic() {
+  editTopic(): void {
     this.addTopicStatus = false;
     this.editTopicStatus = true;
     this.addOrEdit = false;
   }
-  deleteTopic() {
+  deleteTopic(): void {
     this.idTopic = this.topicData.selectedValue.value.id;
   }
 
 
-  updateTopicElements(){
+  updateTopicElements(): void{
     this.topicData.titleTopic.setValue(
       this.topicData.selectedValue.value.title
     );
@@ -87,26 +92,26 @@ export class TopicComponent implements OnInit {
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
-  onSubmit() {
+  onSubmit(): void {
     // this.addOrEdit = True is add , False is edit
     if (this.addOrEdit) {
-      let json_data = {
+      const jsonData = {
         id: 4,
         title: this.topicData.titleTopic.value,
         content: this.topicData.contentTopic.value,
-        see_more: {link:this.topicData.seeLink.value,content:this.topicData.seeContent.value},
-        quote: {link:this.topicData.quoteLink.value,content:this.topicData.quoteContent.value},
+        see_more: {link: this.topicData.seeLink.value, content: this.topicData.seeContent.value},
+        quote: {link: this.topicData.quoteLink.value, content: this.topicData.quoteContent.value},
       };
 
-      this.topics.push(json_data);
-      this.formTopicGroup.controls['selectedValue'].patchValue(json_data);
+      this.topics.push(jsonData);
+      this.formTopicGroup.controls.selectedValue.patchValue(jsonData);
     } else {
       // this.topicData.selectedValue.value is json with format  {id,title,value}
       this.idTopic = this.topicData.selectedValue.value.id;
       this.titleTopicValue = this.topicData.selectedValue.value.title;
       this.contentTopicValue = this.topicData.contentTopic.value;
-      this.seeMoreValue = {link:this.topicData.seeLink.value,content:this.topicData.seeContent.value}
-      this.quoteValue = {link: this.topicData.quoteLink.value,content:this.topicData.quoteContent.value}
+      this.seeMoreValue = {link: this.topicData.seeLink.value, content: this.topicData.seeContent.value};
+      this.quoteValue = {link: this.topicData.quoteLink.value, content: this.topicData.quoteContent.value};
     }
   }
 }
