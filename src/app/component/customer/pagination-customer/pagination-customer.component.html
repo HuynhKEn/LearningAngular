@@ -1,0 +1,65 @@
+<ng-container>
+  <div class="container-pagination" *ngIf="element$ |async as element">
+    <div class="row" *ngIf="mode === 1">
+      <div class="col-12">
+        <div class="select-page-size">
+          <p-dropdown [options]="settingConfig.pageSizeList" [ngModel]="pageSizeModelTemp"
+            (ngModelChange)="pageSize.next($event)" class="customer-sub-dropdown">
+            <ng-template pTemplate="selectedItem">
+              <div>
+                {{element.currentSize}}
+              </div>
+            </ng-template>
+            <ng-template let-pageSizeElement pTemplate="item">
+              <div>
+                {{pageSizeElement}}
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+        <div class="text-pagination">
+          <span>{{element.currentOffset}}</span>
+          <span>ー</span>
+          <span>{{
+            (currentPage) * element.currentSize > element.totalSize ? element.totalSize:
+            (currentPage) * element.currentSize
+            }}
+          </span>
+          <span>of</span>
+          <span>{{element.totalSize}}</span>
+        </div>
+        <div class="prev-left-all" #prevLeftAll matTooltip="Prev first page" matTooltipHideDelay="100">
+          <button mat-button aria-label="Prev first page" #prevLeftAllBtn>
+            <mat-icon>first_page</mat-icon>
+          </button>
+        </div>
+        <div class="next-right" #prevLeft matTooltip="Prev Page" matTooltipHideDelay="100">
+          <button mat-button aria-label="Prev a page" #prevLeftBtn>
+            <mat-icon>navigate_before</mat-icon>
+          </button>
+        </div>
+        <div>
+          <span>
+            {{currentPage}} / {{element.totalPage}}
+          </span>
+        </div>
+        <div class="prev-left" #nextRight matTooltip="Next Page" matTooltipHideDelay="100">
+          <button mat-button aria-label="Next a page" #nextRightBtn>
+            <mat-icon>navigate_next</mat-icon>
+          </button>
+        </div>
+
+        <div class="next-right-all" #nextRightAll matTooltip="Prev last page" matTooltipHideDelay="100">
+          <button mat-button aria-label="Next last page" #nextRightAllBtn>
+            <mat-icon>last_page</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="mode === 2">
+      <div *ngFor="let indexPage of arrayCreateList( 1* (element.totalSize / 30).toString().split('.')[0] + 1, 1)">
+        <span class="">{{indexPage}}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>

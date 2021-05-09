@@ -1,0 +1,88 @@
+::ng-deep .mat-dialog-container {
+  padding: 0;
+  overflow: unset;
+}
+button{
+  cursor: pointer
+}
+
+::ng-deep .confirm-dialog-media {
+  max-width: 1024px !important;
+  min-width: 100px !important;
+  .header-confirm{
+    padding: 0.5em;
+    font-weight: 500;
+    border: 1px solid #007ad9;
+    background-color: #007ad9;
+    color: #eeeeee;
+    display: flex;
+    border-bottom: 0 none;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    .mat-dialog-title {
+      margin: 0;
+      color: #eeeeee;
+      font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif
+    }
+
+    .close-button-dialog{
+      padding: 0;
+      margin: 0;
+      outline: none;
+      color: white;
+      border: 0;
+      background-color: #007ad9;
+    }
+    .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
+      line-height: 0;
+      min-width: 0;
+    }
+  }
+
+  .mat-dialog-custom .mat-dialog-content {
+    background-color: #ffffff;
+    color: #333333;
+    margin: auto;
+    overflow: unset;
+    padding: 0;
+  }
+
+ .mat-dialog-custom {
+    .mat-dialog-content{
+      .body-dialog-custom{
+        .row{
+          flex-direction: column;
+          padding: 1em 1em 1em 2em;
+          margin-right: 0;
+          margin-left: 0;
+        }
+        border-bottom: 1px solid #333333;
+      }
+    }
+  }
+
+  .mat-dialog-custom {
+    .mat-dialog-content{
+      .mat-dialog-actions{
+        padding-right: 1em;
+        padding-bottom: 0.5em;
+        background-color: #ffff;
+        .btn-cancel-actions{
+          background-color:#f5f4f4;
+          margin-right: 5px;
+          border: 0.5px solid #f5f4f4;
+          border-radius: 2px;
+          nb-icon{
+              font-size: 1rem
+          }
+          padding: 4px;
+          width: 120px;
+        }
+        .btn-cancel-actions:hover{
+          background-color:white;
+        }
+      }
+    }
+  }
+}

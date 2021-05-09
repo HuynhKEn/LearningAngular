@@ -1,0 +1,29 @@
+<div class="confirm-dialog-media">
+  <div class="header-confirm">
+    <h4 mat-dialog-title> {{title}}</h4>
+    <button class="close-button-dialog" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="mat-dialog-custom">
+    <div mat-dialog-content>
+      <div class="body-dialog-custom">
+        <div class="row" *ngIf="fileType === 'video'">
+          <iframe [src]="src | safe:'resourceUrl'" >
+          </iframe>
+        </div>
+        <div class="row" *ngIf="fileType === 'pdf'">
+          <app-pdf-viewer-customer [sourcePdf]="src" [heightPdf]="height"></app-pdf-viewer-customer>
+        </div>
+        <div class="row" *ngIf="fileType === 'code'">
+          <app-code-viewer [sourceCode]="src"></app-code-viewer>
+        </div>
+      </div>
+      <div mat-dialog-actions class="d-block text-right">
+        <button mat-raised-button class="btn-cancel-actions" (click)="onDismiss()">
+          <mat-icon>close</mat-icon><span style="font-weight: 500">キャンセル</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

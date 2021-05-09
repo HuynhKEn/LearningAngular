@@ -75,17 +75,17 @@
               ALL
              </div>
            <div>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()">
-          </mat-checkbox>
+             <mat-checkbox #ref (change)="$event ? masterToggle(ref) : null"
+                           [checked]="selection.hasValue() && isAllSelected()"
+                           [indeterminate]="selection.hasValue() && !isAllSelected()">
+             </mat-checkbox>
            </div>
           </th>
           <td mat-cell *matCellDef="let row">
-              <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null; rowSelect()"
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null;isSomeSelected()"
                           [checked]="selection.isSelected(row)">
-              </mat-checkbox>
+            </mat-checkbox>
           </td>
         </div>
       </ng-container>

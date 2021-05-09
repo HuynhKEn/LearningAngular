@@ -1,0 +1,106 @@
+.container-pagination {
+  .row > div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+  .text-pagination {
+    span {
+      padding: 3px;
+    }
+  }
+  .next-right  {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 30px;
+    padding: 0 !important;
+    .mat-button {
+      min-width: 25px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .prev-left {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 30px;
+    padding: 0 !important;
+    .mat-button {
+      min-width: 25px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .next-right-all  {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 30px;
+    padding: 0 !important;
+    .mat-button {
+      min-width: 25px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .prev-left-all {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 30px;
+    padding: 0 !important;
+    .mat-button {
+      min-width: 25px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .select-page-size {
+    ::ng-deep .p-dropdown:not(.p-disabled).p-focus{
+      box-shadow: 0 0;
+    }
+    ::ng-deep .p-dropdown{
+      height: 40px;
+      margin-right: 5px;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      border-bottom: 1px solid black;
+      border-radius: 0;
+      outline: 0;
+      .customer-sub-dropdown {
+          .ui-dropdown {
+            .ui-dropdown-label-container {
+                display: inline-block;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden !important;
+                text-overflow: ellipsis;
+            }
+
+        }
+      }
+    }
+  }
+  @media screen and (max-width : 768px){
+    .select-page-size {
+      ::ng-deep .p-dropdown{
+        span {
+          font-size: 12px  !important;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width : 768px){
+    .text-pagination {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.wrap-drop-down{
+  padding: 15px;
+  ::ng-deep .p-dropdown{
+    width: 250px;
+    display: inline-flex;
+    position: relative;
+    margin-right: 10px;
+    .dropdown-select {
+      .ui-dropdown {
+          .ui-dropdown-label-container {
+              display: inline-block;
+              width: 100%;
+              white-space: nowrap;
+              overflow: hidden !important;
+              text-overflow: ellipsis;
+          }
+      }
+    }
+  }
+}

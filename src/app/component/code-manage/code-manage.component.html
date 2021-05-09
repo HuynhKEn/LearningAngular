@@ -1,0 +1,8 @@
+<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px">
+  <div fxFlex="0 1 calc(100%)" class="header-code-admin">
+    <h1>{{GLOBAL.HEADER.CODE_MANAGE}}</h1>
+  </div>
+  <div fxFlex="0 1 calc(100%-15px)" class="body-code-admin">
+    <app-table-custom [configure]="settingTable()"></app-table-custom>
+  </div>
+<div>

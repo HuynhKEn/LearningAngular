@@ -1,0 +1,135 @@
+<div class="confirm-dialog">
+  <div class="header-confirm">
+    <h4 mat-dialog-title>{{data[2].toUpperCase()}}</h4>
+    <button class="close-button-dialog" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="mat-dialog-custom">
+    <div mat-dialog-content>
+      <div class="body-dialog-custom">
+        <div class="row">
+          <div class="col-12">
+              <span class="title-form">{{title}}</span>
+          </div>
+        </div>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="row form-group-container">
+           <!-- ELEMENT SELECT RADIO INPUT -->
+          <div *ngFor="let elementForm of keyForm" class="col-12">
+            <div class="row">
+              <div class="col-2 label-text">
+                <span *ngIf="elementForm !== 'startDate' && elementForm !== 'endDate' ">
+                  {{elementForm.toUpperCase()}} <small *ngIf="listRequired[elementForm] && listRequired[elementForm] === true"
+                    [ngStyle]="{'color': listRequired[elementForm] === true ? 'red': 'black'}">*</small>
+                </span>
+              </div>
+              <div class="col-10">
+                <input *ngIf="isInputElement(this.typeElement[elementForm])" matInput formControlName="{{elementForm}}"
+                  class="input-element">
+
+                <div *ngIf="isAreaElement(this.typeElement[elementForm])"
+                  ace-editor
+                  class="textarea-element"
+                  [(text)]="contentTextArea"
+                  [readOnly]="false"
+                  [autoUpdateContent]="true"
+                  [theme]="'eclipse'"
+                  [mode]="'python'">
+                  <textarea *ngIf="isAreaElement(this.typeElement[elementForm])"
+                    placeholder="Please fill value"
+                    matInput
+                    formControlName="{{elementForm}}"
+                    [ngModel]="contentTextArea"
+                    style="display:none">
+                  </textarea>
+              </div>
+
+                <mat-select *ngIf="isSelectElement(this.typeElement[elementForm])" formControlName="{{elementForm}}"
+                  class="input-element">
+                  <mat-option *ngFor="let elementSelect of listSelectValue[elementForm]" [value]="elementSelect">
+                    {{elementSelect}}
+                  </mat-option>
+                </mat-select>
+
+                <div class="row-radio" *ngIf="isRadioElement(this.typeElement[elementForm])">
+                  <mat-radio-group
+                    formControlName="{{elementForm}}" class="row">
+                    <mat-radio-button class="col-3" *ngFor="let elementRadio of listRadioValue[elementForm]"
+                      [value]="elementRadio">{{elementRadio}}</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+
+
+                <mat-error *ngIf=" formGroup.get(elementForm) && (formGroup.get(elementForm).invalid || formGroup.get(elementForm).touched ||
+                  formGroup.get(elementForm).dirty)">
+                  <small *ngIf="formGroup.get(elementForm).errors?.required" class="text-danger">{{CONSTANT.REQUIRED}} {{elementForm | capitalize}}</small>
+                  <small *ngIf="formGroup.get(elementForm).errors?.pattern" class="text-danger"> {{CONSTANT.PATTERN}} {{elementForm | capitalize}}</small>
+                  <small *ngIf="formGroup.get(elementForm).errors?.email" class="text-danger">{{CONSTANT.EMAIL}}</small>
+                  <small *ngIf="formGroup.get(elementForm).errors?.max" class="text-danger">
+                    {{CONSTANT.MAX}} ({{formGroup.get(elementForm).errors?.max.max}})
+                  </small>
+                  <small *ngIf="formGroup.get(elementForm).errors?.min" class="text-danger">
+                    {{CONSTANT.MIN}} ({{formGroup.get(elementForm).errors?.min.min}})
+                  </small>
+                  <small *ngIf="formGroup.get(elementForm).errors?.maxlength" class="text-danger">
+                    {{CONSTANT.MAX_LENGTH}} ({{formGroup.get(elementForm).errors?.maxlength.requiredLength}})
+                  </small>
+                  <small *ngIf="formGroup.get(elementForm).errors?.minlength" class="text-danger">
+                    {{CONSTANT.MIN_LENGTH}} ({{formGroup.get(elementForm).errors?.minlength.requiredLength}})
+                  </small>
+                </mat-error>
+              </div>
+            </div>
+          </div>
+              <!-- ELEMENT DATE -->
+          <div class="col-12" *ngIf="keyDateForm.includes('startDate')">
+            <div class="row">
+              <div class="col-2 label-text">
+              </div>
+              <div class="col-10 row date-picker-container">
+                <div class="date-picker col-4">
+                  <mat-form-field appearance="outline">
+                    <mat-label>START DATE</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="startDate" useValueAsDate>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-error *ngIf=" formGroup.get('startDate') && (formGroup.get('startDate').invalid || formGroup.get('startDate').touched ||
+                  formGroup.get('startDate').dirty)">
+                    <small *ngIf="formGroup.get('startDate').errors?.required" class="text-danger">{{CONSTANT.REQUIRED}} {{'startDate' | capitalize}}</small>
+                    <small *ngIf="formGroup.get('startDate').errors?.pattern" class="text-danger">{{CONSTANT.PATTERN}} {{'startDate' | capitalize}}</small>
+                  </mat-error>
+                </div>
+                <div class="date-picker col-4" *ngIf="keyDateForm.includes('endDate')">
+                  <mat-form-field appearance="outline">
+                    <mat-label>END DATE</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="endDate" useValueAsDate>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-error *ngIf=" formGroup.get('endDate') && (formGroup.get('endDate').invalid || formGroup.get('endDate').touched ||
+                  formGroup.get('endDate').dirty)">
+                    <small *ngIf="formGroup.get('endDate').errors?.required" class="text-danger">{{CONSTANT.REQUIRED}}{{'endDate' | capitalize}}</small>
+                    <small *ngIf="formGroup.get('endDate').errors?.pattern" class="text-danger">{{CONSTANT.PATTERN}} {{'endDate' | capitalize}}</small>
+                  </mat-error>
+                </div>
+                <div class="col-4">
+                </div>
+                <mat-error *ngIf="formGroup.errors?.dates" style="padding-left:15px;"><small>{{ formGroup.errors?.dates | json }}</small></mat-error>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+        <div mat-dialog-actions class="d-block text-right">
+          <button mat-raised-button class="btn-cancel-actions" (click)="onDismiss()">
+            <mat-icon>close</mat-icon><span style="font-weight: 500">CANCEL</span>
+          </button>
+          <button mat-raised-button class="btn-save-actions" type="submit" (click)="onSubmit()">
+            <mat-icon>check</mat-icon><span style="font-weight: 500">OK</span>
+          </button>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div flexLayout="row wrap">
+  <app-pagination-customer
+    [settingConfig]="settingConfig"
+    (filterDataOut)="waitValuePagination($event)"
+  >
+  </app-pagination-customer>
+  <div flexLayout="100%" class="wrap-drop-down" placeholder="Select a Data">
+      <p-dropdown
+      [options]="languages"
+      [(ngModel)]="languageModel"
+      optionLabel="name"
+      filter="true"
+      filterPlaceholder="Please press value language"
+      autofocusFilter="true"
+      class="dropdown-select" #languageDOM>
+        <ng-template  pTemplate="selectedItem">
+          <div *ngIf="languageModel">
+              <div>{{languageModel.name | capitalize}}</div>
+          </div>
+        </ng-template>
+        <ng-template let-language pTemplate="item">
+          <div>
+            <div>{{language.name | capitalize}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <p-dropdown
+          [options]="topics" [(ngModel)]="topicModel"
+          filter="true"
+          optionLabel="title"
+          filterPlaceholder="Please press topic"
+          autofocusFilter="true"
+          class="dropdown-select"
+          >
+        <ng-template let-topic pTemplate="item">
+          <div>
+              <div>{{topic.title}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+      <p-dropdown
+        [options]="posts"
+        [(ngModel)]="postModel"
+        optionLabel="title"
+        filterPlaceholder="Please press value post"
+        filter="true"
+        autofocusFilter="true"
+        class="dropdown-select">
+        <ng-template let-post pTemplate="item">
+          <div>
+            <div>{{post.title}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+  </div>
+</div>

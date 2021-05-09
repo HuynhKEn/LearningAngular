@@ -1,0 +1,8 @@
+::ng-deep .hljs-literal  { color: blue; }
+::ng-deep .hljs-keyword  { color: #df18cf }
+::ng-deep .hljs-comment  { color: green }
+.container-code{
+  width: 100%;
+  height: 60vh;
+  overflow: auto;
+}

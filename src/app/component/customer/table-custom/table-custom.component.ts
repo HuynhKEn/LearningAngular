@@ -82,14 +82,20 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
-  masterToggle(): void{
-    this.isAllSelected() ?
+
+  masterToggle(ref): void {
+    if (this.isSomeSelected()) {
+      this.selection.clear();
+      ref.checked = false;
+    } else {
+      this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
+    }
   }
-  /** Gets the selected rows array on row select. */
-  rowSelect(): void {
 
+  isSomeSelected(): boolean {
+    return this.selection.selected.length > 0;
   }
 
   applyFilter(filterValue: string, columnNames: string): void {
@@ -193,11 +199,13 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
     });
   }
   addConfirm(): void {
-    const typeElement = this.configure.typeElement;
+    console.log(this.isAllSelected())
+    console.log(this.selection.selected)
+/*  const typeElement = this.configure.typeElement;
     const dialogConfirm = this.dialog.open(ControlModifyDialogComponent, {
       width: (this.configure.widthDialog).toString() + 'px',
       height: (this.configure.heightDialog + 20).toString() + 'px',
       data: ['', 'media form', 'add', typeElement]
-    });
+    });*/
   }
 }

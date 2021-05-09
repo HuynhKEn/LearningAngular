@@ -1,0 +1,142 @@
+.input-element{
+  padding: 8px;
+  border: 2px solid #edf1f7;
+}
+.textarea-element{
+  padding: 8px;
+  border: 2px solid #edf1f7;
+  height: 200px;
+}
+.label-text{
+  font-weight: 350;
+  display: flex;
+  align-items: center
+}
+::ng-deep .mat-dialog-container {
+  padding: 0px;
+  overflow: unset;
+  .mat-radio-label-content{
+    padding-left:4px;
+  }
+  .row-radio{
+    .col-3{
+      padding-left: 0px;
+    }
+  }
+}
+button{
+  cursor: pointer
+}
+.isRequired{
+  color:red
+}
+
+.confirm-dialog {
+  .header-confirm{
+    padding: 0.5em;
+    font-weight: 500;
+    border: 1px solid #007ad9;
+    background-color: #007ad9;
+    color: white;
+    display: flex;
+    border-bottom: 0 none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .mat-dialog-title {
+      margin: 0;
+      color: white;
+      font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+      padding-left: 20px;
+    }
+    .close-button-dialog{
+      padding: 0px;
+      margin: 0px;
+      outline: none;
+      color: white;
+      border: 0;
+      background-color: #007ad9;
+    }
+    .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
+      line-height: 0px;
+      min-width: 0px;
+    }
+  }
+
+  .mat-dialog-custom .mat-dialog-content {
+    background-color: white;
+    color: #333333;
+    margin: auto;
+    overflow: unset;
+    padding: 0;
+  }
+
+  .mat-dialog-custom {
+    .mat-dialog-content{
+      .body-dialog-custom{
+        border-bottom: 3px solid #edf1f7;
+        .row{
+          padding: 0.5rem 0.5rem 0 1rem;
+        }
+        .form-group-container{
+          margin-bottom: 5px;
+        }
+        .date-picker-container{
+          .col-5{
+            padding-left:0px;
+          }
+          .date-picker{
+            .mat-form-field{
+              width: 100%;
+            }
+          }
+        }
+
+      }
+      .title-form{
+        font-size: 25px;
+        padding-left: 15px;
+        font-family: system-ui;
+        color: cornflowerblue
+      }
+      ::ng-deep .mat-form-field-wrapper{
+        padding-bottom: 0px;
+      }
+    }
+  }
+
+  .mat-dialog-custom {
+    .mat-dialog-content{
+      .mat-dialog-actions{
+        margin-top: auto;
+        padding-top: 15px;
+        // margin-bottom: 15px;
+        padding-right: 1em;
+        .btn-save-actions{
+          background-color: #007ad9;
+          margin-right: 5px;
+          color: white;
+          border: 2px solid #007ad9;
+          border-radius: 2px;
+          padding: 4px;
+          width: 120px;
+        }
+        .btn-save-actions:hover{
+          background-color: #319def;
+        }
+        .btn-cancel-actions{
+          background-color:#f5f4f4;
+          margin-right: 5px;
+          border: 0.5px solid #f5f4f4;
+          border-radius: 2px;
+          padding: 4px;
+          width: 120px;
+        }
+        .btn-cancel-actions:hover{
+          background-color:white;
+        }
+      }
+    }
+  }
+}
