@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { ROUTE_PATH } from '../../config/route-path.config';
+import { Component, OnInit } from '@angular/core';
 import { CommonDataService } from 'src/app/service/common-data.service';
+/**/
+
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+
+import { Router } from '@angular/router';
+
+import { ROUTE_PATH } from '../../config/route-path.config';
+
 
 export class SeeMoreDto {
   link: string;

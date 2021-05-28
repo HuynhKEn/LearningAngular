@@ -15,7 +15,11 @@ export class AppComponent {
     )
     {
       this.primengConfig.ripple = true;
-      this.adminService.loginStatus$.subscribe(res => this.loginStatus = res);
+      this.adminService.loginStatus$
+        .subscribe(res => {
+            this.loginStatus = res
+          }
+        );
     }
 
 

@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-find-component',
-  templateUrl: './find-component.component.html',
-  styleUrls: ['./find-component.component.scss']
+  templateUrl: './find.component.html',
+  styleUrls: ['./find.component.scss']
 })
-export class FindComponentComponent implements OnInit {
+export class FindComponent implements OnInit {
   search = '';
   @Input() color: string;
   constructor() { }
