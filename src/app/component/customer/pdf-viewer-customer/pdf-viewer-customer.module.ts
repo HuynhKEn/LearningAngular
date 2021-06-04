@@ -12,9 +12,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
   ],
   imports: [
     CommonModule,
-    NgxExtendedPdfViewerModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxExtendedPdfViewerModule
   ],
   exports: [PdfViewerCustomerComponent]
 

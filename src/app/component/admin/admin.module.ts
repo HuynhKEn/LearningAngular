@@ -9,9 +9,7 @@ import {Ng2ImgMaxModule} from "ng2-img-max";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FileUploadModule} from "ng2-file-upload";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
-import {MatSelectModule} from "@angular/material/select";
 import {MultiSelectModule} from "primeng/multiselect";
 import {DropdownModule} from "primeng/dropdown";
 import {PaginationCustomerComponent} from "../customer/pagination-customer/pagination-customer.component";
@@ -28,6 +26,13 @@ import {HeaderModule} from "../header/header.module";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {CommonModule} from "@angular/common";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {CommonDataService} from "../../service/common-data.service";
+import {CarouselCustomerModule} from "../customer/carousel-customer/carousel-customer.module";
+import {CarouselCustomerVerticalModule} from "../customer/carousel-customer-vertical/carousel-customer-vertical.module";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
+import {CapitalizePipe} from "../../pipe/capitalize.pipe";
 
 @NgModule({
   declarations: [
@@ -40,37 +45,47 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     PaginationCustomerComponent,
     CodeManageComponent,
     ManagerAdminMediaComponent,
-    PdfAdminComponent
+    PdfAdminComponent,
+    CapitalizePipe
+
   ],
   imports: [
-    AdminRoutingModule,
     CommonModule,
-
+    AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    Ng2ImgMaxModule,
-    FlexLayoutModule,
-    FileUploadModule,
+
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
+    MatButtonModule,
     MatSelectModule,
+
+
+    ReactiveFormsModule,
+    Ng2ImgMaxModule,
+    FlexLayoutModule,
+    FileUploadModule,
     MultiSelectModule,
     DropdownModule,
 
     CardCustomerModule,
     TableCustomModule,
     PdfViewerCustomerModule,
+    CarouselCustomerModule,
+    CarouselCustomerVerticalModule,
 
     HeaderModule,
     MenuListItemModule,
     MenuListItemMobileModule,
+
   ],
   exports: [
-    AdminComponent, MatFormFieldModule
+    PostAdminComponent,
+
   ],
   providers: [
+    CommonDataService
   ]
 
 

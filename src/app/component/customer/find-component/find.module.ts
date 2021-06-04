@@ -5,6 +5,8 @@ import {MatIconModule} from "@angular/material/icon";
 
 import {CommonModule} from "@angular/common";
 import {FindComponent} from "./find.component";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -13,8 +15,10 @@ import {FindComponent} from "./find.component";
   ],
   imports: [
     CommonModule,
-    MatIconModule,
     FormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
     ReactiveFormsModule,
   ],
   exports: [FindComponent]

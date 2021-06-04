@@ -1,6 +1,6 @@
 <div class="confirm-dialog-media">
   <div class="header-confirm">
-    <h4 mat-dialog-title> {{title}}</h4>
+    <h1 mat-dialog-title> {{title}}</h1>
     <button class="close-button-dialog" mat-icon-button mat-dialog-close>
       <mat-icon>close</mat-icon>
     </button>
@@ -16,7 +16,7 @@
           <app-pdf-viewer-customer [sourcePdf]="src" [heightPdf]="height"></app-pdf-viewer-customer>
         </div>
         <div class="row" *ngIf="fileType === 'code'">
-          <app-code-viewer [sourceCode]="src"></app-code-viewer>
+          <app-code-viewer [sourceCode]="src" [ngStyle]="{'width':'100%'}"></app-code-viewer>
         </div>
       </div>
       <div mat-dialog-actions class="d-block text-right">

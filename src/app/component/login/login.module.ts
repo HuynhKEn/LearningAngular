@@ -8,24 +8,26 @@ import {LoginComponent} from "./login.component";
 import {LoginRoutingModule} from "./login-routing.module";
 import {CommonModule} from "@angular/common";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     LoginComponent
   ]
   ,
+  providers: [],
   imports: [
     LoginRoutingModule,
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCheckboxModule,
-    FlexLayoutModule,
     AdminModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
   exports: [CommonModule],
   entryComponents: []
 })

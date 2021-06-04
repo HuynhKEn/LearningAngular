@@ -17,11 +17,14 @@ import {FindModule} from "../find-component/find.module";
   ],
   imports: [
     CommonModule,
-    PdfViewerCustomerModule,
+    /**/
     MatCardModule,
+    MatPaginatorModule,
     FlexLayoutModule,
+    /**/
     FindModule,
-    MatPaginatorModule
+    /**/
+    PdfViewerCustomerModule
   ],
   exports: [CardCustomerComponent]
 

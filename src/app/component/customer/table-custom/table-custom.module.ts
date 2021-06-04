@@ -9,6 +9,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {CommonModule} from "@angular/common";
 import {ChangeColumnTable} from "../../../pipe/change-column-table.pipe";
 import {IfPipe} from "../../../pipe/if.pipe";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {ControlModifyDialogModule} from "../control-modify-dialog/control-modify-dialog.module";
+import {MediaShowDialogCustomerModule} from "../media-show-dialog-customer/media-show-dialog-customer.module";
 
 
 @NgModule({
@@ -19,14 +23,18 @@ import {IfPipe} from "../../../pipe/if.pipe";
   ],
   imports: [
     CommonModule,
-    MatPaginatorModule,
+    FormsModule,
     MatTableModule,
     MatIconModule,
+    MatInputModule,
+    MatButtonModule,
     MatCheckboxModule,
-    FormsModule,
+    MatPaginatorModule,
     MatFormFieldModule,
+    ControlModifyDialogModule,
+    MediaShowDialogCustomerModule
   ],
-  exports: [TableCustomComponent]
+  exports: [TableCustomComponent, MatFormFieldModule, MatInputModule]
 
 })
 export class TableCustomModule {}

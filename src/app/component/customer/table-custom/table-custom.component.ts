@@ -1,16 +1,19 @@
-import { AfterViewInit, ChangeDetectorRef, Component,
-   EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { SelectionModel } from '@angular/cdk/collections';
-import { SortDirection } from '@angular/material/sort';
-import { ConfirmComponent } from '../confirm/confirm.component';
-import { cloneDeep } from 'lodash';
-import { MatDialog } from '@angular/material/dialog';
-import { MediaShowDialogCustomerComponent } from '../media-show-dialog-customer/media-show-dialog-customer.component';
-import { ControlModifyDialogComponent } from '../control-modify-dialog/control-modify-dialog.component';
-import { GLOBAL_CONSTANT } from '../../../constant/global-constant';
+import {
+  AfterViewInit, ChangeDetectorRef, Component,
+  EventEmitter, Input, OnInit, Output, ViewChild
+} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {SelectionModel} from '@angular/cdk/collections';
+import {SortDirection} from '@angular/material/sort';
+import {ConfirmComponent} from '../confirm/confirm.component';
+import {cloneDeep} from 'lodash';
+import {MatDialog} from '@angular/material/dialog';
+import {MediaShowDialogCustomerComponent} from '../media-show-dialog-customer/media-show-dialog-customer.component';
+import {ControlModifyDialogComponent} from '../control-modify-dialog/control-modify-dialog.component';
+import {GLOBAL_CONSTANT} from '../../../constant/global-constant';
+
 @Component({
   selector: 'app-table-custom',
   templateUrl: './table-custom.component.html',
@@ -18,53 +21,59 @@ import { GLOBAL_CONSTANT } from '../../../constant/global-constant';
 })
 export class TableCustomComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  // tslint:disable-next-line:no-input-rename
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  /* tslint:disable-next-line:no-input-rename */
   @Input('configure') configure: any;
   @Output() deleteItem ? = new EventEmitter();
-  actionEvent = [];
-  filterEvent = [];
-  displayedColumns: string[];
-  dataSource: MatTableDataSource<any>;
-  objectFilter: any = {};
-  filterValue: string;
-  columnName: string;
-  filterTimeout: any = null;
-  pageSizeIndex = 0;
-  pageSize = 10;
-  pageSizeOptions = [5, 10, 15, 20];
-  inputColumn: string[];
-  disableSearch = {};
-  numberRow: number;
-  selection = new SelectionModel<{}>();
-  allowMultiSelect = true;
-  addAction = false;
   GLOBAL: any;
+  pageSize = 10;
+  filterEvent = [];
+  actionEvent = [];
+  numberRow: number;
+  addAction = false;
+  pageSizeIndex = 0;
+  disableSearch = {};
+  columnName: string;
+  filterValue: string;
+  inputColumn: string[];
+  objectFilter: any = {};
+  allowMultiSelect = true;
+  typeOfColumns :string[];
+  filterTimeout: any = null;
+  displayedColumns: string[];
+  pageSizeOptions = [5, 10, 15, 20];
+  dataSource: MatTableDataSource<any>;
+  selection = new SelectionModel<{}>();
+
   constructor(
     private cdr: ChangeDetectorRef,
-    private dialog: MatDialog) {}
+    private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.GLOBAL = GLOBAL_CONSTANT;
     this.displayedColumns = this.configure.columns;
+    this.typeOfColumns = this.configure.typeOfColumns;
     this.numberRow = this.displayedColumns.length - 1;
-    this.inputColumn = cloneDeep(this.displayedColumns.map(res => res.toString() + 'INPUT'));
+    this.inputColumn = cloneDeep(this.displayedColumns.map(res => res.toString() + '_INPUT'));
     this.disableSearch = this.configure.disableSearch;
     this.dataSource = new MatTableDataSource<any>(this.configure.data);
     this.selection = new SelectionModel<{}>(this.allowMultiSelect, []);
     if (this.configure.action === true) {
       this.displayedColumns.push('ACTION');
       this.actionEvent = ['SELECT', 'EDIT', 'REMOVE'];
-      this.addAction = true;
     }
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sortingDataAccessor = (item, property) => {
       switch (property) {
-        case 'NO': return item.id;
-        case 'DURATION': return item.videoTime;
-        default: return item[property.toLowerCase()];
+        case 'NO':
+          return item.id;
+        case 'DURATION':
+          return item.videoTime;
+        default:
+          return item[property.toLowerCase()];
       }
     };
     this.dataSource.sort = this.sort;
@@ -101,39 +110,39 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
   applyFilter(filterValue: string, columnNames: string): void {
     clearTimeout(this.filterTimeout);
     this.filterTimeout = setTimeout(() => {
-        window.scrollTo(0, 0);
-        this.pageSizeIndex = 0;
-        this.objectFilter[columnNames] = filterValue;
-        Object.entries(this.objectFilter).forEach(object =>
-            (object[1] === '' ? delete this.objectFilter[object[0]] : 0));
-        const arrKeys = Object.keys(this.objectFilter);
-        const dataFilter: any[] = [];
-        this.configure.data.forEach((row) => {
-            let countCheck = 0;
-            arrKeys.forEach((key) => {
-                let data = row[key];
-                if (data !== null) {
-                    data = data.toString();
-                    const checkData = (data.toLowerCase()).includes(this.objectFilter[key].toLowerCase());
-                    if (!checkData) {
-                        countCheck++;
-                    }
-                } else {
-                    countCheck++;
-                }
-            });
-            if (countCheck === 0) {
-                dataFilter.push(row);
+      window.scrollTo(0, 0);
+      this.pageSizeIndex = 0;
+      this.objectFilter[columnNames] = filterValue;
+      Object.entries(this.objectFilter).forEach(object =>
+        (object[1] === '' ? delete this.objectFilter[object[0]] : 0));
+      const arrKeys = Object.keys(this.objectFilter);
+      const dataFilter: any[] = [];
+      this.configure.data.forEach((row) => {
+        let countCheck = 0;
+        arrKeys.forEach((key) => {
+          let data = row[key];
+          if (data !== null) {
+            data = data.toString();
+            const checkData = (data.toLowerCase()).includes(this.objectFilter[key].toLowerCase());
+            if (!checkData) {
+              countCheck++;
             }
+          } else {
+            countCheck++;
+          }
         });
-        if (arrKeys.length === 0) {
-            this.dataSource = new MatTableDataSource(this.configure.data);
-        } else {
-            this.dataSource = new MatTableDataSource(dataFilter);
+        if (countCheck === 0) {
+          dataFilter.push(row);
         }
-        this.filterValue = filterValue;
-        this.columnName = columnNames;
-        this.setPagiantor();
+      });
+      if (arrKeys.length === 0) {
+        this.dataSource = new MatTableDataSource(this.configure.data);
+      } else {
+        this.dataSource = new MatTableDataSource(dataFilter);
+      }
+      this.filterValue = filterValue;
+      this.columnName = columnNames;
+      this.setPagiantor();
     }, 500);
   }
 
@@ -147,6 +156,7 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
     this.pageSizeIndex = e.pageIndex;
     this.pageSize = e.pageSize;
   }
+
   playOn(src: string, fileType: string, title = ''): void {
     const dialogMedia = this.dialog.open(MediaShowDialogCustomerComponent, {
       width: fileType !== 'code' ? '50vw' : '70vw',
@@ -161,30 +171,29 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
   }
 
 
-  deleteConfirm(backup: boolean = false): boolean{
-    const  dialogConfirm = this.dialog.open( ConfirmComponent, {
-        width: '500px',
-        data: {
-          title: 'Confirm',
-          message: 'Are you sure you want to delete the data?',
-          backup
-        }
+  deleteConfirm(backup: boolean = false): boolean {
+    const dialogConfirm = this.dialog.open(ConfirmComponent, {
+      width: '500px',
+      data: {
+        title: 'Confirm',
+        message: 'Are you sure you want to delete the data?',
+        backup
+      }
     });
-    if (!backup){
-      dialogConfirm.afterClosed().subscribe( res => {
-          if (res){
-            return res;
-          }
+    if (!backup) {
+      dialogConfirm.afterClosed().subscribe(res => {
+        if (res) {
+          return res;
+        }
       });
     }
     return false;
   }
 
 
-
   deleteItemFn(event, i): void {
     const isDelete = this.deleteConfirm();
-    if (isDelete){
+    if (isDelete) {
       event.index = this.pageSizeIndex * this.pageSize + i + 1;
       this.deleteItem.emit(event);
     }
@@ -198,14 +207,15 @@ export class TableCustomComponent implements OnInit, AfterViewInit {
       data: [dataEdit, 'media form', 'edit', typeElement]
     });
   }
+
   addConfirm(): void {
     console.log(this.isAllSelected())
     console.log(this.selection.selected)
-/*  const typeElement = this.configure.typeElement;
-    const dialogConfirm = this.dialog.open(ControlModifyDialogComponent, {
-      width: (this.configure.widthDialog).toString() + 'px',
-      height: (this.configure.heightDialog + 20).toString() + 'px',
-      data: ['', 'media form', 'add', typeElement]
-    });*/
+    /*  const typeElement = this.configure.typeElement;
+        const dialogConfirm = this.dialog.open(ControlModifyDialogComponent, {
+          width: (this.configure.widthDialog).toString() + 'px',
+          height: (this.configure.heightDialog + 20).toString() + 'px',
+          data: ['', 'media form', 'add', typeElement]
+        });*/
   }
 }

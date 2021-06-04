@@ -1,19 +1,18 @@
 <div class="form-login" *ngIf="!adminStatus">
   <div class="title-login">
-    <img  src="../../../assets/images/icon.png" alt="ICON NOT FOUND">
+    <img src="../../../assets/images/icon.png" alt="ICON NOT FOUND">
   </div>
   <div>
     <h4>Login</h4>
     <form [formGroup]="formLoginGroup" (ngSubmit)="onSubmit()"
-      gdAreas="user user |pass pass |remember forget|submitButton submitButton" gdGap="10px"
-      gdRows="auto auto auto auto">
+          gdAreas="user user |pass pass |remember forget|submitButton submitButton" gdGap="10px"
+          gdRows="auto auto auto auto">
       <mat-form-field gdArea="user">
         <input matInput type="text" formControlName="username" class="form-control" placeholder="Username">
         <mat-error *ngIf="(primUsername.invalid && primUsername.touched)|| primUsername.dirty">
           <small *ngIf="primUsername.errors?.required">Vui lòng điền thông tin</small>
         </mat-error>
       </mat-form-field>
-
 
 
       <mat-form-field gdArea="pass">

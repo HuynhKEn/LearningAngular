@@ -1,4 +1,4 @@
-<app-layout *ngIf="!loginStatus">
+<app-layout *ngIf="!loginStatus && !(productService.productStatus$ | async) ">
     <mat-sidenav-container>
       <mat-sidenav #sidenav role="navigation">
         <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
@@ -12,4 +12,5 @@
     </mat-sidenav-container>
 </app-layout>
 <router-outlet *ngIf="loginStatus"></router-outlet>
+<router-outlet *ngIf="productService.productStatus$ | async"></router-outlet>
 

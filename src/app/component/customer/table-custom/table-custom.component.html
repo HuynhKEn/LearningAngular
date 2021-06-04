@@ -1,126 +1,139 @@
 <div class="container-table">
-  <table mat-table [dataSource]="dataSource" style="width: 100%;" matSort multiTemplateDataRows>
-    <ng-container matColumnDef="{{column}}"
-                  *ngFor="let column of displayedColumns | if:filterAction">
-      <th rowspan="1" mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 8px;">
-        <div>
-          <span>{{column}}</span>
-        </div>
-      </th>
-      <div *ngIf="column !=='FILE_TYPE' && column !=='CODE' ">
-        <td mat-cell *matCellDef="let element"> {{element[column |changeColumnTable]}} </td>
-      </div>
-      <div *ngIf="column ==='FILE_TYPE'">
-        <td mat-cell *matCellDef="let element">
-          <small *ngIf="element[column|changeColumnTable]==='video'">
-            <button mat-icon-button style="width: auto" (click)="playOn(element.link,element.fileType)">
-              <mat-icon class="video_icon">video_library</mat-icon>
-            </button>
-          </small>
-          <small *ngIf="element[column|changeColumnTable]==='pdf'">
-            <button mat-icon-button style="width: auto;" (click)="playOn(element.link,element.fileType)">
-              <mat-icon class="pdf_icon">picture_as_pdf</mat-icon>
-            </button>
-          </small>
-          <small *ngIf="element[column|changeColumnTable]==='image'">
-            <button mat-icon-button style="width: auto" (click)="playOn(element.link,element.fileType)">
-              <mat-icon>image</mat-icon>
-            </button>
-          </small>
-        </td>
-      </div>
-      <div *ngIf="column ==='CODE'">
-        <td mat-cell *matCellDef="let element">
-          <small>
-            <button mat-icon-button style="width: auto" (click)="playOn(element['code'],'code',element['title'])">
-              <mat-icon class="video_icon">code</mat-icon>
-            </button>
-          </small>
-        </td>
-      </div>
-      <ng-container matColumnDef="{{column+'INPUT'}}">
-        <th [attr.rowspan]="numberRow" mat-header-cell *matHeaderCellDef>
-          <mat-form-field>
-            <input [disabled]="disableSearch[column]" matInput *ngIf="column | changeColumnTable; let columnName "
-                   type="text" placeholder="{{column}}" (input)="applyFilter($event.target.value, columnName)">
-          </mat-form-field>
+  <div class="wrap-table">
+    <table mat-table [dataSource]="dataSource" style="width: 100%;"
+           matSort multiTemplateDataRows>
+      <ng-container matColumnDef="{{column}}"
+                    *ngFor="let column of displayedColumns | if:filterAction ; index as i">
+        <!--HEADER-->
+        <th rowspan="1" mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div>
+            <span>{{column}}</span>
+          </div>
         </th>
-      </ng-container>
-    </ng-container>
-    <ng-container matColumnDef="ACTION" *ngIf="configure.action">
-      <th colspan="4" rowspan="1" mat-header-cell *matHeaderCellDef style="padding-left: 8px;">ACTION</th>
-      <ng-container matColumnDef="{{action}}" *ngFor="let action of actionEvent">
-        <div *ngIf="action!=='SELECT'">
-          <th mat-header-cell [attr.rowspan]="numberRow" *matHeaderCellDef style="padding-left: 8px;"
-              class="mat-header-cell-action">{{action}}</th>
-          <td mat-cell *matCellDef="let element ; let i = renderIndex;">
-            <small *ngIf="action==='EDIT'">
-              <button mat-stroked-button style="width: auto" (click)="editConfirm(element)">
-                <mat-icon>edit</mat-icon>
+        <div *ngIf="column !== 'FILE_TYPE' && column !== 'CODE' ">
+          <td mat-cell *matCellDef="let element"
+              [ngClass]="{
+                'text-left': typeOfColumns[i] === 'string'
+              }"
+          >
+            {{element[column |changeColumnTable]}}
+          </td>
+        </div>
+        <div *ngIf="column === 'FILE_TYPE'">
+          <td mat-cell *matCellDef="let element">
+            <small *ngIf="element[column|changeColumnTable]==='video'">
+              <button mat-icon-button style="width: auto" (click)="playOn(element.link,element.fileType)">
+                <mat-icon class="video_icon">video_library</mat-icon>
               </button>
             </small>
-            <!-- <small *ngIf="action==='ADD'">
-              <button mat-stroked-button (click)="addConfirm()">
-                <mat-icon>add_box</mat-icon>
+            <small *ngIf="element[column|changeColumnTable]==='pdf'">
+              <button mat-icon-button style="width: auto;" (click)="playOn(element.link,element.fileType)">
+                <mat-icon class="pdf_icon">picture_as_pdf</mat-icon>
               </button>
-            </small> -->
-            <small *ngIf="action==='REMOVE'">
-              <button mat-stroked-button style="width: auto" (click)="deleteItemFn($event, i)">
-                <mat-icon>delete_outline</mat-icon>
+            </small>
+            <small *ngIf="element[column|changeColumnTable]==='image'">
+              <button mat-icon-button style="width: auto" (click)="playOn(element.link,element.fileType)">
+                <mat-icon>image</mat-icon>
               </button>
             </small>
           </td>
         </div>
-        <div *ngIf="action==='SELECT'">
-          <th mat-header-cell [attr.rowspan]="numberRow" *matHeaderCellDef style="padding-left: 8px;"
-              class="mat-header-cell-action">
-            <div>
-              ALL
-            </div>
-            <div>
-              <mat-checkbox #ref (change)="$event ? masterToggle(ref) : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
-              </mat-checkbox>
-            </div>
+        <div *ngIf="column === 'CODE'">
+          <td mat-cell *matCellDef="let element">
+            <small>
+              <button mat-icon-button style="width: auto" (click)="playOn(element['code'],'code',element['title'])">
+                <mat-icon class="video_icon">code</mat-icon>
+              </button>
+            </small>
+          </td>
+        </div>
+        <ng-container matColumnDef="{{column + '_INPUT'}}">
+          <th [attr.rowspan]="numberRow" mat-header-cell *matHeaderCellDef [ngClass]="['input-filter']">
+            <mat-form-field>
+              <div>
+                <input [disabled]="disableSearch[column]"
+                       matInput *ngIf="column | changeColumnTable; let columnName "
+                       type="text" (input)="applyFilter($event.target.value, columnName)">
+              </div>
+            </mat-form-field>
           </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null;isSomeSelected()"
-                          [checked]="selection.isSelected(row)">
-            </mat-checkbox>
-          </td>
-        </div>
+        </ng-container>
       </ng-container>
-    </ng-container>
+
+      <!--ACTION -->
+      <ng-container matColumnDef="ACTION" *ngIf="configure.action">
+        <th colspan="4" rowspan="1" mat-header-cell *matHeaderCellDef>ACTION</th>
+        <ng-container matColumnDef="{{action}}" *ngFor="let action of actionEvent">
+          <div *ngIf="action!=='SELECT'">
+            <th mat-header-cell [attr.rowspan]="numberRow" *matHeaderCellDef
+                class="mat-header-cell-action">{{action}}</th>
+            <td mat-cell *matCellDef="let element ; let i = renderIndex;">
+              <small *ngIf="action==='EDIT'">
+                <button mat-stroked-button style="width: auto" (click)="editConfirm(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </small>
+              <!-- <small *ngIf="action==='ADD'">
+                <button mat-stroked-button (click)="addConfirm()">
+                  <mat-icon>add_box</mat-icon>
+                </button>
+              </small> -->
+              <small *ngIf="action==='REMOVE'">
+                <button mat-stroked-button style="width: auto" (click)="deleteItemFn($event, i)">
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+              </small>
+            </td>
+          </div>
+          <div *ngIf="action==='SELECT'">
+            <th mat-header-cell [attr.rowspan]="numberRow" *matHeaderCellDef
+                class="mat-header-cell-action">
+              <div>
+                <mat-checkbox #ref (change)="$event ? masterToggle(ref) : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+              </div>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null;isSomeSelected()"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+          </div>
+        </ng-container>
+      </ng-container>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-header-row *matHeaderRowDef="inputColumn"></tr>
-    <tr mat-header-row *matHeaderRowDef="actionEvent"></tr>
-    <tr mat-row *matRowDef="let row; columns:displayedColumns.concat(actionEvent) | if: filterAction"></tr>
-  </table>
-  <div class="row">
-    <div
-      class="container-mat-paginator"
-      [ngStyle]="{'justify-content': addAction ? 'flex-start' : 'center'}"
-      [ngClass]="{'col-9':addAction,'col-12':!addAction}">
-      <mat-paginator
-        [pageSize]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        showFirstLastButtons
-        (page)="handlePage($event)"
-      >
-      </mat-paginator>
-    </div>
-    <div
-      *ngIf="addAction"
-      class="container-action-add"
-      [ngClass]="{'col-3':addAction,'col-0':!addAction}">
-      <button mat-flat-button (click)="addConfirm()">
-        {{GLOBAL.TEXT_ICON_ADD}}
-        <mat-icon>add_box</mat-icon>
-      </button>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="inputColumn"></tr>
+      <tr mat-header-row *matHeaderRowDef="actionEvent"></tr>
+      <tr mat-row *matRowDef="let row; columns:displayedColumns.concat(actionEvent) | if: filterAction"></tr>
+    </table>
+    <div class="row">
+      <div
+        class="container-mat-paginator"
+        [ngStyle]="{'justify-content': addAction ? 'flex-start' : 'center'}"
+        [ngClass]="{'col-9':addAction,'col-12':!addAction}">
+        <mat-paginator
+          showFirstLastButtons
+          [pageSize]="pageSize"
+          (page)="handlePage($event)"
+          [pageSizeOptions]="pageSizeOptions"
+        >
+        </mat-paginator>
+      </div>
+      <div
+        *ngIf="addAction"
+        class="container-action-add"
+        [ngClass]="{'col-3':addAction,'col-0':!addAction}">
+        <button mat-flat-button (click)="addConfirm()">
+          {{GLOBAL.TEXT_ICON_ADD}}
+          <mat-icon>add_box</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
+
 </div>

@@ -6,12 +6,12 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <app-header class="toolbar-admin"></app-header>
-        <app-menu-list-item (toggleSidenav)="onToggleSidenav($event)">
-          <div fxFlex="calc(100%-210px)" fxFlex-lt.md ="90%"  class="right-layout" style="position: relative; top:70px">
-            <router-outlet></router-outlet>
-          </div>
-        </app-menu-list-item>
+      <app-header class="toolbar-admin"></app-header>
+      <app-menu-list-item (toggleSidenav)="onToggleSidenav($event)">
+        <div fxFlex="calc(100%-210px)" fxFlex-lt.md="90%" class="right-layout" style="position: relative; top:70px">
+          <router-outlet></router-outlet>
+        </div>
+      </app-menu-list-item>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

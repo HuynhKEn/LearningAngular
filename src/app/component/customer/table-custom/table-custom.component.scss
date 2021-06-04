@@ -1,145 +1,194 @@
-::ng-deep .container-table{
-  tr:nth-child(2) {
-    height: 0px;
-  }
-  .mat-table{
-    background-color: #FFFFFF;
-    border: 1px solid gainsboro;
-    border-radius: 2px;
-    box-shadow: -1px -1px 2px gainsboro ;
-    width:100%;
-    height: auto;
-  }
+.container-table {
+  ::ng-deep .wrap-table {
 
-  .mat-header-cell{
-    width: auto;
-    padding-right: 0px;
-    border: 1px solid #edf1f7;
-    text-align: center;
+    tr:nth-child(2) {
+      height: 0;
+    }
 
-  }
+    .mat-table {
+      background-color: #FFF;
+      border: 1px solid #000;
+      border-radius: 2px;
+      width: 100%;
+      height: auto;
+      /* border: 1px solid gainsboro; */
+    }
 
-  .mat-header-cell-action{
+    .mat-header-row {
+      height: 1.5rem;
+    }
+
+    .mat-header-cell {
       width: auto;
-  }
-
-
-  .mat-header-cell:nth-child(n+1){
-    background-color:#F8F8FF;
-  }
-  .mat-column-NO{
-    background-color:#F8F8FF;
-
-  }
-  .mat-column-FILE_TYPE{
-    .video_icon{
-      color:rgb(255, 17, 0);
+      padding-right: 0;
+      border: 1px solid #000;
+      text-align: center;
+      /* border: 1px solid #edf1f7; */
     }
 
-    .pdf_icon{
-      color:#19c736;
+    .mat-header-cell-action {
+      width: auto;
+    }
+
+    .mat-header-cell:nth-child(n+1) {
+      background-color: #F8F8FF;
+    }
+
+    .mat-column-NO {
+      background-color: #F8F8FF;
+    }
+
+    .mat-column-FILE_TYPE {
+      .video_icon {
+        color: rgb(255, 17, 0);
+      }
+
+      .pdf_icon {
+        color: #19c736;
+      }
+    }
+
+    .mat-column-select {
+      overflow: initial;
+    }
+
+    .mat-column-ADD mat-icon {
+      color: #006dec;
+    }
+
+    .mat-column-NO_INPUT {
+      width: 100px;
+    }
+
+    .cdk-column-EDIT {
+      width: 100px;
+      padding-left: 0;
+    }
+
+    .cdk-column-REMOVE {
+      width: 100px;
+      padding-left: 0;
+    }
+
+    .cdk-column-ADD {
+      width: 100px;
+      padding-left: 0;
 
     }
-  }
-  .cdk-column-EDIT{
-    width: 100px;
-    padding-left: 0px;
-  }
-  .cdk-column-REMOVE{
-    width: 100px;
-    padding-left: 0px;
-  }
-  .cdk-column-ADD{
-    width: 100px;
-    padding-left: 0px;
 
-  }
-  .cdk-column-SELECT{
-    width: 50px;
-    padding-left: 0px!important;
-  }
-  .mat-column-select {
-    overflow: initial;
-  }
+    .cdk-column-SELECT {
+      width: 50px;
+      padding-left: 0 !important;
+    }
 
-  .mat-column-ADD mat-icon{
-      color:#006dec;
-  }
-  .mat-form-field-appearance-legacy .mat-form-field-infix {
-    width: 70px;
-  }
-  .mat-form-field-flex{
-    max-width: 120px;
-  }
-  .mat-column-NO_INPUT{
-    width: 100px;
+    th.mat-header-cell:last-of-type,
+    td.mat-cell:last-of-type,
+    td.mat-footer-cell:last-of-type {
+      padding-right: 0;
+    }
 
-  }
-  th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type{
-    padding-right:0px;
-  }
-  th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type{
-    padding-left:0px;
-  }
-  th.mat-sort-header-sorted {
-    color: black;
-  }
-  .mat-sort-header-container {
-    justify-content: center;
-  }
-  .mat-stroked-button{
-    border: 0px;
-    border-radius: 0px;
-  }
-  .mat-row:nth-child(2n+1){
-    background: rgb(13,2,51);
-    background: linear-gradient(0deg, #0d0233 0%, rgb(8 8 8 / 98%) 0%, #000000 0%, rgb(255 255 247 / 98%) 0%, #f8f8ff 100%);
-  }
+    th.mat-header-cell:first-of-type,
+    td.mat-cell:first-of-type,
+    td.mat-footer-cell:first-of-type {
+      padding-left: 0;
+    }
 
-  .mat-cell{
-    border: 1px solid #edf1f7;
-    text-align: center;
-  }
+    th.mat-sort-header-sorted {
+      color: black;
+    }
+
+    .mat-sort-header-container {
+      justify-content: center;
+    }
+
+    .mat-row:nth-child(2n+1) {
+      background: rgb(13, 2, 51);
+      background: linear-gradient(0deg, #0d0233 0%,
+        rgb(8 8 8 / 98%) 0%, #000000 0%, rgb(255 255 247 / 98%) 0%, #f8f8ff 100%);
+    }
+
+    .mat-cell {
+      /* border: 1px solid #edf1f7; */
+      border: 1px solid #000;
+      text-align: center;
+      max-width: 6rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0rem;
+    }
 
 
-  .mat-cell:nth-child(1){
-    color:black
-  }
-  .mat-cell:nth-child(4){
-    color:black
-  }
+    .mat-cell:nth-child(1) {
+      color: black
+    }
 
-  .mat-icon{
-    border-radius: 0px;
-  }
-  .mat-form-field {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .container-mat-paginator{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .container-action-add{
-    display: flex;
-    justify-content: flex-end;
-    button {
-      width: 43%;
-      margin-top: 15px;
-      color: white;
-      border-radius: 0px;
+    .mat-cell:nth-child(4) {
+      color: black
+    }
+
+    .mat-stroked-button {
+      border: 0;
+      border-radius: 0;
+    }
+
+    .mat-icon {
+      border-radius: 0;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+      width: auto;
+    }
+
+    .mat-form-field-flex {
+      max-width: 120px;
+    }
+
+
+    .mat-form-field {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container-mat-paginator {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+    }
+
+    .container-action-add {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        width: 43%;
+        margin-top: 15px;
+        color: white;
+        border-radius: 0;
+      }
+    }
+
+    .input-filter {
+      .mat-form-field-label {
+        font-size: 10px;
+      }
     }
   }
-
 }
 
+
+.text-left {
+  justify-content: flex-start;
+  padding: 0.5rem !important;
+}
+
+
 @media only screen and (max-width: 600px) {
-  .mat-header-cell-action{
+  .mat-header-cell-action {
     font-size: 9px;
-    font-size: auto;
-    color:lightcoral;
+    color: lightcoral;
   }
 }

@@ -16,5 +16,6 @@ export const ROUTE_PATH = {
   CAROUSEL_ITEM: 'carousel-item',
   CAROUSEL_ITEM_V: 'carousel-item_v',
   MANAGER_CODE: 'manager-code',
-  POST_ASSIGNMENT: 'post-assignment'
+  POST_ASSIGNMENT: 'post-assignment',
+  PRODUCTS: 'products'
 };
