@@ -1,0 +1,43 @@
+.left-content {
+  position: relative;
+  border-right: 0.1rem solid #6c757d;
+  .menu-left {
+    span {
+      float: left;
+      width: 100%;
+      top: 0.5rem;
+      display: flex;
+      font-size: 15px;
+      cursor: pointer;
+      position: relative;
+      justify-content: flex-end;
+
+      img {
+        height: 14px;
+        right: 0.05rem;
+      }
+    }
+
+    .side-nav-left {
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100vh;
+      display: flex;
+      position: fixed;
+      transition: 0.5s;
+      overflow-x: hidden;
+      background-color: #111;
+    }
+  }
+}
+.display-menu-left {
+  display: none;
+}
+.size-menu-left-change {
+  width: 3.5vw !important;
+}
+.size-menu-left-original {
+  width: 10vw !important;
+}
+

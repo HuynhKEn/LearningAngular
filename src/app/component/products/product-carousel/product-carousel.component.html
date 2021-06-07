@@ -1,0 +1,76 @@
+<div class="content-main-mobile"
+     [ngClass]="{
+       'size-card-content--original': (contentService.contentStatus$ | async),
+       'size-card-content-change': !(contentService.contentStatus$ | async)
+    }">
+  <div class="wrapper">
+    <div class="header-owl-carousel">
+      <h4>Shoes</h4>
+    </div>
+    <owl-carousel [options]="customOptionsLeft"
+                  #owlElement
+                  id="owl-demo"
+                  [carouselClasses]="['owl-theme', 'row', 'sliding']"
+    >
+      <div class="item" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10];let i = index">
+        <div class="card">
+          <span class="product-price">
+                USD<b>23,453</b>
+          </span>
+          <div class="card-img-top">
+            <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <span class="product-size row">
+                  <div class="col-12">
+                    <p>Size</p>
+                  </div>
+                  <div class="col-12">
+                    <ul class="ul-size">
+                      <li><a href="#">7</a></li>
+                      <li><a href="#">8</a></li>
+                      <li><a href="#">9</a></li>
+                      <li><a href="#" class="active">10</a></li>
+                      <li><a href="#">11</a></li>
+                    </ul>
+                  </div>
+                </span>
+              </div>
+              <div class="col-12 product-color">
+                <div class="row">
+                  <div class="col-12">
+                    <p>Colour</p>
+                  </div>
+                  <div class="col-12">
+                    <ul class="ul-color">
+                      <li><a href="#" class="orange active"></a></li>
+                      <li><a href="#" class="green"></a></li>
+                      <li><a href="#" class="yellow"></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="rate">
+              <input type="radio" id="star5_item5" name="rate" value="5"/>
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4_item5" name="rate" value="4"/>
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3_item5" name="rate" value="3"/>
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2_item5" name="rate" value="2"/>
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1_item5" name="rate" value="1"/>
+              <label for="star1" title="text">1 star</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </owl-carousel>
+  </div>
+</div>
+

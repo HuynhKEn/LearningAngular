@@ -1,0 +1,24 @@
+<div class="left-content" id="left-content">
+  <div class="menu-left"
+       [ngClass]="{
+        'size-menu-left-change': !arrowStatus,
+        'size-menu-left-original': arrowStatus
+       }"
+  >
+      <span class="double-left">
+          <img class="left" [src]="'assets/icon/double_left.png'"
+               (click)="openNav()"
+               [ngClass]="{
+                'display-menu-left': !arrowStatus
+               }">
+          <img class="right" [src]="'assets/icon/double_right.png'"
+               (click)="openNav()"
+               [ngClass]="{
+                 'display-menu-left': arrowStatus
+               }">
+      </span>
+    <div id="mySideNav" class="side-nav-left">
+    </div>
+  </div>
+</div>
+

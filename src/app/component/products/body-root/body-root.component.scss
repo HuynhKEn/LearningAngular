@@ -1,0 +1,74 @@
+.right-content {
+  position: relative;
+  object-fit: contain;
+  border: 0.1rem solid #6c757d;
+  height: 88vh;
+  width: 89vw !important;
+
+  video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .content-main {
+    position: fixed;
+    top: 6vh;
+    height: 88vh;
+    width: 90vw;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+
+    .container-card-item {
+      margin: auto;
+      padding: 0;
+      border: 0;
+      flex-wrap: wrap;
+      flex-direction: row;
+      display: flex;
+      width: 100%;
+    }
+
+    .card {
+      min-width: 18%;
+      width: 18%;
+      height: 35vh;
+      margin: auto auto 1rem auto;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      border: 1px solid #f63;
+      box-shadow: 8px 8px 5px linear-gradient(-180deg, #f53d2d, #f63);
+      z-index: 2;
+    }
+
+    @media only screen and (max-width: 767px) {
+      .card {
+        width: 40% !important;
+      }
+    }
+  }
+}
+
+.size-right-content-change {
+  width: 95.5vw !important;
+}
+
+.size-right-content-original {
+  width: 89vw !important;
+}
+
+.size-card-content-change {
+  width: 96.5vw !important;
+}
+
+.size-card-content-original {
+  width: 90vw !important;
+}
