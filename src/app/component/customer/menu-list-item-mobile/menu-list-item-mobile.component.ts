@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { MenuSettings, NavItem} from '../A-set-up-dynamic/data-menu-item-customer';
 @Component({
   selector: 'app-menu-list-item-mobile',

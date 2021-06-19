@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
-import {CarouselCustomerComponent} from "./carousel-customer.component";
-import {OwlModule} from "ngx-owl-carousel";
-import {ConfirmModule} from "../confirm/confirm.module";
+
+import {OwlModule} from 'ngx-owl-carousel';
+import {ConfirmModule} from '../confirm/confirm.module';
+import {CarouselCustomerComponent} from './carousel-customer.component';
 
 
 @NgModule({

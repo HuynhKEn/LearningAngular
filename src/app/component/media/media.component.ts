@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
+
 import {FileUploader} from 'ng2-file-upload';
 
 const URL = 'http://localhost:3000/upload';

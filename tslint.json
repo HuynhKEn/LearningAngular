@@ -7,6 +7,51 @@
         "statements"
       ]
     },
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order" : "case-insensitive",
+        "named-imports-order" : "case-insensitive",
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "core",
+            "match": "^@angular/core",
+            "order": 1
+          },
+          {
+            "name": "common",
+            "match": "^@angular/common",
+            "order": 2
+          },
+          {
+            "name": "@angular",
+            "match": "^@angular",
+            "order": 3
+          },
+          {
+            "name": "component",
+            "match": "^.*\/.component$",
+            "order": 4
+          },
+          {
+            "name": "service",
+            "match": "^.*\/.service$",
+            "order": 5
+          },
+          {
+            "name": "pipe",
+            "match": "^.*\/.pipe$",
+            "order": 6
+          },
+          {
+            "name": "node_modules",
+            "match": ".*",
+            "order": 7
+          }
+        ]
+      }
+    ],
     "array-type": false,
     "arrow-return-shorthand": true,
     "curly": true,
@@ -91,7 +136,7 @@
       }
     },
     "typedef": [
-      true,
+      false,
       "call-signature"
     ],
     "typedef-whitespace": {
@@ -115,7 +160,6 @@
     "variable-name": {
       "options": [
         "ban-keywords",
-        "check-format",
         "allow-pascal-case"
       ]
     },
@@ -135,7 +179,7 @@
     "no-inputs-metadata-property": true,
     "no-output-native": true,
     "no-output-on-prefix": true,
-    "no-output-rename": true,
+    "no-output-rename": false,
     "no-outputs-metadata-property": true,
     "template-banana-in-box": true,
     "template-no-negated-async": true,

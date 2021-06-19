@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ContentService} from "../../../service/products/content/content.service";
+
+import {ContentService} from '../../../service/products/content/content.service';
 @Component({
   selector: 'app-menu-left',
   templateUrl: './menu-left.component.html',

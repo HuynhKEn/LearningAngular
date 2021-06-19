@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -13,6 +14,6 @@ export class ContentService {
   }
 
   changeStatusMenu(contentStatus: boolean) {
-    this.contentStatus.next(contentStatus)
+    this.contentStatus.next(contentStatus);
   }
 }

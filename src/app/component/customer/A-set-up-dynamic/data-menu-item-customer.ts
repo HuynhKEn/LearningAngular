@@ -1,4 +1,5 @@
 import {ROUTE_PATH} from '../../../config/route-path.config';
+
 export interface NavItem {
   displayName: string;
   disabled?: boolean;

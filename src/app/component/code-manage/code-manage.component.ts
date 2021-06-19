@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+
 import {GLOBAL_CONSTANT} from 'src/app/constant/global-constant';
 import {CommonDataService} from 'src/app/service/common-data.service';
 
@@ -43,7 +44,7 @@ export class CodeManageComponent implements OnInit {
       typeOfColumns,
       columns: columnsDisplay,
       action: turnOnActionEvent,
-      disableSearch: disableSearch
+      disableSearch
     };
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -16,10 +17,10 @@ export class AdminService {
   constructor() { }
 
   changeStatusToLogin(loginStatus: boolean) {
-    this.loginStatus.next(loginStatus)
+    this.loginStatus.next(loginStatus);
   }
 
   changeStatusToAdmin(adminStatus: boolean) {
-    this.adminStatus.next(adminStatus)
+    this.adminStatus.next(adminStatus);
   }
 }

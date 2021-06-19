@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonDataService} from '../../service/common-data.service';
+
 import {GLOBAL_CONSTANT} from '../../constant/global-constant';
+import {CommonDataService} from '../../service/common-data.service';
 
 @Component({
   selector: 'app-manager-admin-media',

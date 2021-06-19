@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+
 import { Router } from '@angular/router';
 
 @Injectable()
 export class DownloadPDFService  {
 
-    constructor(private _router: Router) {
+    constructor(private router: Router) {
     }
 
-    downloadPDF(_url): any {
+    downloadPDF(url): any {
         return;
     }
 }

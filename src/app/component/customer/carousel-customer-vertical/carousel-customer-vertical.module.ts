@@ -1,8 +1,11 @@
 import {NgModule} from '@angular/core';
+
+import {CommonModule} from '@angular/common';
+
+import {MatIconModule} from '@angular/material/icon';
+
 import {NguCarouselModule} from '@ngu/carousel';
-import {CarouselCustomerVerticalComponent} from "./carousel-customer-vertical.component";
-import {MatIconModule} from "@angular/material/icon";
-import {CommonModule} from "@angular/common";
+import {CarouselCustomerVerticalComponent} from './carousel-customer-vertical.component';
 
 @NgModule({
   declarations: [

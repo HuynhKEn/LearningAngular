@@ -1,13 +1,13 @@
-import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { CommonDataService } from 'src/app/service/common-data.service';
-/**/
 
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { CommonDataService } from 'src/app/service/common-data.service';
 import { ROUTE_PATH } from '../../config/route-path.config';
+/**/
+
 
 
 export class SeeMoreDto {
@@ -24,11 +24,8 @@ export class PostDTO {
   id: number;
   title: string;
   content: string;
-  // tslint:disable-next-line:variable-name
   id_parent: number;
-  // tslint:disable-next-line:variable-name
   start_date: string;
-  // tslint:disable-next-line:variable-name
   end_date: string;
 }
 
@@ -36,7 +33,6 @@ export class TopicDTO {
   id: number;
   title: string;
   content: string;
-  // tslint:disable-next-line:variable-name
   see_more: SeeMoreDto;
   quote: QuoteDto;
   language: string;

@@ -1,18 +1,20 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {ROUTE_PATH} from "../../config/route-path.config";
-import {AdminComponent} from "./admin.component";
-import {TopicComponent} from "../topic-admin/topic.component";
-import {PostAdminComponent} from "../post-admin/post-admin.component";
-import {PostAssignmentComponent} from "../post-assignment/post-assignment.component";
-import {ManagerAdminMediaComponent} from "../manager-admin-media/manager-admin-media.component";
-import {CodeManageComponent} from "../code-manage/code-manage.component";
-import {MediaComponent} from "../media/media.component";
-import {PdfAdminComponent} from "../pdf-admin/pdf-admin.component";
-import {CardShowItemComponent} from "../card-show-item/card-show-item.component";
-import {CarouselCustomerComponent} from "../customer/carousel-customer/carousel-customer.component";
-import {GuardDeactivate} from "../customer/B-set-up-service/guard-deactivate.service";
-import {CarouselCustomerVerticalComponent} from "../customer/carousel-customer-vertical/carousel-customer-vertical.component";
+
+import {RouterModule, Routes} from '@angular/router';
+
+import {ROUTE_PATH} from '../../config/route-path.config';
+import {CardShowItemComponent} from '../card-show-item/card-show-item.component';
+import {CodeManageComponent} from '../code-manage/code-manage.component';
+import {GuardDeactivate} from '../customer/B-set-up-service/guard-deactivate.service';
+import {CarouselCustomerVerticalComponent} from '../customer/carousel-customer-vertical/carousel-customer-vertical.component';
+import {CarouselCustomerComponent} from '../customer/carousel-customer/carousel-customer.component';
+import {ManagerAdminMediaComponent} from '../manager-admin-media/manager-admin-media.component';
+import {MediaComponent} from '../media/media.component';
+import {PdfAdminComponent} from '../pdf-admin/pdf-admin.component';
+import {PostAdminComponent} from '../post-admin/post-admin.component';
+import {PostAssignmentComponent} from '../post-assignment/post-assignment.component';
+import {TopicComponent} from '../topic-admin/topic.component';
+import {AdminComponent} from './admin.component';
 
 
 const routes: Routes = [

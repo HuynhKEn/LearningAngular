@@ -1,9 +1,10 @@
-import {  AfterViewInit, Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
-import { Observable, combineLatest, BehaviorSubject, fromEvent   } from 'rxjs';
+import {  AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+
+import { cloneDeep } from 'lodash';
+import { BehaviorSubject, combineLatest, fromEvent, Observable   } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { PaginationCustomerService } from './pagination-customer-services/pagination-customer.service';
 import { PaginationModel } from './pagination-customer.model';
-import { cloneDeep } from 'lodash';
 @Component({
   selector: 'app-pagination-customer',
   templateUrl: './pagination-customer.component.html',
@@ -116,7 +117,7 @@ export class PaginationCustomerComponent implements OnInit, AfterViewInit {
 
       // ANCHOR  Next Right All
       fromEvent(this.nextRightAll.nativeElement, 'click').pipe(
-          map(res => {
+          map(() => {
             return this.getNumberPage(totalSize);
           })
         ).subscribe( numberPage => {
@@ -128,7 +129,7 @@ export class PaginationCustomerComponent implements OnInit, AfterViewInit {
 
       // ANCHOR  Prev Left All
       fromEvent(this.prevLeftAll.nativeElement, 'click').pipe(
-        map(res => {
+        map(() => {
           return 1;
         })
         ).subscribe( numberPage => {
@@ -140,6 +141,7 @@ export class PaginationCustomerComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /* tslint:disable:no-string-literal */
   statusDisabledNextTurnOnPrev(): void {
     this.prevLeftBtn['disabled'] = false;
     this.prevLeftAllBtn['disabled'] = false;

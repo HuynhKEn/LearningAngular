@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { CommonDataService } from 'src/app/service/common-data.service';
 
 @Component({

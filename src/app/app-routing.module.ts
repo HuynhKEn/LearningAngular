@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { ROUTE_PATH } from './config/route-path.config';
-import { PostComponent } from './component/post/post.component';
-import { HomeComponent } from './component/home/home.component';
+
 import { PreloadAllModules } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { HomeComponent } from './component/home/home.component';
+import { PostComponent } from './component/post/post.component';
 import { RegisterComponent } from './component/register/register.component';
-import { Routes, RouterModule } from '@angular/router';
+import { ROUTE_PATH } from './config/route-path.config';
 const routes: Routes = [
   { path: `${ROUTE_PATH.HOME}`, component: HomeComponent },
   { path: `${ROUTE_PATH.REGISTER}`, component: RegisterComponent },
@@ -23,7 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(
-    routes,{
+    routes, {
       preloadingStrategy: PreloadAllModules,
       enableTracing: false
     })

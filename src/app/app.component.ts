@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {AdminService} from './service/admin/admin.service';
+
 import {PrimeNGConfig} from 'primeng/api';
-import {ProductsService} from "./service/products/products.service";
+import {AdminService} from './service/admin/admin.service';
+import {ProductsService} from './service/products/products.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent {
     this.primengConfig.ripple = true;
     this.adminService.loginStatus$
       .subscribe(res => {
-          this.loginStatus = res
+          this.loginStatus = res;
         }
       );
   }

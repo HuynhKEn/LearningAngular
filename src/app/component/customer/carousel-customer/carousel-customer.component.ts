@@ -1,15 +1,17 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { Ng2ImgMaxService } from 'ng2-img-max';
-import { DomSanitizer } from '@angular/platform-browser';
-import { CommonDataService } from 'src/app/service/common-data.service';
-import { ConfirmComponent } from '../confirm/confirm.component';
+
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
+import { Ng2ImgMaxService } from 'ng2-img-max';
+import { map } from 'rxjs/operators';
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { CommonDataService } from 'src/app/service/common-data.service';
 import { ROUTE_PATH } from '../../../config/route-path.config';
 import { GLOBAL_CONSTANT } from '../../../constant/global-constant';
+import { ConfirmComponent } from '../confirm/confirm.component';
 @Component({
   selector: 'app-carousel-customer',
   templateUrl: './carousel-customer.component.html',

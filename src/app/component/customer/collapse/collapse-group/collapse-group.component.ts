@@ -1,8 +1,7 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnDestroy, OnInit, QueryList} from '@angular/core';
 
-import {CollapseItemComponent} from '../collapse-item/collapse-item.component';
-
 import {Subscription} from 'rxjs';
+import {CollapseItemComponent} from '../collapse-item/collapse-item.component';
 
 
 @Component({
@@ -12,7 +11,7 @@ import {Subscription} from 'rxjs';
 })
 export class CollapseGroupComponent implements OnInit, AfterContentInit, OnDestroy {
     @ContentChildren(CollapseItemComponent) collapses: QueryList<CollapseItemComponent>;
-    @Input() multiple: boolean = true;
+    @Input() multiple = true;
 
     private _subscriptions: Subscription[] = [];
 

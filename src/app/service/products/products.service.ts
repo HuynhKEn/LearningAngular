@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class ProductsService {
   }
 
   changeStatusProduct(productStatus: boolean) {
-    this.productStatus.next(productStatus)
+    this.productStatus.next(productStatus);
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
@@ -7,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerFormGroup: FormGroup;
-  isSubmitted  = false
+  isSubmitted  = false;
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -19,16 +20,16 @@ export class RegisterComponent implements OnInit {
       password: [
         '', Validators.required
       ]
-    })
+    });
   }
 
 
   get UsernameStatus(){
-    return this.registerFormGroup.get('username')
+    return this.registerFormGroup.get('username');
   }
 
   get passwordStatus(){
-    return this.registerFormGroup.get('password')
+    return this.registerFormGroup.get('password');
   }
 
   onSubmit(){

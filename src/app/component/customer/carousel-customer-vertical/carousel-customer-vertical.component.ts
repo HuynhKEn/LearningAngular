@@ -1,11 +1,13 @@
 import {
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
   OnInit,
-  ChangeDetectorRef,
   ViewChild,
-  AfterViewInit,
 } from '@angular/core';
+
 import { DomSanitizer } from '@angular/platform-browser';
+
 import {
   NguCarousel,
   NguCarouselConfig,

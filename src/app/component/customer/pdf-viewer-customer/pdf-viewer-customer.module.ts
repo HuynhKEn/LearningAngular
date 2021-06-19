@@ -1,24 +1,28 @@
-import {NgModule} from '@angular/core';
-import {PdfViewerCustomerComponent} from "./pdf-viewer-customer.component";
-import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
-import {MatIconModule} from "@angular/material/icon";
-import {CommonModule} from "@angular/common";
-import {MatTooltipModule} from "@angular/material/tooltip";
+import { NgModule } from '@angular/core';
 
+import { CommonModule } from '@angular/common';
+
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { DownloadPDFService } from '../../../service/common-service/download.service';
+import { PdfViewerCustomerComponent } from './pdf-viewer-customer.component';
 
 @NgModule({
-  declarations: [
-    PdfViewerCustomerComponent
-  ],
   imports: [
     CommonModule,
+    NgxExtendedPdfViewerModule,
     MatIconModule,
+    FormsModule,
     MatTooltipModule,
-    NgxExtendedPdfViewerModule
   ],
-  exports: [PdfViewerCustomerComponent]
-
+  declarations: [PdfViewerCustomerComponent],
+  exports: [
+    PdfViewerCustomerComponent
+  ],
+  providers: [DownloadPDFService]
 })
-export class PdfViewerCustomerModule {
-}
 
+export class PdfViewerCustomerModule { }

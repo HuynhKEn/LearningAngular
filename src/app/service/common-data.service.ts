@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { LanguageDTO } from '../model/dto/language.dto';
+
 import {QuoteDto, SeeMoreDto} from '../component/home/home.component';
+import { LanguageDTO } from '../model/dto/language.dto';
 
 export class TopicDTO {
   id: number;

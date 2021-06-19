@@ -1,17 +1,20 @@
-import { NgZone, Renderer2, ChangeDetectorRef,
-   Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ChangeDetectorRef, Component, ElementRef,
+   Input, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
+
 import {
   MatDialog,
 } from '@angular/material/dialog';
-import { DialogPdfShowComponent } from './dialog-pdf-show/dialog-pdf-show.component';
-import { ConfirmComponent} from '../confirm/confirm.component';
-import * as pdfjsLib from 'pdfjs-dist/build/pdf';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import $ from 'jquery';
+import { NgBodyScrollLockService } from 'ng-body-scroll-lock';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf';
+import { ConfirmComponent} from '../confirm/confirm.component';
+import { DialogPdfShowComponent } from './dialog-pdf-show/dialog-pdf-show.component';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
+
 export interface MediaItem {
   id: number;
   link: string;

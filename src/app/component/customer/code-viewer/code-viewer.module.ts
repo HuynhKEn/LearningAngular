@@ -1,8 +1,10 @@
 import {NgModule} from '@angular/core';
-import {CodeViewerComponent} from "./code-viewer.component";
-import {HighlightModule, HIGHLIGHT_OPTIONS} from "ngx-highlightjs";
-import {HighlightJsModule} from "ngx-highlight-js";
-import {CommonModule} from "@angular/common";
+
+import {CommonModule} from '@angular/common';
+
+import {HighlightJsModule} from 'ngx-highlight-js';
+import {HighlightModule, HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+import {CodeViewerComponent} from './code-viewer.component';
 
 
 @NgModule({

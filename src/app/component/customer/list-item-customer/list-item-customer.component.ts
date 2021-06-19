@@ -4,9 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { NavItem } from '../A-set-up-dynamic/data-menu-item-customer';
-import { Router } from '@angular/router';
-import { NavService } from '../B-set-up-service/nav.service';
+
 import {
   animate,
   state,
@@ -14,7 +12,11 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Router } from '@angular/router';
+
 import { ROUTE_PATH } from '../../../config/route-path.config';
+import { NavItem } from '../A-set-up-dynamic/data-menu-item-customer';
+import { NavService } from '../B-set-up-service/nav.service';
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item-customer.component.html',

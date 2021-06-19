@@ -1,63 +1,80 @@
-<div>
+<div id="fullscreenDiv">
   <ngx-extended-pdf-viewer [base64Src]="src" useBrowserLocale="true" [height]="sizePlatForm" id="pdfElement"
-  class="pdf-viewer-customer"
-  [(page)]="pdfPage"
-  pageViewMode="single"
-  [customFreeFloatingBar]="navigation"
-  (pagesLoaded)="pagesLoaded($event)"
-  (pageChange)="onPageChange($event)"
-  (pageRendered)="onPageRendered($event)"
-  [(handTool)]="settingPDF().handTool"
-  [enablePinchOnMobile]="settingPDF().isPinchOnMobile"
-  [backgroundColor]="settingPDF().backGroundColor"
-  [showPresentationModeButton]="settingPDF().fullscreen"
-  [showScrollingButton]="settingPDF().scrollbar"
-  [showZoomButtons]="settingPDF().zoom"
-  [showBorders]="settingPDF().showBorders"
-  [showBookmarkButton]="settingPDF().showBookmarkButton"
-  [showPagingButtons]="settingPDF().showPagingButtons"
-  [showPrintButton]="settingPDF().showPrintButton"
-  [showPropertiesButton]="settingPDF().showPropertiesButton"
-  [showSidebarButton]="settingPDF().showSidebarButton"
-  [(sidebarVisible)]="settingPDF().sidebarVisible"
-  [showSpreadButton]="settingPDF().showSpreadButton"
-  [showOpenFileButton]="settingPDF().showOpenFileButton"
-  [showToolbar]="showToolbar"
-  [zoomLevels]="zoomLevels"
-  zoom="page-fit"
-  (pdfLoadingFailed)="onPdfLoadingFailed($event)"
-  (pdfLoaded)="onPdfLoad($event)"
+                           class="pdf-viewer-customer"
+                           [(page)]="pdfPage"
+                           pageViewMode="single"
+                           [customFreeFloatingBar]="navigation"
+                           (pagesLoaded)="pagesLoaded($event)"
+                           (pageChange)="onPageChange($event)"
+                           (pageRendered)="onPageRendered($event)"
+                           [(handTool)]="settingPDF().handTool"
+                           [enablePinchOnMobile]="settingPDF().isPinchOnMobile"
+                           [backgroundColor]="settingPDF().backGroundColor"
+                           [showPresentationModeButton]="settingPDF().fullscreen"
+                           [showScrollingButton]="settingPDF().scrollbar"
+                           [showZoomButtons]="settingPDF().zoom"
+                           [showBorders]="settingPDF().showBorders"
+                           [showBookmarkButton]="settingPDF().showBookmarkButton"
+                           [showPagingButtons]="settingPDF().showPagingButtons"
+                           [showPrintButton]="settingPDF().showPrintButton"
+                           [showPropertiesButton]="settingPDF().showPropertiesButton"
+                           [showSidebarButton]="settingPDF().showSidebarButton"
+                           [(sidebarVisible)]="settingPDF().sidebarVisible"
+                           [showSpreadButton]="settingPDF().showSpreadButton"
+                           [showOpenFileButton]="settingPDF().showOpenFileButton"
+                           [showToolbar]="showToolbar"
+                           [zoomLevels]="zoomLevels"
+                           [filenameForDownload]="fileNameDownload"
+                           zoom="page-fit"
+                           (pdfLoadingFailed)="onPdfLoadingFailed($event)"
+                           (pdfLoaded)="onPdfLoad($event)"
   >
-</ngx-extended-pdf-viewer>
+  </ngx-extended-pdf-viewer>
 
-<ng-template #navigation>
-  <div class="event-bottom-right">
-  <mat-icon *ngIf="eventFullScreen" aria-hidden="false"  (click)="fullScreen()" title="Full Screen">zoom_out_map</mat-icon>
-  <!-- <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="onHorfullScreen()" title="Hor Full Screen">view_stream</mat-icon> -->
-
-  <mat-icon *ngIf="hozFullScreen" aria-hidden="false"  (click)="closeFullscreen()" title="Exit Full screen">fullscreen_exit</mat-icon>
-  <mat-icon [matTooltip]="toolTip?'Can not zoom in because of limit': null" (click)="onZoomIn()" aria-hidden="false"  title="Zoom In"> add_circle_outline</mat-icon>
-  <mat-icon  [matTooltip]="toolTip?'Can not zoom in because of limit': null" (click)="onZoomOut()" aria-hidden="false"  title="Zoom Out">remove_circle_outline</mat-icon>
-  <div *ngIf="!isMobile">
-    <mat-icon (click)="printPDF()" aria-hidden="false"  title="Print PDF">print</mat-icon>
-  </div>
-  <!-- <div *ngIf="isMobile">
-    <mat-icon (click)="downloadPDF()" aria-hidden="false" title="Download PDF">download</mat-icon>
-  </div> -->
-    <!-- <mat-icon (click)="onShowToggleBar()" aria-hidden="false"  title="Hidden toolbar">tab_unselected</mat-icon> -->
-  </div>
-  <div class="navigation-left" *ngIf="pdfPage > 1" (click)="changeIndexPage(-1)">
-    <mat-icon  class="arrow-next" aria-hidden="false"  matTooltip="前ページを表示"
-      matTooltipClass="course-desc-tooltip">keyboard_arrow_left
-    </mat-icon>
-  </div>
-  <div class="navigation-right" *ngIf="pdf  &&  pdfPage < howMuchPage" (click)="changeIndexPage(1)">
-    <mat-icon  class="arrow-next" aria-hidden="false" matTooltip="次ページを表示"
-      matTooltipClass="course-desc-tooltip">keyboard_arrow_right
-    </mat-icon>
-  </div>
-</ng-template>
+  <ng-template #navigation>
+    <div class="event-bottom-right" [ngClass]="(flagFullScreen && isAndroid) ||  (flagFullScreen && isSafari) ?'event-bottom-right-fullscreen':'event-bottom-right'">
+      <!-- SCREEN FULL -->
+      <mat-icon *ngIf="eventFullScreen && !isSafari"
+                aria-hidden="false" (click)="fullScreen()" title="Full Screen">zoom_out_map
+      </mat-icon>
+      <mat-icon *ngIf="eventFullScreen && isSafari" aria-hidden="false" (click)="fullScreenIOS()"
+                title="Full Screen">zoom_out_map
+      </mat-icon>
+      <!-- EXIT SCREEN -->
+      <mat-icon *ngIf="hozFullScreen && !isSafari"
+                aria-hidden="false"  (click)="closeFullscreen()" title="Exit Full screen">fullscreen_exit
+      </mat-icon>
+      <mat-icon *ngIf="hozFullScreenIOS && isSafari"
+                aria-hidden="false"  (click)="closeFullscreenIOS()" title="Exit Full screen">fullscreen_exit
+      </mat-icon>
+      <!-- ZOOM-IN AND ZOOM-OUT -->
+      <mat-icon [matTooltip]="toolTip?'Can not zoom in because of limit': null" (click)="onZoomIn()"
+                aria-hidden="false"  title="Zoom In"> add_circle_outline
+      </mat-icon>
+      <mat-icon  [matTooltip]="toolTip?'Can not zoom in because of limit': null" (click)="onZoomOut()"
+                 aria-hidden="false"  title="Zoom Out">remove_circle_outline
+      </mat-icon>
+      <!-- PRINT-EVENT -->
+      <div *ngIf="!isMobile">
+        <mat-icon (click)="printPDF()" aria-hidden="false"  title="Print PDF">print</mat-icon>
+      </div>
+      <!-- DOWNLOAD-EVENT -->
+      <div *ngIf="isMobile">
+        <mat-icon (click)="downloadPDF()" aria-hidden="false" title="Download PDF">download</mat-icon>
+      </div>
+      <!-- <mat-icon (click)="onShowToggleBar()" aria-hidden="false"  title="Hidden toolbar">tab_unselected</mat-icon> -->
+    </div>
+    <!-- ARROW LEFT-AND RIGHT -->
+    <div class="navigation-left" *ngIf="pdfPage > 1" (click)="changeIndexPage(-1)">
+      <mat-icon  class="arrow-next" aria-hidden="false"  matTooltip="前ページを表示"
+                 matTooltipClass="course-desc-tooltip">keyboard_arrow_left
+      </mat-icon>
+    </div>
+    <div class="navigation-right" *ngIf="pdf  &&  pdfPage < howMuchPage" (click)="changeIndexPage(1)">
+      <mat-icon  class="arrow-next" aria-hidden="false" matTooltip="次ページを表示"
+                 matTooltipClass="course-desc-tooltip">keyboard_arrow_right
+      </mat-icon>
+    </div>
+    <!-- END -->
+  </ng-template>
 </div>
-<!-- <div class="loading-indicator" [hidden]="isHiddenSpinner">
-  <mat-spinner mode="indeterminate"></mat-spinner>
-</div>   -->

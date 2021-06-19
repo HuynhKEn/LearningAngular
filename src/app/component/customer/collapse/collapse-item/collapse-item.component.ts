@@ -5,7 +5,7 @@ export interface DataCollapseChange {
     selected: boolean;
 }
 
-let uuid: number = 1;
+let uuid = 1;
 
 @Component({
     selector: 'app-collapse-item',
@@ -13,8 +13,8 @@ let uuid: number = 1;
     styleUrls: ['./collapse-item.component.scss']
 })
 export class CollapseItemComponent implements OnInit {
-    @Input() title: string = '';
-    @Input() selected: boolean = false;
+    @Input() title = '';
+    @Input() selected = false;
     @Output() selectedChange: EventEmitter<DataCollapseChange> = new EventEmitter<DataCollapseChange>();
     private _id: number;
 

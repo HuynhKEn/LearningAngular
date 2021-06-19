@@ -15,8 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "src/webpack.config.js"
+            },
             "outputPath": "dist/LearningAngular",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -95,10 +98,13 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "LearningAngular:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "proxyConfig": "src/proxy.conf.json",
+            "customWebpackConfig": {
+              "path": "src/webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
