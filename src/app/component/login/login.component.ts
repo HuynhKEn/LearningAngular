@@ -11,15 +11,13 @@ import { ROUTE_PATH } from '../../config/route-path.config';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  adminStatus: boolean;
   formLoginGroup: FormGroup;
   success = '';
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,
-      private adminService: AdminService) {
+      public adminService: AdminService) {
     this.adminService.changeStatusToLogin(true);
-    this.adminService.adminStatus$.subscribe(res => this.adminStatus = res);
     this.formLoginGroup = this.formBuilder.group({
         username: ['', Validators.required]
       ,

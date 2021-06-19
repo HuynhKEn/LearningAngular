@@ -11,19 +11,13 @@ import {ProductsService} from './service/products/products.service';
 })
 export class AppComponent {
   title = 'LearningAngular';
-  loginStatus: boolean;
 
   constructor(
-    private adminService: AdminService,
+    public adminService: AdminService,
     private primengConfig: PrimeNGConfig,
     public productService: ProductsService
   ) {
     this.primengConfig.ripple = true;
-    this.adminService.loginStatus$
-      .subscribe(res => {
-          this.loginStatus = res;
-        }
-      );
   }
 
 

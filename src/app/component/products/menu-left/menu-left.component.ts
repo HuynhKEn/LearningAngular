@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 import {ContentService} from '../../../service/products/content/content.service';
 @Component({
@@ -6,7 +6,7 @@ import {ContentService} from '../../../service/products/content/content.service'
   templateUrl: './menu-left.component.html',
   styleUrls: ['./menu-left.component.scss']
 })
-export class MenuLeftComponent implements OnInit {
+export class MenuLeftComponent implements OnInit, AfterViewInit {
   arrowStatus;
 
   constructor(private contentService: ContentService) {

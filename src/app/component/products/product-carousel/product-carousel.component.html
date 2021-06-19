@@ -1,7 +1,7 @@
 <div class="content-main-mobile"
      [ngClass]="{
-       'size-card-content--original': (contentService.contentStatus$ | async),
-       'size-card-content-change': !(contentService.contentStatus$ | async)
+       'size-card-content-original-mobile': (contentService.contentStatus$ | async),
+       'size-card-content-change-mobile': !(contentService.contentStatus$ | async)
     }">
   <div class="wrapper">
     <div class="header-owl-carousel">
@@ -14,43 +14,72 @@
     >
       <div class="item" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10];let i = index">
         <div class="card">
-          <span class="product-price">
-                USD<b>23,453</b>
-          </span>
+          <div class="row">
+            <div class="col-12 view-buy">
+              <span>View: 10</span>
+              <span>Buy: 9</span>
+            </div>
+          </div>
           <div class="card-img-top">
             <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-12">
-                <span class="product-size row">
-                  <div class="col-12">
-                    <p>Size</p>
-                  </div>
-                  <div class="col-12">
-                    <ul class="ul-size">
-                      <li><a href="#">7</a></li>
-                      <li><a href="#">8</a></li>
-                      <li><a href="#">9</a></li>
-                      <li><a href="#" class="active">10</a></li>
-                      <li><a href="#">11</a></li>
-                    </ul>
-                  </div>
+                <div class="col-12">
+                  <span>Shoes Nike Nike Nike Nike Nike Nike Nike Nike</span>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                Size:
+              </div>
+              <div class="col-9">
+                <span *ngFor="let numberSize of [36, 37, 38, 39, 40]">
+                    {{numberSize}}
                 </span>
               </div>
-              <div class="col-12 product-color">
-                <div class="row">
-                  <div class="col-12">
-                    <p>Colour</p>
-                  </div>
-                  <div class="col-12">
-                    <ul class="ul-color">
-                      <li><a href="#" class="orange active"></a></li>
-                      <li><a href="#" class="green"></a></li>
-                      <li><a href="#" class="yellow"></a></li>
-                    </ul>
-                  </div>
-                </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                Color:
+              </div>
+              <div class="col-9 colors">
+                <ul>
+                  <li>
+                    <label>
+                      <input type="radio" name="color" value="black">
+                      <span class="swatch" style="background-color:#222"></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="radio" name="color" value="blue">
+                      <span class="swatch" style="background-color:#6e8cd5"></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="radio" name="color" value="green">
+                      <span class="swatch" style="background-color:#44c28d"></span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                Price:
+              </div>
+              <div class="col-9">
+                23,453$
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                Brand:
+              </div>
+              <div class="col-9">
+                Nike
               </div>
             </div>
           </div>

@@ -38,7 +38,7 @@ export class ProductCarouselComponent implements OnInit {
         ]
       },
       480: {
-        items: 4,
+        items: 3,
         nav: true,
         navText: [
           '<div class="btn btn-warning d-flex justify-content-center align-items-center">' +
@@ -55,7 +55,7 @@ export class ProductCarouselComponent implements OnInit {
         ]
       },
       800: {
-        items: 5,
+        items: 4,
         nav: true,
         navText: [
           '<div class="btn btn-warning d-flex justify-content-center align-items-center">' +
@@ -73,7 +73,7 @@ export class ProductCarouselComponent implements OnInit {
         ]
       },
       1024: {
-        items: 6,
+        items: 5,
         nav: true,
         navText: [
           '<div class="btn btn-warning d-flex justify-content-center align-items-center">' +

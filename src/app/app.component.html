@@ -1,4 +1,5 @@
-<app-layout *ngIf="!loginStatus && !(productService.productStatus$ | async) ">
+<!--HOME-->
+<app-layout *ngIf="!(adminService.loginStatus$ | async) && !(productService.productStatus$ | async) ">
     <mat-sidenav-container>
       <mat-sidenav #sidenav role="navigation">
         <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
@@ -11,6 +12,8 @@
       </mat-sidenav-content>
     </mat-sidenav-container>
 </app-layout>
-<router-outlet *ngIf="loginStatus"></router-outlet>
+<!--LOGIN ADMIN-->
+<router-outlet *ngIf="adminService.loginStatus$ | async"></router-outlet>
+<!--PRODUCT-->
 <router-outlet *ngIf="productService.productStatus$ | async"></router-outlet>
 
