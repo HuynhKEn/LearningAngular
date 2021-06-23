@@ -1,96 +1,63 @@
-.content-main-mobile {
-  position: fixed;
-  top: 6vh;
-  height: 40vh;
-  width: 90vw;
-  display: flex;
-  justify-content: center;
-
-  .wrapper {
-    top: 0;
-    width: 100%;
+::ng-deep .owl-carousel {
+  margin-bottom: 2rem;
+  height: auto;
+  .owl-prev, .owl-next {
+    position: absolute;
+    z-index: 10000;
+    border-radius: 0;
+    font-family: 'Libre Franklin', sans-serif;
+    text-transform: uppercase;
     text-align: center;
-    position: relative;
+    border: 1px white solid;
+    font-size: 10px;
+    font-weight: 700;
 
-    .header-owl-carousel {
-      display: flex;
-      justify-content: flex-start;
-      width: 90%;
-      margin: 0 auto;
-
-      h4 {
-        margin: 0 0 0 0;
-        width: 100%;
-        display: flex;
-      }
+    div {
+      width: 100%;
     }
-  }
-  @media only screen and (max-width: 728px) {
-    .wrapper {
-      width: calc(90% - 1rem);
+
+    svg {
+      height: auto;
+      width: 18px;
+      padding-bottom: 2px;
     }
-  }
 
-  ::ng-deep .owl-carousel {
-    max-width: 95%;
-    margin: 0 auto;
-
-    .owl-prev, .owl-next {
-      position: absolute;
-      z-index: 10000;
+    .btn {
       border-radius: 0;
       font-family: 'Libre Franklin', sans-serif;
+      font-size: 12px;
       text-transform: uppercase;
-      text-align: center;
-      top: 92%;
-      margin: 0;
-      border: 1px white solid;
-      font-size: 10px;
       font-weight: 700;
-
-      div {
-        width: 100%;
-      }
-
-      svg {
-        height: auto;
-        width: 18px;
-        padding-bottom: 2px;
-      }
-
-      .btn {
-        border-radius: 0;
-        font-family: 'Libre Franklin', sans-serif;
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: 700;
-      }
-    }
-
-    .owl-prev {
-      left: 0;
-    }
-
-    .owl-next {
-      right: 0;
     }
   }
 
-  .card {
-    height: 35vh;
-    box-shadow: 1px 1px 5px #ccc;
+  .owl-prev {
+    left: 0;
+  }
 
+  .owl-nav [class*='owl-'] {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .owl-next {
+    right: 0;
+  }
+  .card {
+    box-shadow: 1px 1px 5px #ccc;
+    border-radius: 0;
     .row {
       padding-left: 0;
       padding-right: 0;
       margin-left: 0;
       margin-right: 0;
-      font-size: 0.45rem;
+      font-size: 0.55rem;
       text-align: left;
+
       .col-3 {
         padding-left: 0.1rem;
         padding-right: 0;
       }
+
       .col-9 {
         padding-left: 0;
         padding-right: 0;
@@ -104,29 +71,44 @@
         text-overflow: ellipsis;
         font-weight: bold;
       }
+
       .view-buy {
         display: flex;
         justify-content: space-between;
         padding-right: 0.1rem;
-        font-size: 0.45rem;
+        font-size: 0.5rem;
       }
 
-      .colors ul{list-style:none; padding:0; margin: 0;}
+      .colors ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-      .colors li{margin: 0 0.2rem 0 0; display: inline-block;}
+      .colors li {
+        margin: 0 0.2rem 0 0;
+        display: inline-block;
+      }
 
-      .colors label{cursor: pointer; margin-bottom: 0;}
+      .colors label {
+        cursor: pointer;
+        margin-bottom: 0;
+      }
 
-      .colors input{display:none;}
+      .colors input {
+        display: none;
+      }
 
-      .colors input[type="radio"]:checked + .swatch{box-shadow: inset 0 0 0 0.2rem white;}
+      .colors input[type="radio"]:checked + .swatch {
+        box-shadow: inset 0 0 0 0.2rem white;
+      }
 
-      .swatch{
-        display:inline-block;
+      .swatch {
+        display: inline-block;
         vertical-align: middle;
         height: 0.7rem;
-        width:0.7rem;
-        margin: 0 0.05rem 0 0 ;
+        width: 0.7rem;
+        margin: 0 0.05rem 0 0;
         border: 0.1rem solid #d4d4d4;
       }
     }
@@ -150,6 +132,7 @@
       align-items: center;
       margin: auto;
       border-top: 1px solid lightgray;
+
       label {
         margin: 0;
       }
@@ -248,10 +231,9 @@
   }
 }
 
-.size-card-content-change-mobile {
-  width: 96.5vw !important;
-}
+::ng-deep owl-carousel-child {
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 
-.size-card-content-original-mobile {
-  width: 90vw !important;
 }

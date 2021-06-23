@@ -1,105 +1,96 @@
-<div class="content-main-mobile"
-     [ngClass]="{
-       'size-card-content-original-mobile': (contentService.contentStatus$ | async),
-       'size-card-content-change-mobile': !(contentService.contentStatus$ | async)
-    }">
-  <div class="wrapper">
-    <div class="header-owl-carousel">
-      <h4>Shoes</h4>
-    </div>
-    <owl-carousel [options]="customOptionsLeft"
-                  #owlElement
-                  id="owl-demo"
-                  [carouselClasses]="['owl-theme', 'row', 'sliding']"
-    >
-      <div class="item" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10];let i = index">
-        <div class="card">
-          <div class="row">
-            <div class="col-12 view-buy">
-              <span>View: 10</span>
-              <span>Buy: 9</span>
-            </div>
+<owl-carousel [options]="customOptionsLeft"
+              #owlElement
+              id="owl-demo"
+              [carouselClasses]="['owl-theme', 'row', 'sliding']"
+>
+  <div class="item" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10];let i = index">
+    <div class="card">
+      <div class="row">
+        <div class="col-12 view-buy">
+          <span>View: 10</span>
+          <span>Buy: 9</span>
+        </div>
+      </div>
+      <div class="card-img-top">
+        <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <span>Shoes Nike Nike Nike Nike Nike Nike Nike Nike</span>
           </div>
-          <div class="card-img-top">
-            <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
+        </div>
+        <div class="row">
+          <div class="col-3">
+            Size:
           </div>
-          <div class="card-body">
-            <div class="row">
-                <div class="col-12">
-                  <span>Shoes Nike Nike Nike Nike Nike Nike Nike Nike</span>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                Size:
-              </div>
-              <div class="col-9">
+          <div class="col-9">
                 <span *ngFor="let numberSize of [36, 37, 38, 39, 40]">
                     {{numberSize}}
                 </span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                Color:
-              </div>
-              <div class="col-9 colors">
-                <ul>
-                  <li>
-                    <label>
-                      <input type="radio" name="color" value="black">
-                      <span class="swatch" style="background-color:#222"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <label>
-                      <input type="radio" name="color" value="blue">
-                      <span class="swatch" style="background-color:#6e8cd5"></span>
-                    </label>
-                  </li>
-                  <li>
-                    <label>
-                      <input type="radio" name="color" value="green">
-                      <span class="swatch" style="background-color:#44c28d"></span>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                Price:
-              </div>
-              <div class="col-9">
-                23,453$
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                Brand:
-              </div>
-              <div class="col-9">
-                Nike
-              </div>
-            </div>
           </div>
-          <div>
-            <div class="rate">
-              <input type="radio" id="star5_item5" name="rate" value="5"/>
-              <label for="star5" title="text">5 stars</label>
-              <input type="radio" id="star4_item5" name="rate" value="4"/>
-              <label for="star4" title="text">4 stars</label>
-              <input type="radio" id="star3_item5" name="rate" value="3"/>
-              <label for="star3" title="text">3 stars</label>
-              <input type="radio" id="star2_item5" name="rate" value="2"/>
-              <label for="star2" title="text">2 stars</label>
-              <input type="radio" id="star1_item5" name="rate" value="1"/>
-              <label for="star1" title="text">1 star</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            Color:
+          </div>
+          <div class="col-9 colors">
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="black">
+                  <span class="swatch" style="background-color:#222"></span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="blue">
+                  <span class="swatch" style="background-color:#6e8cd5"></span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="color" value="green">
+                  <span class="swatch" style="background-color:#44c28d"></span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            Price:
+          </div>
+          <div class="col-9">
+            23,453$
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            Brand:
+          </div>
+          <div class="col-9">
+            Nike
           </div>
         </div>
       </div>
-    </owl-carousel>
+      <div>
+        <div class="rate">
+          <input type="radio" id="star5_item5" name="rate" value="5"/>
+          <label for="star5" title="text">5 stars</label>
+          <input type="radio" id="star4_item5" name="rate" value="4"/>
+          <label for="star4" title="text">4 stars</label>
+          <input type="radio" id="star3_item5" name="rate" value="3"/>
+          <label for="star3" title="text">3 stars</label>
+          <input type="radio" id="star2_item5" name="rate" value="2"/>
+          <label for="star2" title="text">2 stars</label>
+          <input type="radio" id="star1_item5" name="rate" value="1"/>
+          <label for="star1" title="text">1 star</label>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</owl-carousel>
+
+
 
