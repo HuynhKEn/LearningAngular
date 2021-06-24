@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 import {ContentService} from '../../../service/products/content/content.service';
+import {TestMobileService} from '../../../service/test-mobile.service';
 @Component({
   selector: 'app-menu-left',
   templateUrl: './menu-left.component.html',
@@ -9,7 +10,7 @@ import {ContentService} from '../../../service/products/content/content.service'
 export class MenuLeftComponent implements OnInit, AfterViewInit {
   arrowStatus;
 
-  constructor(private contentService: ContentService) {
+  constructor(private contentService: ContentService, public testMobileService: TestMobileService) {
   }
 
   ngOnInit(): void {

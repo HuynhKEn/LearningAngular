@@ -7,6 +7,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {DeviceDetectorService} from 'ngx-device-detector';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GuardDeactivate} from './component/customer/B-set-up-service/guard-deactivate.service';
@@ -22,31 +23,32 @@ import {SidenavListComponent} from './component/sidenav-list/sidenav-list.compon
 import {ShareModule} from './module/share/share.module';
 import {AdminService} from './service/admin/admin.service';
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    PostComponent,
-    HomeComponent,
-    LayoutComponent,
-    RegisterComponent,
-    SidenavListComponent,
-  ],
-  imports: [
-    AppRoutingModule,
-    LoginModule,
-    ProductsModule,
-    CommonModule,
-    BrowserModule,
-    FlexLayoutModule,
-    NgbModule,
-    HeaderModule,
-    ShareModule,
-    BrowserAnimationsModule,
-  ],
-  exports: [SidenavListComponent, HeaderModule, ShareModule],
-  entryComponents: [],
-  providers: [AdminService, NavService, GuardDeactivate],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        PostComponent,
+        HomeComponent,
+        LayoutComponent,
+        RegisterComponent,
+        SidenavListComponent,
+    ],
+    imports: [
+        AppRoutingModule,
+        LoginModule,
+        ProductsModule,
+        CommonModule,
+        BrowserModule,
+        FlexLayoutModule,
+        NgbModule,
+        HeaderModule,
+        ShareModule,
+        BrowserAnimationsModule,
+    ],
+    exports: [SidenavListComponent, HeaderModule, ShareModule],
+    entryComponents: [],
+    providers: [AdminService, NavService, GuardDeactivate, DeviceDetectorService],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

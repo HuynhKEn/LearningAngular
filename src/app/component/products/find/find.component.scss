@@ -1,8 +1,23 @@
-input {
-  height: auto;
-  min-height: 4vh;
-  min-width: 25vw;
-  max-width: 35vw;
-}
-button {
+.search-header {
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: nowrap;
+  input {
+    height: auto;
+    min-height: 4vh;
+    min-width: 25vw;
+    max-width: 35vw;
+    padding: 1vh;
+  }
+
+  button {
+    height: auto;
+    min-height: 4vh;
+    margin: auto 1rem auto auto;
+    padding: 1vh;
+  }
+  .col-10 {
+    padding-right: 0;
+    min-width: 23vw;
+  }
 }

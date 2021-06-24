@@ -1,6 +1,7 @@
 .left-content {
   position: relative;
   border-right: 0.1rem solid #6c757d;
+
   .menu-left {
     span {
       float: left;
@@ -19,24 +20,38 @@
     }
 
     .side-nav-left {
-      top: 0;
+      top: 13vh;
       left: 0;
-      width: 0;
-      height: 100vh;
       display: flex;
       position: fixed;
       transition: 0.5s;
       overflow-x: hidden;
-      background-color: #111;
+      .col-3, .col-9, .col-12 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+      div > div > div {
+        align-items: center;
+        justify-content: center;
+      }
+      .center-item-menu {
+        justify-content: center;
+      }
+      b {
+        text-align: center;
+      }
     }
   }
 }
+
 .display-menu-left {
   display: none;
 }
+
 .size-menu-left-change {
   width: 3.5vw !important;
 }
+
 .size-menu-left-original {
   width: 9vw !important;
 }
