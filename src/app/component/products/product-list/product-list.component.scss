@@ -1,0 +1,67 @@
+.content-main {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  height: 100vh;
+  width: 90vw;
+  margin: auto;
+  padding: 1rem 1rem 15rem 1rem;
+  overflow: auto;
+  top: 11vh;
+
+  .col-12 {
+    padding-right: 0.9vw;
+    padding-left: 0.9vw;
+    margin-bottom: 0.5rem;
+  }
+
+  .wrap-banner {
+    img {
+      max-width: 100%;
+      display: block;
+      height: 15vh;
+      width: 100%;
+      margin-bottom: 1.0vw;
+    }
+  }
+
+  .container-card-item {
+    margin: auto;
+    padding: 0;
+    border: 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+  }
+
+  @import "product-list-card-component";
+
+  @media only screen and (max-width: 767px) {
+    .card {
+      width: 40vw !important;
+    }
+  }
+}
+
+.size-card-content-change-pc {
+  width: 96.5vw !important;
+}
+
+.size-card-content-original-pc {
+  width: 90vw !important;
+}
+
+::-webkit-scrollbar {
+  width: 0
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: gainsboro;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
