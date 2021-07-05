@@ -2,8 +2,7 @@
   position: relative;
   object-fit: contain;
   border: 0.1rem solid #6c757d;
-  height: 89.5vh;
-  width: 89vw !important;
+  height: 89vh;
 
   video {
     top: 0;
@@ -13,12 +12,4 @@
     object-fit: cover;
     object-position: center;
   }
-}
-
-.size-right-content-change {
-  width: 95.5vw !important;
-}
-
-.size-right-content-original {
-  width: 89vw !important;
 }

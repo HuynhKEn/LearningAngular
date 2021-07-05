@@ -5,22 +5,21 @@
         'size-menu-left-original': arrowStatus
        }"
   >
-      <span class="double-left">
-          <img class="left" [src]="'assets/icon/double_left.png'"
-               (click)="openNav()"
-               [ngClass]="{
-                'display-menu-left': !arrowStatus
-               }"
-               *ngIf="!(testMobileService.testMobileStatus$ | async)"
-          >
-          <img class="right" [src]="'assets/icon/double_right.png'"
-               (click)="openNav()"
-               [ngClass]="{
-                 'display-menu-left': arrowStatus
-               }"
-               *ngIf="!(testMobileService.testMobileStatus$ | async)"
-          >
-      </span>
+    <!--Arrow click-->
+    <span class="double-left">
+      <img class="left" [src]="'assets/icon/double_left.png'"
+           (click)="openNav()"
+           [ngClass]="{'display-menu-left': !arrowStatus}"
+           *ngIf="!(testMobileService.testMobileStatus$ | async)"
+      >
+      <img class="right" [src]="'assets/icon/double_right.png'"
+           (click)="openNav()"
+           [ngClass]="{
+           'display-menu-left': arrowStatus}"
+           *ngIf="!(testMobileService.testMobileStatus$ | async)"
+      >
+    </span>
+    <!---->
     <div id="mySideNav" class="side-nav-left">
       <div gdAreas="shopping-cart | category | truck" gdGap="1rem"
            [ngClass]="{

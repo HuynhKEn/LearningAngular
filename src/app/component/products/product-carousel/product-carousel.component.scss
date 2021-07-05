@@ -65,10 +65,16 @@
       }
     }
   }
+  .card-body {
+    .element-buy-products {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
 
 ::ng-deep owl-carousel-child {
-    padding: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }

@@ -154,6 +154,7 @@
 }
 
 .card:hover {
-  transform: scale(1.005);
+  transform: scale(1.02);
+  border: 1px solid #f63;
   box-shadow: 8px 8px 5px linear-gradient(-180deg, #f53d2d, #f63);
 }

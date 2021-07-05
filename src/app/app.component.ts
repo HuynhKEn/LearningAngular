@@ -24,6 +24,4 @@ export class AppComponent {
             this.testMobileService.changeStatusTest(true);
         }
     }
-
-
 }

@@ -48,8 +48,23 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit {
       }
     }
   };
+  girdAreasBody = '';
+  girdAreasHeader = '';
 
-  constructor(public contentService: ContentService) { }
+  constructor(public contentService: ContentService) {
+    this.girdAreasBody =
+        'name name name' +
+        '|' +
+        'size valueSize valueSize' +
+        '|' +
+        'color valueColor valueColor' +
+        '|' +
+        'price valuePrice valuePrice | brand valueBrand valueBrand';
+    this.girdAreasHeader =
+        'header' +
+        '|' +
+        'image';
+  }
 
   ngOnInit(): void {
   }

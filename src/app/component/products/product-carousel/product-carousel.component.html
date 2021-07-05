@@ -3,9 +3,9 @@
               id="owl-demo"
               [carouselClasses]="['owl-theme', 'row', 'sliding']"
 >
-  <div class="item" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10];let i = index">
+  <div class="item" *ngFor="let idProduct of [1,2,3,4,5,6,7,8,9,10];let i = index">
     <div class="card">
-      <div class="card-img-top-carousel" gdAreas="header|image">
+      <div class="card-img-top-carousel" gdAreas="{{girdAreasHeader}}">
         <div class="view-buy-carousel" gdArea="header">
           <span>View: 10</span>
           <span>Buy: 9</span>
@@ -14,14 +14,10 @@
           <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
         </div>
       </div>
+      <!---->
       <div class="card-body">
-        <div class="content-card" gdAreas="
-            name name name|
-            size valueSize valueSize|
-            color valueColor valueColor|
-            price valuePrice valuePrice|
-            brand valueBrand valueBrand"
-             gdGap="1.5vh"
+        <div class="content-card" gdAreas="{{girdAreasBody}}"
+             gdGap="1.5vh 0"
         >
           <!--Name-->
           <div gdArea="name" class="products-name">
@@ -32,9 +28,9 @@
             <span>Size:</span>
           </div>
           <div gdArea="valueSize">
-                <span *ngFor="let numberSize of [36, 37, 38, 39, 40]">
-                    {{numberSize}}
-                </span>
+            <span *ngFor="let numberSize of [36, 37, 38, 39, 40]">
+              {{numberSize}}
+            </span>
           </div>
           <!-- Color -->
           <div gdArea="color">
@@ -67,21 +63,25 @@
             <span>Price:</span>
           </div>
           <div gdArea="valuePrice">
-                <span>
-                  22,453$
-                </span>
+            <span>
+              22,453$
+            </span>
           </div>
           <!--Brand-->
           <div gdArea="brand">
             <span>Brand:</span>
           </div>
           <div gdArea="valueBrand">
-                <span>
-                  Nike
-                </span>
+            <div class="element-buy-products">
+              <span>
+                Nike
+              </span>
+              <app-button-buy [idProduct]="idProduct"></app-button-buy>
+            </div>
           </div>
         </div>
       </div>
+      <!---->
       <div  class="card-footer">
         <div class="rate">
           <input type="radio" id="star5_item5" name="rate" value="5"/>

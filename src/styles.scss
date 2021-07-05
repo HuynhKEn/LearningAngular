@@ -18,3 +18,26 @@ textarea.form-control {
 }
 
 @import '~bootstrap/scss/bootstrap';
+
+.btn-solid-primary {
+  color: #fff;
+  background: #ee4d2d;
+  padding: 0 .75rem;
+  font-size: 14px;
+}
+
+.size-content-change {
+  width: 95.5vw !important;
+}
+
+.size-content-original {
+  width: 89vw !important;
+}
+
+.size-layout-content-change {
+  width: 95.5vw !important;
+}
+
+.size-layout-content-original {
+  width: 89vw !important;
+}

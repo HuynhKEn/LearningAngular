@@ -1,22 +1,20 @@
 <div
-  class="right-content"
-  [ngClass]="{
-      'size-right-content-original': (contentService.contentStatus$ | async),
-      'size-right-content-change': !(contentService.contentStatus$ | async)
+    class="right-content"
+    [ngClass]="{
+      'size-layout-content-original': (contentService.contentStatus$ | async),
+      'size-layout-content-change': !(contentService.contentStatus$ | async)
   }">
   <video
-    autoplay
-    poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/fashion.jpg"
-    onloadedmetadata="this.muted=true"
-    loop
-    class="video_background" #videoPlayer
+      autoplay
+      poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/fashion.jpg"
+      onloadedmetadata="this.muted=true"
+      loop
+      class="video_background" #videoPlayer
   >
     <source [src]="'assets/videos/background_shoe_web.webm'"
             type="video/webm">
     <source [src]="'assets/videos/background_shoe_web.mp4'"
             type="video/mp4">
   </video>
-  <app-product-list>
-    <app-product-carousel></app-product-carousel>
-  </app-product-list>
+  <ng-content></ng-content>
 </div>

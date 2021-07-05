@@ -3,7 +3,6 @@ import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewR
 import {ProductsService} from '../../service/products/products.service';
 import {TestMobileService} from '../../service/test-mobile.service';
 
-
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
@@ -17,8 +16,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
         this.productService.changeStatusProduct(true);
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     ngAfterViewInit(): void {
         this.changeSize(false);

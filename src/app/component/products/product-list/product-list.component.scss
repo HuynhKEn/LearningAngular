@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   position: fixed;
-  height: 89.5vh;
-  width: 90vw;
+  height: 89vh;
   margin: auto;
   padding: 1rem 1rem 15rem 1rem;
   overflow: auto;
@@ -33,6 +32,12 @@
     flex-direction: row;
     display: flex;
     width: 100%;
+    .card-body {
+      .element-buy-products {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 
   @import "product-list-card-component";
@@ -42,14 +47,6 @@
       width: 40vw !important;
     }
   }
-}
-
-.size-card-content-change-pc {
-  width: 96.5vw !important;
-}
-
-.size-card-content-original-pc {
-  width: 90vw !important;
 }
 
 ::-webkit-scrollbar {
