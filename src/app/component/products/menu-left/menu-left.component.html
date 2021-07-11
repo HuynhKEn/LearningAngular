@@ -38,7 +38,8 @@
             </svg>
             <b class="col-12" [ngClass]="{
                  'display-menu-left': !arrowStatus || (testMobileService.testMobileStatus$ | async)
-               }">
+               }"
+               *ngIf="!(testMobileService.testMobileStatus$ | async)">
               Giỏ hàng
             </b>
           </div>
@@ -54,7 +55,7 @@
             </svg>
             <b class="col-12" [ngClass]="{
                  'display-menu-left': !arrowStatus || (testMobileService.testMobileStatus$ | async)
-               }">
+               }" *ngIf="!(testMobileService.testMobileStatus$ | async)">
               Loại sản phẩm
             </b>
           </div>
@@ -70,7 +71,7 @@
             </svg>
             <b class="col-12" [ngClass]="{
                  'display-menu-left': !arrowStatus || (testMobileService.testMobileStatus$ | async)
-               }">
+               }" *ngIf="!(testMobileService.testMobileStatus$ | async)">
               Vận chuyển
             </b>
           </div>

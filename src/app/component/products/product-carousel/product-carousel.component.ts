@@ -10,11 +10,11 @@ import {ContentService} from '../../../service/products/content/content.service'
 export class ProductCarouselComponent implements OnInit, AfterViewInit {
 
   customOptionsLeft = {
-    margin: 5,
-    autoplay: true,
+    margin: 15,
+    autoplay: false,
     responsiveClass: true,
-    loop: true,
-    navigation: true,
+    loop: false,
+    navigation: false,
     navText: [
       '<div class="btn btn-warning d-flex justify-content-center align-items-center">' +
       '<svg class="ml-1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"' +
@@ -35,14 +35,12 @@ export class ProductCarouselComponent implements OnInit, AfterViewInit {
       0: {
         items: 2,
         nav: true,
-        loop: false,
-
       },
-      768: {
-        items: 3,
+      512: {
+        items: 4,
         nav: true,
       },
-      1024: {
+      768: {
         items: 5,
         nav: true,
       }

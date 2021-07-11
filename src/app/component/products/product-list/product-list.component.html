@@ -1,105 +1,100 @@
-<div class="content-main"
-     [ngClass]="{
-      'size-content-original': (contentService.contentStatus$ | async),
-      'size-content-change': !(contentService.contentStatus$ | async)
-   }">
-    <div class="container-card-item row">
-        <div class="col-12">
-            <app-product-carousel></app-product-carousel>
-        </div>
-        <div class="col-12 wrap-banner">
-            <img src="https://cf.shopee.vn/file/9c078b39474a7b12a33c380ab7ccf1d8_xxhdpi">
-        </div>
-        <div class="card" *ngFor="let idProduct of [1,2,3,4,5, 6, 7, 8, 9, 10]">
-            <div class="card-img-top-products" gdAreas="{{girdAreasHeader}}">
-                <div class="view-buy-products" gdArea="header">
-                    <span>View: 10</span>
-                    <span>Buy: 9</span>
-                </div>
-                <div gdArea="image">
-                    <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="content-card" gdAreas="{{girdAreasBody}}"
-                     gdGap="1.5vh 0"
-                >
-                    <!--Name-->
-                    <div gdArea="name" class="products-name">
-                        <span>Shoes Nike Nike Nike Nike Nike Nike Nike Nike</span>
-                    </div>
-                    <!--Size-->
-                    <div gdArea="size">
-                        <span>Size:</span>
-                    </div>
-                    <div gdArea="valueSize">
-                        <span *ngFor="let numberSize of [36, 37, 38, 39, 40]">
-                            {{numberSize}}
-                        </span>
-                    </div>
-                    <!-- Color -->
-                    <div gdArea="color">
-                        Color:
-                    </div>
-                    <div gdArea="valueColor" class="products-color">
-                        <ul>
-                            <li>
-                                <label>
-                                    <input type="radio" name="color" value="black">
-                                    <span class="swatch" style="background-color:#222"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="radio" name="color" value="blue">
-                                    <span class="swatch" style="background-color:#6e8cd5"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="radio" name="color" value="green">
-                                    <span class="swatch" style="background-color:#44c28d"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Price-->
-                    <div gdArea="price">
-                        <span>Price:</span>
-                    </div>
-                    <div gdArea="valuePrice">
-                        <span>
-                            22,453$
-                        </span>
-                    </div>
-                    <!--Brand-->
-                    <div gdArea="brand">
-                        <span>Brand:</span>
-                    </div>
-                    <div gdArea="valueBrand">
-                        <div class="element-buy-products">
-                            <span>
-                                Nike
-                            </span>
-                            <app-button-buy [idProduct]="idProduct"></app-button-buy>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="rate">
-                    <input type="radio" id="star5_item5" name="rate" value="5"/>
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4_item5" name="rate" value="4"/>
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3_item5" name="rate" value="3"/>
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2_item5" name="rate" value="2"/>
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1_item5" name="rate" value="1"/>
-                    <label for="star1" title="text">1 star</label>
-                </div>
-            </div>
-        </div>
+<div class="container-card-item row container">
+  <div class="col-12">
+    <app-product-carousel></app-product-carousel>
+  </div>
+  <div class="col-12 wrap-banner">
+    <img src="https://cf.shopee.vn/file/9c078b39474a7b12a33c380ab7ccf1d8_xxhdpi">
+  </div>
+  <div class="card" *ngFor="let idProduct of [1,2,3,4,5, 6, 7, 8, 9, 10]">
+    <div class="card-img-top-products" gdAreas="{{girdAreasHeader}}">
+      <div class="view-buy-products" gdArea="header">
+        <span>View: 10</span>
+        <span>Buy: 9</span>
+      </div>
+      <div gdArea="image">
+        <img src="../../../../assets/images/carousel-image-default.png" alt="Image not found">
+      </div>
     </div>
+    <div class="card-body">
+      <div class="content-card" gdAreas="{{girdAreasBody}}"
+           gdGap="1.5vh 0"
+      >
+        <!--Name-->
+        <div gdArea="name" class="products-name">
+          <span>Shoes Nike Nike Nike Nike Nike Nike Nike Nike</span>
+        </div>
+        <!--Size-->
+        <div gdArea="size">
+          <span>Size:</span>
+        </div>
+        <div gdArea="valueSize">
+          <span *ngFor="let numberSize of [36, 37, 38, 39, 40]">
+            {{numberSize}}
+          </span>
+        </div>
+        <!-- Color -->
+        <div gdArea="color">
+          Color:
+        </div>
+        <div gdArea="valueColor" class="products-color">
+          <ul>
+            <li>
+              <label>
+                <input type="radio" name="color" value="black">
+                <span class="swatch" style="background-color:#222"></span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="color" value="blue">
+                <span class="swatch" style="background-color:#6e8cd5"></span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="color" value="green">
+                <span class="swatch" style="background-color:#44c28d"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <!--Price-->
+        <div gdArea="price">
+          <span>Price:</span>
+        </div>
+        <div gdArea="valuePrice">
+          <span>
+            22,453$
+          </span>
+        </div>
+        <!--Brand-->
+        <div gdArea="brand">
+          <span>Brand:</span>
+        </div>
+        <div gdArea="valueBrand">
+          <div class="element-buy-products">
+            <span>
+              Nike
+            </span>
+            <app-button-buy [idProduct]="idProduct"></app-button-buy>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="rate">
+        <input type="radio" id="star5_item5" name="rate" value="5"/>
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4_item5" name="rate" value="4"/>
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3_item5" name="rate" value="3"/>
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2_item5" name="rate" value="2"/>
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1_item5" name="rate" value="1"/>
+        <label for="star1" title="text">1 star</label>
+      </div>
+    </div>
+  </div>
 </div>
+

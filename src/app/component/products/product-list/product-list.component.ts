@@ -1,7 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 
-import { ContentService } from '../../../service/products/content/content.service';
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -10,7 +8,7 @@ import { ContentService } from '../../../service/products/content/content.servic
 export class ProductListComponent implements OnInit{
   girdAreasBody = '';
   girdAreasHeader = '';
-  constructor(public contentService: ContentService) {
+  constructor() {
     this.girdAreasBody =
         'name name name' +
         '|' +

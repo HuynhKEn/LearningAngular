@@ -1,6 +1,7 @@
 .left-content {
   position: relative;
-  border-right: 0.1rem solid #6c757d;
+  height: 91vh;
+  background-color: #eaeaea;
 
   .menu-left {
     span {
@@ -12,6 +13,8 @@
       cursor: pointer;
       position: relative;
       justify-content: flex-end;
+      z-index: 4;
+      margin-left: 20px;
 
       img {
         height: 14px;
@@ -20,12 +23,12 @@
     }
 
     .side-nav-left {
-      top: 13vh;
       left: 0;
       display: flex;
       position: fixed;
       transition: 0.5s;
       overflow-x: hidden;
+      padding: 10px;
       .col-3, .col-9, .col-12 {
         padding-right: 0;
         padding-left: 0;

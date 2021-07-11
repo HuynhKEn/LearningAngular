@@ -8,7 +8,7 @@ import {TestMobileService} from '../../../service/test-mobile.service';
   styleUrls: ['./menu-left.component.scss']
 })
 export class MenuLeftComponent implements OnInit, AfterViewInit {
-  arrowStatus;
+  arrowStatus = true;
 
   constructor(private contentService: ContentService, public testMobileService: TestMobileService) {
   }

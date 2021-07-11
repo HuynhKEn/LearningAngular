@@ -1,0 +1,16 @@
+<section  class="collapsible-body" [class.active]="!selected">
+    {{contentShort}}
+</section>
+<section class="collapsible-body" [class.active]="selected">
+    {{content}}
+</section>
+<header class="collapsible-header" (click)="toggleSelected()" *ngIf="triggerExpandAndCollapse">
+    <span class="arrow-icon" >
+        <i *ngIf="this.selected">
+            <img src="../../../../../../assets/icon/arrowheadupoutline.png" alt="Not found">
+        </i>
+        <i  *ngIf="!this.selected">
+            <img src="../../../../../../assets/icon/arrowheaddownoutline.png" alt="Not found">
+        </i>
+    </span>
+</header>

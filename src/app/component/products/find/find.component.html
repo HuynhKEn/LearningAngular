@@ -1,13 +1,25 @@
-<div class="search-header row">
-  <div class="col-10">
-    <input type="search">
+<div class="p-fluid p-formgrid p-grid search-header">
+  <div class="p-col-12 p-lg-8 align-self-center" fxHide.lt-md [ngStyle]="{'color': '#fff', 'font-size':'30px'}">
+    It's a rainbow in someone else's feet
   </div>
-  <div class="col-2">
-    <button>
-      Search
-    </button>
+  <div class="p-col-12 p-lg-4">
+    <div class="slogan" fxHide.gt-md fxHide.md>
+      It's a rainbow in someone else's feet
+    </div>
+    <div class="p-inputgroup">
+      <input id="firstname" type="search" pInputText>
+      <button type="button" pButton pRipple label="Search"></button>
+      <button pButton pRipple class="user-icon-header margin-l-e-15" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+             class="bi bi-cart2" viewBox="0 0 16 16"
+        >
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>          </svg>
+      </button>
+    </div>
   </div>
 </div>
+
 
 
 

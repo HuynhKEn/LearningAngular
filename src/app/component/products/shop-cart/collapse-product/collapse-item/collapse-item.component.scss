@@ -1,0 +1,37 @@
+app-collapse-item {
+  display: block;
+  &:last-child {
+    .collapsible-body {
+    }
+  }
+}
+
+.collapsible-header {
+  display: block;
+  cursor: pointer;
+  min-height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  color: #fff;
+  border: 0;
+  box-shadow: 0 0;
+  user-select: none;
+  span[class="arrow-icon"] {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #3e92d6;
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.collapsible-body {
+  display: none;
+  &.active {
+    display: block;
+  }
+}

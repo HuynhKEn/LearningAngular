@@ -2,22 +2,19 @@
   margin-left: auto;
   margin-right: auto;
   flex-wrap: nowrap;
-  input {
-    height: auto;
-    min-height: 4vh;
-    min-width: 25vw;
-    max-width: 35vw;
-    padding: 1vh;
+  .slogan {
+    font-family: cursive;
   }
-
-  button {
-    height: auto;
-    min-height: 4vh;
-    margin: auto 1rem auto auto;
-    padding: 1vh;
+  .user-icon-header {
+    background: linear-gradient(180deg, #0e6fe6, #2088f2);
   }
-  .col-10 {
-    padding-right: 0;
-    min-width: 23vw;
+  .p-inputgroup {
+    padding-bottom: 5px;
+  }
+  .p-lg-4 {
+    padding: 1rem !important;
+  }
+  .p-col-12 {
+    padding: 0.5rem !important;
   }
 }

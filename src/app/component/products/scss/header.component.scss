@@ -1,12 +1,10 @@
 .header-content {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #fff;
-  background-image: url("../../../../assets/banner/My Post.png");
+  background: linear-gradient(-180deg , #2d87f5, #333dff);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 10vh;
+  min-height: 8vh;
   width: 100vw;
   .row {
     text-align: center;

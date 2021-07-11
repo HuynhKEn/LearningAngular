@@ -1,3 +1,7 @@
+@import '~bootstrap/scss/bootstrap';
+
+$colorPrimary: #4c70c0;
+
 html, body {
   margin: 0;
   height: 100%;
@@ -17,27 +21,123 @@ textarea.form-control {
   border-radius: 0;
 }
 
-@import '~bootstrap/scss/bootstrap';
 
 .btn-solid-primary {
   color: #fff;
-  background: #ee4d2d;
+  background: $colorPrimary;
   padding: 0 .75rem;
   font-size: 14px;
 }
 
+.btn-action-shop-cart {
+  color: #fff;
+  background: $colorPrimary;
+  padding: 0 .75rem 0 auto;
+}
+
+/* size */
 .size-content-change {
-  width: 95.5vw !important;
+  width: 96.5vw !important;
 }
 
 .size-content-original {
-  width: 89vw !important;
+  width: 91vw !important;
 }
 
-.size-layout-content-change {
-  width: 95.5vw !important;
+.size-arrow-product-buy {
+  img {
+    width: 15px;
+    height: auto;
+  }
 }
 
-.size-layout-content-original {
-  width: 89vw !important;
+
+
+/* border*/
+
+
+/* margin */
+.margin-e-0 {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
+
+.margin-e-5 {
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+}
+
+.margin-e-15 {
+  margin-right: 15px !important;
+  margin-left: 15px !important;
+}
+
+.margin-e-20 {
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+}
+
+.margin-r-e-15 {
+  margin-right: 15px !important;
+}
+
+.margin-l-e-15 {
+  margin-left: 15px !important;
+}
+
+.margin-r-e-5 {
+  margin-right: 5px !important;
+}
+
+.margin-l-e-5 {
+  margin-left :5px !important;
+}
+
+/* padding */
+
+.padding-e-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.padding-e-5 {
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+}
+
+.padding-r-e-0 {
+  padding-right: 0 !important;
+}
+.padding-l-e-5 {
+  padding-left: 5px !important;
+}
+.padding-l-e-10 {
+  padding-left: 10px !important;
+}
+
+/* grid */
+
+.inline-grid {
+  display: inline-grid !important;
+}
+
+
+/* owl-carousel */
+.wrap-product-buy {
+  .owl-nav {
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    width: 100%;
+    margin: auto !important;
+  }
+  .owl-nav .owl-prev{
+    margin-left: -5%;
+  }
+  .owl-nav .owl-next{
+    margin-right: -5%;
+  }
+}
+
