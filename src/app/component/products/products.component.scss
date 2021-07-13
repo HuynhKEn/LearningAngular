@@ -1,3 +1,5 @@
+@import "../../@theme/variable-style/variable";
+
 .header-root {
   margin: 0;
   display: flex;
@@ -6,11 +8,11 @@
   header {
     width: 100%;
     height: 100%;
-    color: #000000;
+    color: $colorTextHeader;
     position: relative;
     justify-content: flex-start;
-    border-bottom: 0.1rem solid #6c757d;
-    z-index: 3;
+    border-bottom: 0.1rem solid $backgroundColorLayout;
+    z-index: $zIndexHeader;
   }
   @import "./scss/header.component";
 }
@@ -21,6 +23,7 @@
   min-width: 100%;
   max-height: 100vh;
   flex-direction: row;
+  background-color: #eaeaea;
 
   @font-face {
     font-family: Moderne Sans;
@@ -188,10 +191,10 @@
   footer {
     width: 100%;
     height: 100%;
-    color: #000000;
+    color: $colorTextFooter;
     position: relative;
-    border-top: 0.1rem solid #6c757d;
-    z-index: 3;
+    border-top: 0.1rem solid $backgroundColorLayout;
+    z-index: $zIndexFooter;
   }
 
   @import "./scss/footer.component";
@@ -199,7 +202,6 @@
 
 .menu-left-root {
   transition: transform .2s cubic-bezier(.4,0,.2,1),-webkit-transform .2s;
-  background: linear-gradient(-180deg,#FFF, #FFF);
 }
 
 .overwrite-header-content {

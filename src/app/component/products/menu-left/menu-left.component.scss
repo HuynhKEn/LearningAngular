@@ -1,7 +1,11 @@
+@import "../../../@theme/variable-style/variable";
+
 .left-content {
   position: relative;
-  height: 91vh;
-  background-color: #eaeaea;
+  height: $contentHeightBody;
+  background-color: $backgroundColorLayout;
+  top: $distanceTop;
+  padding-top: $paddingContent;
 
   .menu-left {
     span {
@@ -9,11 +13,10 @@
       width: 100%;
       top: 0.5rem;
       display: flex;
-      font-size: 15px;
       cursor: pointer;
       position: relative;
       justify-content: flex-end;
-      z-index: 4;
+      z-index: $zIndexMenuLeft;
       margin-left: 20px;
 
       img {
@@ -25,10 +28,13 @@
     .side-nav-left {
       left: 0;
       display: flex;
-      position: fixed;
       transition: 0.5s;
       overflow-x: hidden;
       padding: 10px;
+
+      b {
+        font-size: $fontSizeMenuLeftPC;
+      }
       .col-3, .col-9, .col-12 {
         padding-right: 0;
         padding-left: 0;
@@ -49,13 +55,5 @@
 
 .display-menu-left {
   display: none;
-}
-
-.size-menu-left-change {
-  width: 3.5vw !important;
-}
-
-.size-menu-left-original {
-  width: 9vw !important;
 }
 

@@ -1,9 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
-
-$colorPrimary: #4c70c0;
+@import './app/@theme/variable-style/variable.scss';
 
 html, body {
   margin: 0;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
   height: 100%;
 }
 
@@ -24,24 +32,37 @@ textarea.form-control {
 
 .btn-solid-primary {
   color: #fff;
-  background: $colorPrimary;
+  background: $iconActionBuyProduct;
   padding: 0 .75rem;
   font-size: 14px;
 }
 
+.btn-carousel-product {
+  background-color: $iconNextCarouselProduct !important;
+  border-color: $iconNextCarouselProduct !important;
+}
+
 .btn-action-shop-cart {
   color: #fff;
-  background: $colorPrimary;
+  background: $iconActionShopCart;
   padding: 0 .75rem 0 auto;
 }
 
 /* size */
 .size-content-change {
-  width: 96.5vw !important;
+  width: $widthRightChange;
 }
 
 .size-content-original {
-  width: 91vw !important;
+  width: $widthRightOriginal;
+}
+
+.size-menu-left-change {
+  width: $widthLeftChange;
+}
+
+.size-menu-left-original {
+  width: $widthLeftOriginal;
 }
 
 .size-arrow-product-buy {
@@ -134,10 +155,10 @@ textarea.form-control {
     margin: auto !important;
   }
   .owl-nav .owl-prev{
-    margin-left: -5%;
+    margin-left: $marginArrowCarouselShopCart;
   }
   .owl-nav .owl-next{
-    margin-right: -5%;
+    margin-right: $marginArrowCarouselShopCart;
   }
 }
 

@@ -23,7 +23,6 @@ import {SidenavListComponent} from './component/sidenav-list/sidenav-list.compon
 import {ShareModule} from './module/share/share.module';
 import {AdminService} from './service/admin/admin.service';
 
-
 @NgModule({
     declarations: [
         AppComponent,

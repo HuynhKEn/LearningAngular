@@ -1,3 +1,4 @@
+@import "../../../@theme/variable-style/variable.scss";
 .card {
   width: 18%;
   position: relative;
@@ -7,8 +8,9 @@
   .view-buy-products {
     display: flex;
     justify-content: space-between;
-    padding-right: 0.1rem;
-    font-size: 0.5rem;
+    font-size: 0.55rem;
+    padding-right: 0.35rem;
+    padding-left: 0.35rem;
   }
 
   .card-img-top-products {
@@ -66,8 +68,7 @@
     }
 
     .content-card {
-      padding-left: 0;
-      padding-right: 0;
+      padding: 3px;
       margin-left: 0;
       margin-right: 0;
       font-size: x-small;
@@ -88,6 +89,8 @@
     align-items: center;
     margin: auto;
     border-top: 1px solid lightgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
     label {
       margin: 0;
     }
@@ -105,7 +108,7 @@
     white-space: nowrap;
     cursor: pointer;
     font-size: 1.5rem;
-    color: burlywood;
+    color:$starColor;
   }
 
   .rate:not(:checked) > label:before {
@@ -130,8 +133,14 @@
   }
 }
 
-.card:hover {
+.card-product-list:hover {
   transform: scale(1.02);
-  border: 1px solid #f63;
-  box-shadow: 8px 8px 5px linear-gradient(-180deg, #f53d2d, #f63);
+  border: $borderHoverCard;
+  box-shadow: $borderHoverCard;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation:portrait)  {
+  .card {
+    width: 30% !important;
+  }
 }

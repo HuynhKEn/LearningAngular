@@ -22,6 +22,8 @@ export class AppComponent {
         this.primengConfig.ripple = true;
         if (this.testMobileService.checkMobile()) {
             this.testMobileService.changeStatusTest(true);
+        } else {
+            this.testMobileService.changeStatusTest(false);
         }
     }
 }

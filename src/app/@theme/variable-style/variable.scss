@@ -1,0 +1,48 @@
+:root{
+  --dynamic-instanceTop:  9vh;
+  --dynamic-instanceArrow: -5% ;
+}
+
+$contentHeightBody: 91vh;
+$distanceTop: var(--dynamic-instanceTop);
+$minHeightHeader: 8vh;
+
+$widthRightChange: 94vw !important;
+$widthRightOriginal: 85vw !important;
+$widthLeftChange: 6vw !important;
+$widthLeftOriginal: 15vw !important;
+
+$iconUserHeaderColor: linear-gradient(-180deg, #f878b5, #ef67dd);
+$iconSearchHeaderColor: linear-gradient(-180deg, #f878b5, #ef67dd);
+$iconActionShopCart: linear-gradient(-180deg, #f878b5, #ef67dd);
+$iconActionBuyProduct: linear-gradient(-180deg, #f878b5, #ef67dd);
+$iconNextCarouselProduct: linear-gradient(-180deg, #f878b5, #ef67dd);
+
+$borderHoverCard: 1px solid #eebbe5;
+$shadowHoverCard : 8px 8px 5px linear-gradient(-180deg, #f878b5, #ef67dd);
+$starColor: rgb(247,237,108);
+
+$backgroundColorLayout: #eaeaea;
+$backgroundColorHeader: radial-gradient(circle, rgba(255,181,213,1) 13%, rgba(125,169,220,1) 88%);
+$backgroundColorFooter: #eaeaea;
+$colorTextHeader: #000000;
+$colorTextFooter: #000000;
+$collapseColor: #3e92d6;
+$colorPrimary: #4c70c0;
+
+
+$zIndexHeader: 9999;
+$zIndexMenuLeft: 4;
+$zIndexFooter: 9999;
+
+
+
+$fontSizeMenuLeftPC: 12px;
+$fontSizeMenuLeftMobileAndTablet: 10px;
+
+
+$paddingContent: 20px;
+
+
+
+$marginArrowCarouselShopCart: var(--dynamic-instanceArrow);

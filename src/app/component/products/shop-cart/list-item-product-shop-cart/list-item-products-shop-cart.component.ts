@@ -15,8 +15,8 @@ export class ListItemProductsShopCartComponent implements OnInit {
         dots: false,
         navigation: true,
         navText: [
-            '<span class="size-arrow-product-buy"><img src="../../../../../assets/icon/left-arrow.png" alt="Not found"></span>',
-            '<span class="size-arrow-product-buy"><img src="../../../../../assets/icon/right-arrow.png" alt="Not found"></span>'
+            '<span class="size-arrow-product-buy"><img src="../../../../../assets/icon/left-arrow.ico" alt="Not found"></span>',
+            '<span class="size-arrow-product-buy"><img src="../../../../../assets/icon/right-arrow.ico" alt="Not found"></span>'
         ]
     };
 

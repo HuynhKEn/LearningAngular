@@ -1,5 +1,6 @@
 import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewRef} from '@angular/core';
 
+import {PrimeNGConfig} from 'primeng/api';
 import {ProductsService} from '../../service/products/products.service';
 import {TestMobileService} from '../../service/test-mobile.service';
 
@@ -10,9 +11,9 @@ import {TestMobileService} from '../../service/test-mobile.service';
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
     heightFooter = '10vh';
-
     constructor(private productService: ProductsService, private cdr: ChangeDetectorRef,
-                public testMobileService: TestMobileService) {
+                public testMobileService: TestMobileService, private primengConfig: PrimeNGConfig) {
+        this.primengConfig.ripple = true;
         this.productService.changeStatusProduct(true);
     }
 

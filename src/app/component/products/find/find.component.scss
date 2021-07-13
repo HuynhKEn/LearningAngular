@@ -1,3 +1,5 @@
+@import "../../../@theme/variable-style/variable";
+
 .search-header {
   margin-left: auto;
   margin-right: auto;
@@ -6,7 +8,10 @@
     font-family: cursive;
   }
   .user-icon-header {
-    background: linear-gradient(180deg, #0e6fe6, #2088f2);
+    background: $iconUserHeaderColor;
+  }
+  .search-icon-header {
+    background: $iconSearchHeaderColor;
   }
   .p-inputgroup {
     padding-bottom: 5px;

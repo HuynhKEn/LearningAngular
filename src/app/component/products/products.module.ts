@@ -13,6 +13,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {RippleModule} from 'primeng/ripple';
+import {SizeDetectorComponent} from '../../@theme/size-detector/size-detector.component';
 import {ContentService} from '../../service/products/content/content.service';
 import {BodyRootComponent} from './body-root/body-root.component';
 import {ButtonBuyComponent} from './button-buy/button-buy.component';
@@ -29,7 +30,7 @@ import {ListItemProductsShopCartComponent} from './shop-cart/list-item-product-s
 import {ShopCartComponent} from './shop-cart/shop-cart.component';
 
 @NgModule({
-    declarations: [ProductsComponent, BodyRootComponent, ContentMainProductLayoutComponent, MenuLeftComponent,
+    declarations: [ProductsComponent, SizeDetectorComponent,  BodyRootComponent, ContentMainProductLayoutComponent, MenuLeftComponent,
         ProductCarouselComponent, ProductListComponent, FindComponent, ShopCartComponent, ButtonBuyComponent,
         ListItemProductsShopCartComponent, FormAddressPersonComponent],
     imports: [

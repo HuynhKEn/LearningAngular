@@ -1,3 +1,5 @@
+@import "../../../../../@theme/variable-style/variable.scss";
+
 app-collapse-item {
   display: block;
   &:last-child {
@@ -21,7 +23,7 @@ app-collapse-item {
     justify-content: center;
     align-items: center;
     width: 100%;
-    color: #3e92d6;
+    color: $collapseColor;
     img {
       width: 32px;
       height: 32px;

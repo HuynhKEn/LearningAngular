@@ -1,11 +1,14 @@
 .header-content {
+  top: 0;
   display: flex;
+  position: fixed;
   align-items: center;
-  background: linear-gradient(-180deg , #2d87f5, #333dff);
-  background-repeat: no-repeat;
   background-size: cover;
-  min-height: 8vh;
-  width: 100vw;
+  z-index: $zIndexHeader;
+  background-repeat: no-repeat;
+  min-height: $minHeightHeader;
+  background: $backgroundColorHeader;
+
   .row {
     text-align: center;
     align-items: center;

@@ -24,4 +24,8 @@ export class TestMobileService {
         return isMobile || isTablet;
     }
 
+    checkTablet() {
+        return this.deviceDetectService.isTablet();
+    }
+
 }
