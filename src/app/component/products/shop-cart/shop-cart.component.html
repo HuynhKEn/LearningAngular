@@ -1,0 +1,114 @@
+<div class="shopping-card container">
+  <div class="item-buy card">
+    <div class="card-body row">
+      <div class="col-md-5 col-12 product-image">
+        <div class="wrap-image-buy-left">
+          <img class="h-auto" [src]="'https://cf.shopee.vn/file/5ad6a28e00bff619b70edbeef966c361'"
+               alt="Image not found">
+          <br><br>
+        </div>
+        <app-list-item-products-shop-cart></app-list-item-products-shop-cart>
+        <app-collapse [contentDesc]="descProduct"></app-collapse>
+      </div>
+      <div class="col-md-7 col-12 row contain-product-detail-left pr-0 ">
+        <div class="col-12 pr-0">
+          <div class="header-product">
+            <h1>Giày đá bóng ⚡FREESHIP⚡ giày đá banh sân cỏ nhân tạo đã khâu đế 100%</h1>
+          </div>
+          <div class="detail-product" gdAreas="{{layoutDetailProducts}}" gdGap="0.5rem">
+            <div class="start" gdArea="star"></div>
+            <div class="evaluate" gdArea="evaluate-sold">
+              <span class="pr-2">111 Đánh giá</span>
+              <span class="pl-2">Đã bán</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="price-product row mt-2">
+                <div class="col-12">
+                  <h1><strong>169.000 VND</strong></h1>
+                </div>
+                <div class="col-12">
+                  <h3>Uy tín, chất lượng và tin cậy</h3>
+                </div>
+              </div>
+              <div class="color-product row mt-2">
+                <div class="col-lg-3 col-4 pb-3" *ngFor="let i of [1,2,3,4,5,6]" gdAlignRows.lt-md="center">
+                  <div gdAreas="{{layoutColorProducts}}" gdAreas.lt-lg="{{layoutColorProductsLessThanMD}}" class="color-item inline-grid">
+                    <div gdArea="image">
+                      <img
+                          class="product-image"
+                          [src]="'https://salt.tikicdn.com/cache/w120/ts/product/a9/fd/18/2ea5e8ef62075680cdbfdccb25e1a756.jpg'"
+                          alt="Not found">
+                    </div>
+                    <div gdArea="text-icon-tick" class="text-right"><img
+                        class="color-image"
+                        src="../../../../assets/icon/favicon.ico"
+                        alt="Not found">
+                    </div>
+                    <span gdArea="text-icon-tick" gdArea.lt-lg="text-size" gdAlignRows.lt-lg="start" class="align-self-end">Trắng</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <div class="p-fluid p-formgrid p-grid">
+                  <div class="p-col-12 p-md-3 padding-l-e-10">
+                    <label for="numberBuy">Size</label>
+                    <p-dropdown inputId="numberBuy" [options]="sizeBuyOptions" [(ngModel)]="sizeBuySelected"
+                                placeholder="Select" optionLabel="name">
+                    </p-dropdown>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <div class="p-fluid p-formgrid p-grid">
+                  <div class="p-col-12 p-md-3 padding-l-e-10">
+                    <label for="numberBuy">Số lượng mua</label>
+                    <p-dropdown inputId="numberBuy" [options]="numberBuyOptions" [(ngModel)]="numberBuySelected"
+                                placeholder="Select" optionLabel="name">
+                    </p-dropdown>
+                  </div>
+                </div>
+              </div>
+              <app-form-address-person></app-form-address-person>
+            </div>
+          </div>
+
+        </div>
+        <div class="action-choose align-self-end col-12 mt-2 padding-r-e-0">
+          <div gdAreas="{{layoutActionProducts}}" gdGap="5px">
+            <div gdArea="benefit">
+              <div class="benefit-item text-center h-100 pb-3 pt-3"
+                   gdAreas="{{layoutBenefitItem}}"
+              >
+                <div gdArea="compensation">
+                  <img [src]="'assets/icon/guard.svg'" alt="Not found">
+                  <br>
+                  <span>Hoàn tiền 100%</span>
+                </div>
+
+                <div gdArea="guarantee">
+                  <img [src]="'assets/icon/tick.svg'" alt="Not found">
+                  <br>
+                  <span>Mở hộp kiểm tra</span>
+                </div>
+
+                <div gdArea="refund">
+                  <img [src]="'assets/icon/refund.svg'" alt="Not found">
+                  <br>
+                  <span>Đổi trả trong 15 ngày</span>
+                </div>
+              </div>
+            </div>
+            <div gdArea="button-wallet" class="benefit-item" gdAlignColumns="center">
+              <button class="btn btn-action-shop-cart w-100">Giỏ hàng</button>
+            </div>
+            <div  gdArea="button-buy" class="benefit-item" gdAlignColumns="center">
+              <button class="btn btn-action-shop-cart w-100">Mua</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

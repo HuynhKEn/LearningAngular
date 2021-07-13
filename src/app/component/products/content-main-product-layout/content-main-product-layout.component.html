@@ -1,0 +1,8 @@
+<div class="container-layout-products">
+  <div [ngClass]="{
+      'size-content-original': (contentService.contentStatus$ | async),
+      'size-content-change': !(contentService.contentStatus$ | async)
+   }" style="padding: 10px;">
+    <ng-content></ng-content>
+  </div>
+</div>
