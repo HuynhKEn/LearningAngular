@@ -19,6 +19,7 @@ export class ShopCartComponent implements OnInit {
   numberBuySelected: number;
   sizeBuyOptions = [1, 2, 3, 4, 5, 6, 7];
   sizeBuySelected: number;
+  isMobile  = false;
   descProduct = 'Thiết kế trẻ trung, năng động Chất liệu cao cấp bền đẹp Kiểu dáng thời trang, dễ phối đồ Màu sắt tinh tế, thanh lịch\n' +
       'Giày bốt cao cổ nam cao cấp mẫu mới phong cách hàn quốc hot trend SP362\n' +
       '\n' +
@@ -50,7 +51,7 @@ export class ShopCartComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private testMobileService: TestMobileService
+              public testMobileService: TestMobileService
   ) {
     this.layoutDetailProducts = 'star evaluate-sold evaluate-sold';
     /**/
@@ -59,11 +60,12 @@ export class ShopCartComponent implements OnInit {
     /**/
     this.layoutActionProducts = 'benefit benefit | button-wallet button-buy';
     /**/
+    this.layoutBenefitItem = 'compensation guarantee refund';
+    /**/
     if (this.testMobileService.checkMobile()) {
-      this.layoutBenefitItem = `compensation|guarantee|refund`;
+      this.layoutDetailProducts = 'star star|evaluate-sold evaluate-sold';
       document.documentElement.style.setProperty('--dynamic-instanceArrow', '-8%');
-    } else {
-      this.layoutBenefitItem = 'compensation guarantee refund';
+      this.isMobile = true;
     }
 
 

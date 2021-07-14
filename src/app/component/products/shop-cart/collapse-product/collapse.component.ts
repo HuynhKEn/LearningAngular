@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class CollapseComponent {
     @Input() contentDesc = '';
+    @Input() isFrom = false;
 }

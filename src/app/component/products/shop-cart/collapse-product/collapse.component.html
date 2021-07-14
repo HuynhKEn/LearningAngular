@@ -3,9 +3,21 @@
         <div>
             <app-collapse-group [multiple]="false">
                 <app-collapse-item [selected]="false"
-                                   [numberWordShow] = 80
-                                   [numberDotContent] = 10
-                                   [content]="contentDesc">
+                                   [numberWordShow]=80
+                                   [numberDotContent]=10
+                                   [content]=""
+                                   [isFromItem]="true" *ngIf="isFrom">
+                    <div slot="show">
+                        <ng-content></ng-content>
+                    </div>
+                </app-collapse-item>
+                <app-collapse-item [selected]="false"
+                                   [numberWordShow]=80
+                                   [numberDotContent]=10
+                                   [content]="contentDesc"
+                                   [isFromItem]="false"
+                                   *ngIf="!isFrom"
+                >
                 </app-collapse-item>
             </app-collapse-group>
         </div>

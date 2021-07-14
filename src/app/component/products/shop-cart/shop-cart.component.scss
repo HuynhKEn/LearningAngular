@@ -61,3 +61,17 @@
     width: 32px;
   }
 }
+
+.ellipsis-name-products {
+  max-width: 100%;
+  padding-top: 16px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.font-size-mobile-shop-cart {
+    font-size: 7px !important;
+    font-weight: 800;
+}

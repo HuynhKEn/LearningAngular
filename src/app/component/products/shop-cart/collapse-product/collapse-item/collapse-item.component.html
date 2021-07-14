@@ -1,15 +1,27 @@
-<section  class="collapsible-body" [class.active]="!selected">
+<!--Content-->
+<section class="collapsible-body" [class.active]="!selected" *ngIf="content !== '' ">
     {{contentShort}}
 </section>
-<section class="collapsible-body" [class.active]="selected">
+<section class="collapsible-body" [class.active]="selected" *ngIf="content !== '' ">
     {{content}}
 </section>
+<!---->
+
+<!--FORM-->
+<div class="collapsible-body" [class.active]="selected" *ngIf="isFromItem">
+    <ng-content select="[slot=show]"></ng-content>
+</div>
+<!---->
+<p class="title-form-address" *ngIf="!this.selected && isFromItem" [ngClass]="{'ellipsis-title-form-address': isMobile}" (click)="toggleSelected()">
+    Bạn hãy nhập địa nhận hàng để được dự báo thời gian &
+    chi phí giao hàng một cách chính xác nhất.</p>
+<p class="title-form-address text-center" *ngIf="this.selected && isFromItem" (click)="toggleSelected()">Ẩn mục nhập địa chỉ</p>
 <header class="collapsible-header" (click)="toggleSelected()" *ngIf="triggerExpandAndCollapse">
-    <span class="arrow-icon" >
+    <span class="arrow-icon">
         <i *ngIf="this.selected">
             <img src="../../../../../../assets/icon/arrowheadupoutline.ico" alt="Not found">
         </i>
-        <i  *ngIf="!this.selected">
+        <i *ngIf="!this.selected">
             <img src="../../../../../../assets/icon/arrowheaddownoutline.ico" alt="Not found">
         </i>
     </span>

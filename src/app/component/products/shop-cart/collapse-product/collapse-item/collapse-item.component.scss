@@ -37,3 +37,16 @@ app-collapse-item {
     display: block;
   }
 }
+
+.title-form-address {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: $colorFormAddressPerson;
+    cursor: pointer;
+}
+.ellipsis-title-form-address {
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

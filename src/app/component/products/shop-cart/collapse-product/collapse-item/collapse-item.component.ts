@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
+import {TestMobileService} from '../../../../../service/test-mobile.service';
 import {CollapseService} from '../service/collapse.service';
 
 export interface DataCollapseChange {
@@ -17,6 +18,7 @@ let uuid = 1;
 export class CollapseItemComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() selected = false;
     @Input() content = '';
+    @Input() isFromItem = false;
     @Input() numberWordShow = 250;
     @Input() numberDotContent = 1;
     @Output() selectedChange: EventEmitter<DataCollapseChange> = new EventEmitter<DataCollapseChange>();
@@ -24,8 +26,12 @@ export class CollapseItemComponent implements OnInit, AfterViewInit, OnChanges {
     private _id: number;
     contentShort = '';
     triggerExpandAndCollapse = true;
+    isMobile = false;
 
-    constructor(private  collapseService: CollapseService) {
+    constructor(private  collapseService: CollapseService, private testMobileService: TestMobileService) {
+        if (this.testMobileService.checkMobile()) {
+            this.isMobile = true;
+        }
     }
 
     get collapseId() {
@@ -37,16 +43,18 @@ export class CollapseItemComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     ngAfterViewInit() {
-        this.collapseService.collapse$.subscribe( status => {
-            if (this.selected  !== status ) {
-                this.selected = status;
-            }
-        });
+        if (!this.isFromItem) {
+            this.collapseService.collapse$.subscribe( status => {
+                if (this.selected  !== status ) {
+                    this.selected = status;
+                }
+            });
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
         this.triggerExpandAndCollapse = true;
-        if (this.content) {
+        if (this.content && !this.isFromItem ) {
             const listWord = this.content.split(' ');
             const lengthWord =  this.content.length;
             const numberDot =  '...'.repeat(this.numberDotContent);
@@ -64,7 +72,9 @@ export class CollapseItemComponent implements OnInit, AfterViewInit, OnChanges {
             }
         } else {
             this.contentShort = '';
-            this.triggerExpandAndCollapse = false;
+            if (!this.isFromItem) {
+                this.triggerExpandAndCollapse = false;
+            }
         }
     }
 
