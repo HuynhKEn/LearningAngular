@@ -1,0 +1,207 @@
+@import "../../@theme/variable-style/variable";
+
+.product-header-root {
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  header {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: $zIndexHeader;
+    color: $colorTextHeader;
+    justify-content: flex-start;
+    border-bottom: 0.1rem solid $backgroundColorLayout;
+  }
+  @import "assests/styles/header.component";
+}
+
+.product-body-root {
+  margin: 0;
+  display: flex;
+  min-width: 100%;
+  max-height: 100vh;
+  flex-direction: row;
+  background-color: #eaeaea;
+
+  @font-face {
+    font-family: Moderne Sans;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/moderne_sans.woff2)
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: 18%;
+    border-radius: 0;
+    position: relative;
+    margin: auto auto 1rem auto;
+
+    .view-buy-products {
+      display: flex;
+      font-size: 0.5rem;
+      padding-right: 0.1rem;
+      justify-content: space-between;
+    }
+
+    .card-img-top-products {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid gray;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    .card-body {
+
+      .products-name {
+        overflow: hidden;
+        font-weight: bold;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .products-color ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .products-color li {
+        margin: 0 0.2rem 0 0;
+        display: inline-block;
+      }
+
+      .products-color label {
+        cursor: pointer;
+        margin-bottom: 0;
+      }
+
+      .products-color input {
+        display: none;
+      }
+
+      .products-color input[type="radio"]:checked + .swatch {
+        box-shadow: inset 0 0 0 0.2rem white;
+      }
+
+      .swatch {
+        width: 0.7rem;
+        height: 0.7rem;
+        margin: 0 0.05rem 0 0;
+        display: inline-block;
+        vertical-align: middle;
+        border: 0.1rem solid #d4d4d4;
+      }
+
+      .content-card {
+        margin-left: 0;
+        padding-left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        text-align: left;
+        font-size: x-small;
+      }
+      padding: 0.2rem;
+
+    }
+
+    .card-footer {
+      padding: 0;
+    }
+
+    .rate {
+      label {
+        margin: 0;
+      }
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      justify-content: center;
+      border-top: 1px solid lightgray;
+    }
+
+    .rate:not(:checked) > input {
+      top: -9999px;
+      position: absolute;
+    }
+
+    .rate:not(:checked) > label {
+      width: 1em;
+      float: right;
+      cursor: pointer;
+      color: burlywood;
+      overflow: hidden;
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+
+    .rate:not(:checked) > label:before {
+      content: ' ★ ';
+      padding-left: 0.3vw
+    }
+
+    .rate > input:checked ~ label {
+      color: #ffc700;
+    }
+
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+      color: #deb217;
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+      color: #c59b08;
+    }
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+    border: 1px solid #f63;
+    box-shadow: 8px 8px 5px linear-gradient(-180deg, #f53d2d, #f63);
+  }
+
+  @media only screen and (max-width: 767px) {
+    .card {
+      width: 40vw !important;
+    }
+  }
+}
+
+.product-footer-root {
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+
+  footer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: $zIndexFooter;
+    color: $colorTextFooter;
+    border-top: 0.1rem solid $backgroundColorLayout;
+  }
+  @import "assests/styles/footer.component";
+}
+
+.menu-left-root {
+  transition: transform .2s cubic-bezier(.4,0,.2,1),-webkit-transform .2s;
+}
+
+.overwrite-header-content {
+  justify-content: flex-end !important;
+}

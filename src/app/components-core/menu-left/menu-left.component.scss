@@ -1,0 +1,59 @@
+@import "../../@theme/variable-style/variable";
+
+.left-content {
+  position: relative;
+  top: $distanceTop;
+  height: $contentHeightBody;
+  padding-top: $paddingContent;
+  background-color: $backgroundColorLayout;
+
+  .menu-left {
+    span {
+      float: left;
+      width: 100%;
+      top: 0.5rem;
+      display: flex;
+      cursor: pointer;
+      margin-left: 20px;
+      position: relative;
+      justify-content: flex-end;
+      z-index: $zIndexMenuLeft;
+
+      img {
+        height: 14px;
+        right: 0.05rem;
+      }
+    }
+
+    .side-nav-left {
+      left: 0;
+      display: flex;
+      transition: 0.5s;
+      overflow-x: hidden;
+      padding: $paddingMenu;
+
+      b {
+        font-size: $fontSizeMenuLeftPC;
+      }
+      .col-3, .col-9, .col-12 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+      div > div > div {
+        align-items: center;
+        justify-content: center;
+      }
+      .center-item-menu {
+        justify-content: center;
+      }
+      b {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.display-menu-left {
+  display: none;
+}
+

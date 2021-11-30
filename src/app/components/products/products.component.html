@@ -1,0 +1,19 @@
+<app-size-detector></app-size-detector>
+<div id="product-header-root" class="product-header-root">
+  <header>
+    <div class="header-content" [ngClass]="{
+              'overwrite-header-content': (mobileService.mobileStatus$ | async)
+          }" #headerContentProduct>
+      <div class="vw-100">
+          <app-find></app-find>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div id="product-body-root" class="product-body-root">
+  <app-menu-left class="menu-left-root"></app-menu-left>
+  <app-body-root>
+    <router-outlet></router-outlet>
+  </app-body-root>
+</div>

@@ -1,6 +1,9 @@
 :root{
   --dynamic-instanceTop:  9vh;
   --dynamic-instanceArrow: -5% ;
+  --dynamic-imageSourceOverlay: url('https://yaviet.com/wp-content/uploads/2018/08/loi-404-not-found-300x225.jpg');
+  --dynamic-overlayClientHeightShopCart: 500px;
+  --dynamic-borderImage: none;
 }
 
 $contentHeightBody: 91vh;
@@ -16,6 +19,7 @@ $iconUserHeaderColor: linear-gradient(-180deg, #f878b5, #ef67dd);
 $iconSearchHeaderColor: linear-gradient(-180deg, #f878b5, #ef67dd);
 $iconActionShopCart: linear-gradient(-180deg, #f878b5, #ef67dd);
 $iconActionBuyProduct: linear-gradient(-180deg, #f878b5, #ef67dd);
+$iconActionMain: linear-gradient(-180deg, #f878b5, #ef67dd);
 $iconNextCarouselProduct: linear-gradient(-180deg, #f878b5, #ef67dd);
 
 $borderHoverCard: 1px solid #eebbe5;
@@ -43,7 +47,10 @@ $fontSizeMenuLeftMobileAndTablet: 10px;
 
 
 $paddingContent: 20px;
-
+$paddingMenu: 10px;
 
 
 $marginArrowCarouselShopCart: var(--dynamic-instanceArrow);
+$imageSourceOverlay: var(--dynamic-imageSourceOverlay);
+$overlayClientHeightShopCart: var(--dynamic-overlayClientHeightShopCart);
+$borderImage: var(--dynamic-borderImage);

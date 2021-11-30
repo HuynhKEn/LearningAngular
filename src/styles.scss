@@ -32,9 +32,17 @@ textarea.form-control {
 
 .btn-solid-primary {
   color: #fff;
-  background: $iconActionBuyProduct;
+  background: $iconActionMain;
   padding: 0 .75rem;
   font-size: 14px;
+}
+
+.btn-3d-action {
+    color: #fff;
+    background: $iconActionMain;
+    font-size: 14px;
+    width: auto;
+    cursor: pointer;
 }
 
 .btn-carousel-product {
@@ -112,6 +120,17 @@ textarea.form-control {
 
 .margin-l-e-5 {
   margin-left :5px !important;
+}
+
+.margin-t-5 {
+    margin-top: 5px !important;
+}
+
+.margin-t-10 {
+    margin-top: 10px !important;
+}
+.margin-t-15 {
+    margin-top: 15px !important;
 }
 
 /* padding */

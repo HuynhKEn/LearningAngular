@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './component/home/home.component';
-import { PostComponent } from './component/post/post.component';
-import { RegisterComponent } from './component/register/register.component';
+import { HomeComponent } from './components/blogs/home/home.component';
+import { PostComponent } from './components/blogs/post/post.component';
+import { RegisterComponent } from './components/blogs/register/register.component';
 import { ROUTE_PATH } from './config/route-path.config';
 const routes: Routes = [
   { path: `${ROUTE_PATH.HOME}`, component: HomeComponent },
@@ -13,11 +13,11 @@ const routes: Routes = [
   { path: `${ROUTE_PATH.POST}`, component: PostComponent },
   {
     path: `${ROUTE_PATH.PRODUCTS}`,
-    loadChildren: () => import('./component/products/products.module').then(m => m.ProductsModule)
+    loadChildren: () => import('./components/products/products.module').then(m => m.ProductsModule)
   },
   {
     path: `${ROUTE_PATH.LOGIN}`,
-    loadChildren: () => import('./component/login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./components/blogs/login/login.module').then(m => m.LoginModule)
   },
   { path: '', redirectTo: `${ROUTE_PATH.HOME}`, pathMatch: 'full' },
 

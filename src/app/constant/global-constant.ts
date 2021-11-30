@@ -26,5 +26,11 @@ export const GLOBAL_CONSTANT = {
     MIN: 'Vui lòng cung cấp giá trị lớn hơn hoặc bằng ',
     MAX_LENGTH: 'Vui lòng cung cấp độ dài kí tự nhỏ hơn hoặc bằng ',
     MIN_LENGTH: 'Vui lòng cung cấp độ dài kí tự lớn hơn hoặc bằng '
+  },
+  VALUE_MAKE_CONDITION: 99999999999999999,
+  STYLE: {
+    COLOR_MAIN: '#ffafbd',
+    BORDER_MAIN_2PX: '2px solid #ffafbd'
   }
 };
+
