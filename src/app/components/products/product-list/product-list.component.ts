@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 
-import { PRODUCT_LIST } from '../../../constant/layout-constant';
+import { PRODUCT_LIST } from '../../../constants/layout-constant';
 
 @Component({
   selector: 'app-product-list',

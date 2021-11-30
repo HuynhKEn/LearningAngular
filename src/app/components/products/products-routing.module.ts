@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 
 import {RouterModule, Routes} from '@angular/router';
 
-import {ROUTE_PATH} from '../../config/route-path.config';
+import {ROUTE_PATH} from '../../configs/route-path.config';
 import {ProductListComponent} from './product-list/product-list.component';
 import {ProductsComponent} from './products.component';
 import {ShopCartComponent} from './shop-cart/shop-cart.component';

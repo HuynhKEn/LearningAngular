@@ -2,8 +2,8 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 import {Subscription} from 'rxjs';
 import {ContentService} from '../../components/products/assests/services/content.service';
-import {MobileService} from '../../service/mobile.service';
-import {ResizeService} from '../../service/resize.service';
+import {MobileService} from '../../services/mobile.service';
+import {ResizeService} from '../../services/resize.service';
 import {SCREEN_SIZE} from '../size-detector/screen-size.enum';
 
 @Component({

@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 
-import {PRODUCT_CAROUSEL} from '../../../constant/layout-constant';
+import {PRODUCT_CAROUSEL} from '../../../constants/layout-constant';
 import {ContentService} from '../assests/services/content.service';
 
 @Component({

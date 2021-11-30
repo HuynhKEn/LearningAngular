@@ -1,0 +1,107 @@
+<div *ngIf="dataTranforms.length !== 0 && isMedia" #bodyEl  id="cardView">
+  <div class="row">
+    <div class="col-12 search-input-container">
+      <search-customer-component [color]="'white'" style="width:100%"></search-customer-component>
+    </div>
+    <div class="col-12">
+      <div fxLayout="row wrap" fxLayout.lt-sm ="column">
+        <div *ngFor="let element of dataTranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
+          fxFlex="1 1 calc(33%)" fxFlexAlign = "center" fxFlex.lt-sm="1 1 calc(100%)">
+          <mat-card>
+            <mat-card-header>
+              <div mat-card-avatar
+                [ngStyle]="{
+                  'background-image':
+                    element.fileType === 'pdf'
+                    ? 'url(../../../assets/images/pdf.png)'
+                    : 'url(../../../assets/images/video.png)',
+                  'background-size': 'cover'}">
+              </div>
+              <mat-card-title>{{element.topic | uppercase}}</mat-card-title>
+              <mat-card-subtitle>{{element.fileType | uppercase }}</mat-card-subtitle>
+              <div class="lesson-name">
+                <span>
+                  {{element.title | uppercase }}
+                </span>
+              </div>
+            </mat-card-header>
+            <mat-card-content>
+              <span *ngIf="element.fileType === 'video'" style="height: 325px;" [ngStyle]="{'cursor': 'pointer' }"  >
+                <video  fxFlexFill controls
+                  [ngStyle.lt-sm]="{'width': '100%','height':'150px'}"
+                  [ngStyle]="{'width': '100%','height':'250px' ,'cursor': 'pointer'}">
+                  <source  [src]="element.link">
+                </video>
+              </span>
+              <span *ngIf="element.fileType === 'pdf'" style="height: 325px;"
+                  [ngStyle.lt-sm]="{'width': '100%','height':'150px'}"
+                  [ngStyle]="{'cursor': 'pointer'}">
+                <img [src]="element.thumb" (click)="openDialog(element.link)" fxFlexFill
+                [ngStyle]="{'width': '100%','height':'250px' ,'cursor': 'pointer'}" >
+              </span>
+              <table>
+                    <tr>
+                      <th>START DATE</th>
+                      <th></th>
+                      <th></th>
+                      <th>END-DATE</th>
+                    </tr>
+                    <tr>
+                      <td>{{element.startDate}}</td>
+                      <td></td>
+                      <td></td>
+                      <td>{{element.endDate}}</td>
+                    </tr>
+             </table>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div *ngIf="dataTranforms.length !== 0 && !isMedia"  id="cardView">
+        <div fxLayout="row wrap">
+          <div fxFlex="1 1 100%" class="container-search">
+            <input type="search" #inputSearch  id="inputSearch" focusDirective/>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayout.lt-sm ="column">
+          <div *ngFor="let element of dataTranforms |slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)"
+            fxFlex="1 1 calc(33%)" fxFlexAlign = "center" fxFlex.lt-sm="1 1 calc(100%)">
+            <mat-card class="card-not-media">
+              <mat-card-header>
+                <div mat-card-avatar
+                  [ngStyle]="{
+                    'background-image': 'url(' +element.subImgPath+')',
+                    'background-size': 'cover'}">
+                </div>
+                <mat-card-title>{{element.title | uppercase}}</mat-card-title>
+                <mat-card-subtitle>{{element.subTitle | uppercase }}</mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image [src]="element.imgPath">
+              <mat-card-content>
+                <p>
+                  {{element.content}}
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-paginator #paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[6, 10, 25, 100]"
+              (page)="pageEvent = $event">
+</mat-paginator>
+
+
+
+
+

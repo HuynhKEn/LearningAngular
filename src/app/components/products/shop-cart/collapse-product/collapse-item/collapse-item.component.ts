@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
-import {MobileService} from '../../../../../service/mobile.service';
+import {MobileService} from '../../../../../services/mobile.service';
 import {CollapseService} from '../service/collapse.service';
 
 export interface DataCollapseChange {

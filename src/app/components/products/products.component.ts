@@ -1,7 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewRef} from '@angular/core';
 
 import {PrimeNGConfig} from 'primeng/api';
-import {MobileService} from '../../service/mobile.service';
+import {MobileService} from '../../services/mobile.service';
 import {ProductsService} from './assests/services/products.service';
 
 @Component({

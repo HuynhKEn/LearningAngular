@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
 
 import {PrimeNGConfig} from 'primeng/api';
-import {AdminService} from './components/blogs/assets/services/admin.service';
 import {ProductsService} from './components/products/assests/services/products.service';
-import {MobileService} from './service/mobile.service';
-
+import {MobileService} from './services/mobile.service';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +13,6 @@ export class AppComponent {
     title = 'Product Ecommerce';
 
     constructor(
-        public adminService: AdminService,
         private primengConfig: PrimeNGConfig,
         public productService: ProductsService,
         private mobileService: MobileService,

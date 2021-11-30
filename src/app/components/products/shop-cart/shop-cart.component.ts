@@ -13,11 +13,11 @@ import {
 import {ActivatedRoute, Router} from '@angular/router';
 
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {GLOBAL_CONSTANT} from '../../../constant/global-constant';
-import {SHOP_CART} from '../../../constant/layout-constant';
-import {newDateNow, numberSecondsOfDate} from '../../../helpper/date-utilities';
-import {getOffset} from '../../../helpper/dom-utilities';
-import {MobileService} from '../../../service/mobile.service';
+import {GLOBAL_CONSTANT} from '../../../constants/global-constant';
+import {SHOP_CART} from '../../../constants/layout-constant';
+import {newDateNow, numberSecondsOfDate} from '../../../helppers/date-utilities';
+import {getOffset} from '../../../helppers/dom-utilities';
+import {MobileService} from '../../../services/mobile.service';
 import {Rotate3DProductComponent} from './rotate-3d-product/rotate-3D-product.component';
 
 @Component({

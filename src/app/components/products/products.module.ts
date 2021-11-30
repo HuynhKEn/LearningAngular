@@ -21,8 +21,8 @@ import {ContentMainLayoutComponent} from '../../components-core/content-main-lay
 import {MenuLeftComponent} from '../../components-core/menu-left/menu-left.component';
 import {SizeDetectorComponent} from '../../components-core/size-detector/size-detector.component';
 import {ContentService} from './assests/services/content.service';
-import {ButtonBuyComponent} from './button-buy/button-buy.component';
-import {FindComponent} from './find/find.component';
+import {ButtonBuyComponent} from './purchase-action/purchase-actioncomponent';
+import {SearchComponent} from './search/search.component';
 import {FormAddressPersonComponent} from './form-address-person/form-address-person.component';
 import {ProductCarouselComponent} from './product-carousel/product-carousel.component';
 import {ProductListComponent} from './product-list/product-list.component';
@@ -38,7 +38,7 @@ import {ShopCartComponent} from './shop-cart/shop-cart.component';
     declarations: [
         ProductsComponent, SizeDetectorComponent,  BodyRootComponent,
         ProductCarouselComponent, ProductListComponent, ButtonBuyComponent,
-        ContentMainLayoutComponent, MenuLeftComponent,  FindComponent,
+        ContentMainLayoutComponent, MenuLeftComponent,  SearchComponent,
         ShopCartComponent, ListItemProductsShopCartComponent, FormAddressPersonComponent, Rotate3DProductComponent
 
     ],
